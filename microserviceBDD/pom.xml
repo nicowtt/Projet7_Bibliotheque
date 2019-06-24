@@ -37,8 +37,8 @@
 	<!-- =============================================================== -->
 	<modules>
 		<module>microserviceBdd-dao</module>
-		<module>moduleModel</module>
-		<module>moduleWeb</module>
+		<module>microserviceBdd-model</module>
+		<module>microserviceBdd-web</module>
 	</modules>
 	<!-- =============================================================== -->
 	<!-- Gestion des dépendances -->
