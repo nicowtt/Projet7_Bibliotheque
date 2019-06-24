@@ -10,15 +10,15 @@
 		<groupId>com.eLibrary</groupId>
 		<artifactId>microserviceBDD</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<!-- ===== Informations Maven ===== -->
-	<artifactId>${projectName}-moduleModel</artifactId>
+	<artifactId>microserviceBdd-model</artifactId>
 
 	<!-- ===== Informations générales ===== -->
-	<name>${projectName}-Model</name>
+	<name>microservice-model</name>
 	<description>module for beans</description>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<!-- =============================================================== -->
 	<!-- Dépendances -->

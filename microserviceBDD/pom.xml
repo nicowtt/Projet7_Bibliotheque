@@ -48,19 +48,19 @@
 			<!-- ===== Modules ===== -->
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>${projectName}-model</artifactId>
+				<artifactId>microserviceBdd-model</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>${projectName}-dao</artifactId>
+				<artifactId>microservice-dao</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>${projectName}-web</artifactId>
+				<artifactId>microserviceBdd-web</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<!-- ===== Bibliothèques tierces ===== -->

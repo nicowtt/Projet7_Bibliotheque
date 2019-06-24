@@ -11,16 +11,17 @@
 		<groupId>com.eLibrary</groupId>
 		<artifactId>microserviceBDD</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<!-- ===== Informations Maven ===== -->
-	<artifactId>moduleWeb</artifactId>
+	<groupId>com.eLibrary</groupId>
+	<artifactId>microserviceBdd-web</artifactId>
 	<packaging>war</packaging>
 
 	<!-- ===== Informations générales ===== -->
-	<name>${projectName}-moduleWeb</name>
+	<name>microserviceBdd-web</name>
 	<description>module for controllers</description>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<!-- =============================================================== -->
 	<!-- Propriétés -->
@@ -36,13 +37,13 @@
 		<!-- ===== Modules ===== -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>${projectName}-moduleDao</artifactId>
+			<artifactId>microservice-dao</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>${projectName}-moduleModel</artifactId>
+			<artifactId>microserviceBdd-model</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
