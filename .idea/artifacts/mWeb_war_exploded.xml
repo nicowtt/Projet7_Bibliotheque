@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="moduleWeb:war exploded">
-    <output-path>$PROJECT_DIR$/microserviceBDD/microserviceBdd-web/target/moduleWeb-0.0.1-SNAPSHOT</output-path>
+  <artifact type="exploded-war" name="mWeb:war exploded">
+    <output-path>$PROJECT_DIR$/microserviceBDD/moduleWeb/target/moduleWeb-0.0.1-SNAPSHOT</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="microserviceBdd-web" />
+          <element id="module-output" name="mWeb" />
         </element>
         <element id="directory" name="lib">
           <element id="archive" name="microserviceBDD-moduleDao-0.0.1-SNAPSHOT.jar">
@@ -12,7 +12,7 @@
           </element>
           <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.2.5" />
           <element id="archive" name="microserviceBDD-moduleModel-0.0.1-SNAPSHOT.jar">
-            <element id="module-output" name="microserviceBdd-Model" />
+            <element id="module-output" name="mModel" />
           </element>
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:2.1.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.1.5.RELEASE" />
@@ -77,9 +77,9 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/microserviceBDD/microserviceBdd-web/target/moduleWeb-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/microserviceBDD/moduleWeb/target/moduleWeb-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="microserviceBdd-web/web/Web" />
+      <element id="javaee-facet-resources" facet="mWeb/web/Web" />
     </root>
   </artifact>
 </component>

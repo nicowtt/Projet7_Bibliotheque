@@ -6,16 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="moduleDao" />
-        <module name="moduleModel" />
-        <module name="moduleWeb" />
+        <module name="mDao" />
+        <module name="microserviceBdd-Dao" />
+        <module name="microserviceBdd-Model" />
+        <module name="microserviceBdd-web" />
+        <module name="mModel" />
+        <module name="mWeb" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="mDao" target="1.8" />
       <module name="microserviceBDD" target="1.8" />
-      <module name="moduleDao" target="1.8" />
-      <module name="moduleModel" target="1.8" />
-      <module name="moduleWeb" target="1.8" />
+      <module name="microserviceBdd-Dao" target="1.8" />
+      <module name="microserviceBdd-Model" target="1.8" />
+      <module name="microserviceBdd-web" target="1.8" />
+      <module name="mModel" target="1.8" />
+      <module name="mWeb" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

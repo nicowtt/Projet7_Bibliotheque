@@ -15,7 +15,7 @@
 	</parent>
 
 	<!-- ===== Informations Maven ===== -->
-	<artifactId>moduleDao</artifactId>
+	<artifactId>${projectName}-moduleDao</artifactId>
 
 	<!-- ===== Informations générales ===== -->
 	<name>${projectName}-moduleDao</name>
@@ -28,7 +28,7 @@
 		<!-- ===== Modules ===== -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>moduleModel</artifactId>
+			<artifactId>${projectName}-moduleModel</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 

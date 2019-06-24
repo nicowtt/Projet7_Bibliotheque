@@ -14,7 +14,7 @@
 	</parent>
 
 	<!-- ===== Informations Maven ===== -->
-	<artifactId>moduleModel</artifactId>
+	<artifactId>${projectName}-moduleModel</artifactId>
 
 	<!-- ===== Informations générales ===== -->
 	<name>${projectName}-Model</name>
