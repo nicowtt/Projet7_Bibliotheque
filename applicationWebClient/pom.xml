@@ -13,21 +13,21 @@
 	<!-- Informations du projet -->
 	<!-- =============================================================== -->
 	<!-- ===== Informations Maven ===== -->
-	<groupId>com.eLibrary</groupId>
-	<artifactId>microserviceBDD</artifactId>
+	<groupId>com.eLibraryClient</groupId>
+	<artifactId>applicationWebClient</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<!-- ===== Informations générales ===== -->
 	<name>${projectName}</name>
-	<url>http://localhost:9001</url>
-	<description>Link with BDD</description>
+	<url>http://localhost:8080</url>
+	<description>Web application</description>
 
 	<!-- =============================================================== -->
 	<!-- Propriétés -->
 	<!-- =============================================================== -->
 	<properties>
-		<projectName>microserviceBDD</projectName>
+		<projectName>applicationWebClient</projectName>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 	</properties>
@@ -36,62 +36,67 @@
 	<!-- Modules -->
 	<!-- =============================================================== -->
 	<modules>
-		<module>microserviceBdd-dao</module>
-		<module>microserviceBdd-model</module>
-		<module>microserviceBdd-web</module>
+		<module>applicationWebClient-business</module>
+		<module>applicationWebClient-model</module>
+		<module>applicationWebClient-proxies</module>
+		<module>applicationWebClient-web</module>
 	</modules>
-
 	<!-- =============================================================== -->
 	<!-- Gestion des dépendances -->
 	<!-- =============================================================== -->
 	<dependencyManagement>
-		<dependencies>
-			<!-- ===== Modules ===== -->
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>microserviceBdd-model</artifactId>
-				<version>${project.version}</version>
-			</dependency>
+	<dependencies>
+		<!-- ===== Modules ===== -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>applicationWebClient-web</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>microservice-dao</artifactId>
-				<version>${project.version}</version>
-			</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>applicationWebClient-proxies</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>microserviceBdd-web</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<!-- ===== Bibliothèques tierces ===== -->
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter</artifactId>
-			</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>applicationWebClient-model</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-test</artifactId>
-				<scope>test</scope>
-			</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>applicationWebClient-business</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-test</artifactId>
-				<version>5.1.8.RELEASE</version>
-				<scope>test</scope>
-			</dependency>
+		<!-- ===== Bibliothèques tierces ===== -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
 
-		</dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>5.1.8.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+
+
+	</dependencies>
 	</dependencyManagement>
-
 	<!-- =============================================================== -->
 	<!-- Build -->
 	<!-- =============================================================== -->
 	<build>
-		<pluginManagement>
 		<plugins>
 			<!-- Packaging JAR -->
 			<plugin>
@@ -136,7 +141,6 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		</pluginManagement>
 	</build>
 
 </project>

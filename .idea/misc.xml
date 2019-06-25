@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/applicationWebClient/applicationWebClient-web" />
     <file type="web" url="file://$PROJECT_DIR$/microserviceBDD/microserviceBdd-web" />
     <file type="web" url="file://$PROJECT_DIR$/microserviceBDD/moduleWeb" />
   </component>
@@ -17,6 +18,11 @@
         <option value="$PROJECT_DIR$/microserviceBDD/microserviceBdd-dao/pom.xml" />
         <option value="$PROJECT_DIR$/microserviceBDD/microserviceBdd-model/pom.xml" />
         <option value="$PROJECT_DIR$/microserviceBDD/microserviceBdd-web/pom.xml" />
+        <option value="$PROJECT_DIR$/applicationWebClient/pom.xml" />
+        <option value="$PROJECT_DIR$/applicationWebClient/applicationWebClient-business/pom.xml" />
+        <option value="$PROJECT_DIR$/applicationWebClient/applicationWebClient-model/pom.xml" />
+        <option value="$PROJECT_DIR$/applicationWebClient/applicationWebClient-proxies/pom.xml" />
+        <option value="$PROJECT_DIR$/applicationWebClient/applicationWebClient-web/pom.xml" />
       </list>
     </option>
   </component>

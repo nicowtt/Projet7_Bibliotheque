@@ -6,6 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="applicationWebClient-business" />
+        <module name="applicationWebClient-model" />
+        <module name="applicationWebClient-proxies" />
+        <module name="applicationWebClient-web" />
         <module name="mDao" />
         <module name="microserviceBdd-Dao" />
         <module name="microserviceBdd-Model" />
@@ -15,6 +19,11 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="applicationWebClient" target="1.8" />
+      <module name="applicationWebClient-business" target="1.8" />
+      <module name="applicationWebClient-model" target="1.8" />
+      <module name="applicationWebClient-proxies" target="1.8" />
+      <module name="applicationWebClient-web" target="1.8" />
       <module name="mDao" target="1.8" />
       <module name="microserviceBDD" target="1.8" />
       <module name="microserviceBdd-Dao" target="1.8" />
