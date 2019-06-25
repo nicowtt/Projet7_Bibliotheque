@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-//@Controller
+@Controller
 public class BookController {
 
-//    @Autowired(required = true)
-//    private BookManager bookManager;
-//
-//    @RequestMapping("/home")
-//    public String accueil(Model model){
-//
-//        List<BookBean> books = bookManager.getListAllBooks();
-//
-//        model.addAttribute("books", books);
-//
-//        return "Home";
-//    }
+    @Autowired
+    private BookManager bookManager;
+
+    @RequestMapping("/home")
+    public String accueil(Model model){
+
+        List<BookBean> books = bookManager.getListAllBooks();
+
+        model.addAttribute("books", books);
+
+        return "Home";
+    }
 }
