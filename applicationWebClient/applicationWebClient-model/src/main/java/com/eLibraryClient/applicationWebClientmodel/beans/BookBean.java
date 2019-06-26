@@ -10,6 +10,7 @@ public class BookBean {
     private String booklabel;
     private Boolean bookreservation;
 
+    //Constructor
     public BookBean() {
     }
 
@@ -23,6 +24,7 @@ public class BookBean {
         this.bookreservation = bookreservation;
     }
 
+    //getter and setter
     public int getId() {
         return id;
     }
@@ -79,6 +81,7 @@ public class BookBean {
         this.bookreservation = bookreservation;
     }
 
+    //to String
     @Override
     public String toString() {
         return "BookBean{" +
