@@ -2,7 +2,7 @@ package com.eLibraryClient.applicationWebClientweb.controller;
 
 import com.eLibraryClient.applicationWebClientbusiness.contract.BookManager;
 import com.eLibraryClient.applicationWebClientmodel.beans.BookBean;
-import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUser;
+import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUserBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +24,7 @@ public class BookController {
      * @return home.html
      */
     @RequestMapping("/home")
-    public String accueil(Model model, @SessionAttribute(value = "LibraryUser", required = false)LibraryUser libraryUserSession){
+    public String accueil(Model model, @SessionAttribute(value = "LibraryUserBean", required = false)LibraryUserBean libraryUserSession){
 
         List<BookBean> books = bookManager.getListAllBooks();
 

@@ -1,7 +1,7 @@
 package com.eLibraryClient.applicationWebClientweb.controller;
 
 import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryUserManager;
-import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUser;
+import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUserBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,9 +27,9 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String doLogin(@ModelAttribute("userSession")LibraryUser userSession, WebRequest request, SessionStatus status, Model model) {
+    public String doLogin(@ModelAttribute("userSession")LibraryUserBean userSession, WebRequest request, SessionStatus status, Model model) {
 
-        LibraryUser userOnBdd = new LibraryUser();
+        LibraryUserBean userOnBdd = new LibraryUserBean();
 
         //check if user exist on BDD
         userOnBdd = libraryUserManager.getLibraryUser(userSession.getUseremail());

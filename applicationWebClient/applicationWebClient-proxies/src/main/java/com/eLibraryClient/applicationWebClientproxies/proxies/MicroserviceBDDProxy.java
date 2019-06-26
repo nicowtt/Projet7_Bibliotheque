@@ -2,7 +2,7 @@ package com.eLibraryClient.applicationWebClientproxies.proxies;
 
 
 import com.eLibraryClient.applicationWebClientmodel.beans.BookBean;
-import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUser;
+import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUserBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,5 +17,5 @@ public interface MicroserviceBDDProxy {
     List<BookBean> getBooksList();
 
     @GetMapping(value = "/User/{userEmail}")
-    LibraryUser getUser(String userEmail);
+    LibraryUserBean getUser(String userEmail);
 }

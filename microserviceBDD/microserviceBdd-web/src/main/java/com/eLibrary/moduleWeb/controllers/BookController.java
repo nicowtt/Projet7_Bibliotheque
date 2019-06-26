@@ -14,6 +14,11 @@ public class BookController {
     @Autowired
     private BookDao bookDao;
 
+    /**
+     * Get list of all books from BDD
+     *
+     * @return
+     */
     @GetMapping(value = "/Books")
     public List<Book> booksList() {
 

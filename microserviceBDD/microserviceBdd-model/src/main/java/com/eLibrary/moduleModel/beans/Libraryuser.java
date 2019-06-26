@@ -1,26 +1,33 @@
-package com.eLibraryClient.applicationWebClientmodel.beans;
+package com.eLibrary.moduleModel.beans;
 
-public class LibraryUser {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
+public class Libraryuser {
+
+    @Id
+    @GeneratedValue
     private int id;
     private String userfirstname;
     private String username;
     private String userpassword;
     private String useremail;
 
-    // Constructor
-    public LibraryUser() {
+    //constructor
+    public Libraryuser() {
     }
 
-    public LibraryUser(int id, String userfirstname, String username, String userpassword, String useremail) {
-        this.id = id;
+    public Libraryuser(String userfirstname, String username, String userpassword, String useremail) {
         this.userfirstname = userfirstname;
         this.username = username;
         this.userpassword = userpassword;
         this.useremail = useremail;
     }
 
-    //Getter and setter
+    //getter and setter
+
     public int getId() {
         return id;
     }
@@ -61,11 +68,10 @@ public class LibraryUser {
         this.useremail = useremail;
     }
 
-    // toString
-
+    //to string
     @Override
     public String toString() {
-        return "LibraryUser{" +
+        return "Libraryuser{" +
                 "id=" + id +
                 ", userfirstname='" + userfirstname + '\'' +
                 ", username='" + username + '\'' +
