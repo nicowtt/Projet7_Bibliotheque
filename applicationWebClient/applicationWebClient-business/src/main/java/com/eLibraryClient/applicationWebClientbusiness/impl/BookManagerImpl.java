@@ -19,9 +19,14 @@ public class BookManagerImpl implements BookManager {
 
     static final Log logger = LogFactory.getLog(BookManagerImpl.class);
 
+    /**
+     * Ask all books on BDD
+     *
+     * @return -> list of all books
+     */
     public List<BookBean> getListAllBooks() {
 
-        List<BookBean> booksList = microserviceBDDProxy.booksList();
+        List<BookBean> booksList = microserviceBDDProxy.getBooksList();
 
         return booksList;
     }

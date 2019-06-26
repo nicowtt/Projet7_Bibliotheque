@@ -28,25 +28,25 @@
         <ul class="nav navbar-nav navbar-right" > <li class="dropdown">
 
             <!-- if user is login -->
-            <div th:if="${userSession} != null"><div th:text="${userSession}"></div>
-            </div>
+            <div th:if="${userSession}!=null"><div th:text="${userSession}"></div>
             <!--<br><a href="<%=pathWebcontent%>/personalSpace">Mon espace personnel</a><br>-->
-            <!--<a href="<%=pathWebcontent%>/dologout">Se deconnecter </a></>-->
+            <a href="<%=pathWebcontent%>/dologout">Se deconnecter </a>
+            </div>
 
             <!-- if user not login -->
-            <!--<c:if test="${empty log}">-->
-            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">S'identifier <b class="caret"></b></a>-->
-            <!--<ul class="dropdown-menu">-->
-            <!--<li class="dropdown-header">Vous n'êtes pas identifié.</li>-->
-            <!--<li><form class="navbar-form" method="post" action="<%=pathWebcontent%>/dologin" modelAttribute="utilisateur">-->
-            <!--<input type="text" class="form-control" name="email" placeholder="email" /><br />-->
-            <!--<input type="password" class="form-control" name="motDePasse" placeholder="Mot de passe"/>-->
-            <!--<input type="submit" class="btn btn-primary btn-xs btn-block" /></form></li>-->
-            <!--<li class="disabled"><a href="#">Mot de passe oublié ?</a></li>-->
-            <!--<li class="enable"><a href="<%=pathWebcontent%>/newUserGet">Créer un compte...</a></li>-->
-            <!--</ul>-->
-            <!--</li>-->
-            <!--</c:if>-->
+            <div th:if="${userSession}==null">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">S'identifier <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header">Vous n'êtes pas identifié.</li>
+                    <li><form class="navbar-form" method="post" action="/login" modelAttribute="userSession">
+                <input type="text" class="form-control" name="email" placeholder="email" /><br />
+                <input type="password" class="form-control" name="motDePasse" placeholder="Mot de passe"/>
+                <input type="submit" class="btn btn-primary btn-xs btn-block" /></form></li>
+                    <li class="disabled"><a href="#">Mot de passe oublié ?</a></li>
+                    <li class="enable"><a href="<%=pathWebcontent%>/newUserGet">Créer un compte...</a></li>
+                </ul>
+            </div>
+
         </ul>
 
     </div>
