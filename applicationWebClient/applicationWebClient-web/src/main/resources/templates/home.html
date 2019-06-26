@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bibliothèque</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/main.css}" />
+
+</head>
+
+<header class="raw">
+    <div th:include="_include/header.html"/>
+</header>
+<body>
+
+
+<div class="container">
+
+    <h1>Application Bibliotheque</h1>
+
+    <p th:text="${session.sessionContext}" th:unless="${session == null}">test</p>
+
+    <div class="row">
+        <div th:each="b : ${books}" class="col-md-4 my-1">
+            <div th:text="${b.booklabel}"></div>
+            <div th:text="${b.bookname}"></div>
+            <div th:text="${b.bookauthor}"></div>
+            <img th:src="${b.bookpictureurl}"  class="card-img-top" />
+            <div th:text="${b.bookdescription}"></div>
+            <!--<input type="text" name="userName" value="James Carrot" th:value="${books.bookname}" />-->
+            <!--<a th:href="@{|/details-produit/${produit.id}|}" >-->
+            <!--<img th:src="${produit.image}"  class="card-img-top" />-->
+            <!--<p th:text= "${produit.titre}"></p>-->
+            <!--</a>-->
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- Javascript de Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

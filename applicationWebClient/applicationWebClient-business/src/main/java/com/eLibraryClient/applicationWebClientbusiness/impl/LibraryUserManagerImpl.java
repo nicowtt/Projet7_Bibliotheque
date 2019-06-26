@@ -6,22 +6,31 @@ import com.eLibraryClient.applicationWebClientproxies.proxies.MicroserviceBDDPro
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class LibraryUserManagerImpl implements LibraryUserManager {
 
     @Autowired
     private MicroserviceBDDProxy microserviceBDDProxy;
 
-    /**
-     * ask all user on BDD
-     *
-     * @return -> list of user
-     */
+
     @Override
-    public LibraryUserBean getLibraryUser(String userEmail) {
+    public LibraryUserBean checkIfUserIsOnBDD(String userSessionEmail) {
 
-        LibraryUserBean userBdd = microserviceBDDProxy.getUser(userEmail);
+        List<LibraryUserBean> userBddList = new ArrayList<>();
+        LibraryUserBean userOnBdd = new LibraryUserBean();
 
-        return userBdd;
+        // get list of all user on bdd
+        userBddList = microserviceBDDProxy.getListOfUsers();
+
+        // check if user is on this list
+        for (int i = 0; i < userBddList.size(); i++) {
+            if (userBddList.get(i).getUseremail().equals(userSessionEmail)) {
+                userOnBdd = userBddList.get(i);
+            }
+        }
+        return userOnBdd;
     }
 }

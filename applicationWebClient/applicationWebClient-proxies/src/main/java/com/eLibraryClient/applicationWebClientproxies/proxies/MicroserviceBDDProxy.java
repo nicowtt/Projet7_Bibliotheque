@@ -16,6 +16,6 @@ public interface MicroserviceBDDProxy {
     @GetMapping(value = "/Books")
     List<BookBean> getBooksList();
 
-    @GetMapping(value = "/User/{userEmail}")
-    LibraryUserBean getUser(String userEmail);
+    @GetMapping(value = "/Users")
+    List<LibraryUserBean> getListOfUsers();
 }

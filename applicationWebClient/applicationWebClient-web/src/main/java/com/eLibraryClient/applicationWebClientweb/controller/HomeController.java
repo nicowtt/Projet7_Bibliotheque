@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import java.util.List;
 
 @Controller
-public class BookController {
+public class HomeController {
 
     @Autowired
     private BookManager bookManager;
@@ -24,17 +24,18 @@ public class BookController {
      * @return home.html
      */
     @RequestMapping("/home")
-    public String accueil(Model model, @SessionAttribute(value = "LibraryUserBean", required = false)LibraryUserBean libraryUserSession){
+    public String accueil(Model model, @SessionAttribute(value = "userSession", required = false)LibraryUserBean userSession){
 
         List<BookBean> books = bookManager.getListAllBooks();
 
+        //model for display all books
         model.addAttribute("books", books);
 
         //model for "library user session"
-        if (libraryUserSession != null) {
-            model.addAttribute("userSession", libraryUserSession.getUseremail());
+        if (userSession != null) {
+            model.addAttribute("log", userSession);
         }
 
-        return "Home";
+        return "home";
     }
 }

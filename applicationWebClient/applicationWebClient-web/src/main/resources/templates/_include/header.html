@@ -14,7 +14,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand page-top" href="<%=pathWebcontent%>/">Bibliothèque</a>
+        <a class="navbar-brand page-top" href="/home">Bibliothèque</a>
     </div>
     <!-- All elements on navbar -->
     <div class="collapse navbar-collapse">
@@ -28,20 +28,20 @@
         <ul class="nav navbar-nav navbar-right" > <li class="dropdown">
 
             <!-- if user is login -->
-            <div th:if="${userSession}!=null"><div th:text="${userSession}"></div>
-            <!--<br><a href="<%=pathWebcontent%>/personalSpace">Mon espace personnel</a><br>-->
-            <a href="<%=pathWebcontent%>/dologout">Se deconnecter </a>
+            <div th:if="${log}!=null"> <div style="color:white" th:text="${log.useremail}"></div>
+                <!--<br><a href="<%=pathWebcontent%>/personalSpace">Mon espace personnel</a><br>-->
+                <a href="/logout">Se deconnecter </a>
             </div>
 
             <!-- if user not login -->
-            <div th:if="${userSession}==null">
+            <div th:if ="${log}==null">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">S'identifier <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li class="dropdown-header">Vous n'êtes pas identifié.</li>
                     <li><form class="navbar-form" method="post" action="/login" modelAttribute="userSession">
-                <input type="text" class="form-control" name="email" placeholder="email" /><br />
-                <input type="password" class="form-control" name="motDePasse" placeholder="Mot de passe"/>
-                <input type="submit" class="btn btn-primary btn-xs btn-block" /></form></li>
+                        <input type="text" class="form-control" name="useremail" placeholder="email" /><br />
+                        <input type="password" class="form-control" name="userpassword" placeholder="Mot de passe"/>
+                        <input type="submit" class="btn btn-primary btn-xs btn-block" /></form></li>
                     <li class="disabled"><a href="#">Mot de passe oublié ?</a></li>
                     <li class="enable"><a href="<%=pathWebcontent%>/newUserGet">Créer un compte...</a></li>
                 </ul>
