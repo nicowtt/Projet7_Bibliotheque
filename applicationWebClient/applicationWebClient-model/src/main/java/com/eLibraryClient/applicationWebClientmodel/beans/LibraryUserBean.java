@@ -1,11 +1,26 @@
 package com.eLibraryClient.applicationWebClientmodel.beans;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class LibraryUserBean {
 
     private int id;
+
+    @NotBlank
+    @Size(max=50)
     private String userfirstname;
+
+    @NotBlank
+    @Size(max=50)
     private String username;
+
+    @NotBlank
+    @Size(min=2, max = 15)
     private String userpassword;
+
+    @NotBlank
     private String useremail;
 
     // Constructor

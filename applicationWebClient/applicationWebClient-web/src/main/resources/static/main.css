@@ -11,8 +11,17 @@
     line-height: 15px;
 }
 
-.errors{
+.errors {
     color: red;
+    font-weight: bold;
+
+}
+
+.lignesEspacees {
+    border-collapse: separate;
+    border-spacing: 10px;
+    font-size: small;
+    font-weight: bold;
 }
 
 h1{

@@ -89,7 +89,7 @@
 			<scope>import</scope>
 		</dependency>
 
-	</dependencies>
+    </dependencies>
 
 	<!-- =============================================================== -->
 	<!-- Build -->
