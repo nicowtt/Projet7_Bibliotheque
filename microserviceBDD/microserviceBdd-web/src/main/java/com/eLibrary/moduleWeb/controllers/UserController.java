@@ -3,7 +3,11 @@ package com.eLibrary.moduleWeb.controllers;
 import com.eLibrary.moduleDao.dao.dao.LibraryUserDao;
 import com.eLibrary.moduleModel.beans.Libraryuser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -26,4 +30,21 @@ public class UserController {
 
         return usersList;
     }
+
+    /**
+     * write new user
+     * @param newUser -> bean new user
+     * @return
+     */
+    @PostMapping(value = "/NewUser")
+    public ResponseEntity<Libraryuser> addUser(@RequestBody Libraryuser newUser) {
+
+        //save newUser
+        Libraryuser newUserSave = libraryUserDao.save(newUser);
+
+        //send 201 CREATED for confirm new user is saved
+        return new ResponseEntity<Libraryuser>(newUserSave, HttpStatus.CREATED);
+    }
+
+
 }

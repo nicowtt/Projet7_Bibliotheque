@@ -2,6 +2,7 @@ package com.eLibraryClient.applicationWebClientweb.controller;
 
 import com.eLibraryClient.applicationWebClientbusiness.contract.PasswordEncoder;
 import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUserBean;
+import com.eLibraryClient.applicationWebClientproxies.proxies.MicroserviceBDDProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class NewUserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private MicroserviceBDDProxy microserviceBDDProxy;
+
     /**
      * For display newUser page
      * @param model -> model
@@ -37,16 +41,16 @@ public class NewUserController {
 
     /**
      * For write on microserviceDD
-     * @param newUser -> bean to validate
+     * @param LibraryNewUser -> bean to validate
      * @param bindingResult -> list of error
      * @param model -> models
      * @return
      */
     @PostMapping(value = "/newUserPost")
-    public String newUserPost(@Valid @ModelAttribute("newUser") LibraryUserBean newUser, BindingResult bindingResult, Model model) {
+    public String newUserPost(@Valid @ModelAttribute("newUser") LibraryUserBean LibraryNewUser, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("newUser", newUser);
+            model.addAttribute("newUser", LibraryNewUser);
             logger.info("*********");
             logger.info("erreur lors du remplissage formulaire enregistrement nouvel utilisateur");
             logger.debug("debug");
@@ -54,10 +58,11 @@ public class NewUserController {
             return "/newUser";
         } else {
             // hashing new password
-            String hashingPassword = passwordEncoder.hashPassword(newUser.getUserpassword());
+            String hashingPassword = passwordEncoder.hashPassword(LibraryNewUser.getUserpassword());
             // set on bean newUser
-            newUser.setUserpassword(hashingPassword);
-            //todo method for write on bdd
+            LibraryNewUser.setUserpassword(hashingPassword);
+            // write on bdd
+            LibraryUserBean newUser = microserviceBDDProxy.addUser(LibraryNewUser);
 
             return "confirmationhtml/userWrittingOk";
         }
