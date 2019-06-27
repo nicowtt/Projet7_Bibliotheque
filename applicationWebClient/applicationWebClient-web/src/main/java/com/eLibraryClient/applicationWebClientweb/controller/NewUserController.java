@@ -2,20 +2,21 @@ package com.eLibraryClient.applicationWebClientweb.controller;
 
 import com.eLibraryClient.applicationWebClientbusiness.contract.PasswordEncoder;
 import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUserBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
 
 import javax.validation.Valid;
 
 @Controller
 public class NewUserController {
 
-    static final Log logger = LogFactory.getLog(NewUserController.class);
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -48,6 +49,7 @@ public class NewUserController {
             model.addAttribute("newUser", newUser);
             logger.info("*********");
             logger.info("erreur lors du remplissage formulaire enregistrement nouvel utilisateur");
+            logger.debug("debug");
 
             return "/newUser";
         } else {
