@@ -14,7 +14,7 @@
 </head>
 
 <header class="raw">
-    <div th:include="_include/header.html"/>
+    <div th:insert="_include/header.html"></div>
 </header>
 <body>
 
@@ -22,8 +22,6 @@
 <div class="container">
 
     <h1>Application Bibliotheque</h1>
-
-    <p th:text="${session.sessionContext}" th:unless="${session == null}">test</p>
 
     <div class="row">
         <div th:each="b : ${books}" class="col-md-4 my-1">

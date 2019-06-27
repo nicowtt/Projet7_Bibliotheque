@@ -29,13 +29,13 @@
 
             <!-- if user is login -->
             <div th:if="${log}!=null"> <div style="color:white" th:text="${log.useremail}"></div>
-                <!--<br><a href="<%=pathWebcontent%>/personalSpace">Mon espace personnel</a><br>-->
+                <!--<a href="/personalSpace">Mon espace personnel</a><br>-->
                 <a href="/logout">Se deconnecter </a>
             </div>
 
             <!-- if user not login -->
             <div th:if ="${log}==null">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">S'identifier <b class="caret"></b></a>
+                <br><a href="#" class="dropdown-toggle" data-toggle="dropdown">S'identifier <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li class="dropdown-header">Vous n'êtes pas identifié.</li>
                     <li><form class="navbar-form" method="post" action="/login" modelAttribute="userSession">
@@ -46,8 +46,7 @@
                     <li class="enable"><a href="<%=pathWebcontent%>/newUserGet">Créer un compte...</a></li>
                 </ul>
             </div>
-
+        </li>
         </ul>
-
     </div>
 </nav>

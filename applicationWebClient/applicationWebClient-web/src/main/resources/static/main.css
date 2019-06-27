@@ -1,4 +1,20 @@
 
+.navbar-right{
+
+    margin-left: 0px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.navbar {
+    margin: 0px;
+    line-height: 15px;
+}
+
+.errors{
+    color: red;
+}
+
 h1{
     color: blue;
     font-weight: bold;
