@@ -8,20 +8,24 @@ public class BookBean {
     private String bookpictureurl;
     private String bookdescription;
     private String booklabel;
-    private Boolean bookreservation;
+    private int nbrbookiteration;
+    private int nbrbookiterationnotreserved;
+    private Boolean allbookreserved;
 
     //Constructor
     public BookBean() {
     }
 
-    public BookBean(int id, String bookname, String bookauthor, String bookpictureurl, String bookdescription, String booklabel, Boolean bookreservation) {
+    public BookBean(int id, String bookname, String bookauthor, String bookpictureurl, String bookdescription, String booklabel, int nbrbookiteration, int nbrbookiterationnotreserved, Boolean allbookreserved) {
         this.id = id;
         this.bookname = bookname;
         this.bookauthor = bookauthor;
         this.bookpictureurl = bookpictureurl;
         this.bookdescription = bookdescription;
         this.booklabel = booklabel;
-        this.bookreservation = bookreservation;
+        this.nbrbookiteration = nbrbookiteration;
+        this.nbrbookiterationnotreserved = nbrbookiterationnotreserved;
+        this.allbookreserved = allbookreserved;
     }
 
     //getter and setter
@@ -73,12 +77,28 @@ public class BookBean {
         this.booklabel = booklabel;
     }
 
-    public Boolean getBookreservation() {
-        return bookreservation;
+    public int getNbrbookiteration() {
+        return nbrbookiteration;
     }
 
-    public void setBookreservation(Boolean bookreservation) {
-        this.bookreservation = bookreservation;
+    public void setNbrbookiteration(int nbrbookiteration) {
+        this.nbrbookiteration = nbrbookiteration;
+    }
+
+    public int getNbrbookiterationnotreserved() {
+        return nbrbookiterationnotreserved;
+    }
+
+    public void setNbrbookiterationnotreserved(int nbrbookiterationnotreserved) {
+        this.nbrbookiterationnotreserved = nbrbookiterationnotreserved;
+    }
+
+    public Boolean getAllbookreserved() {
+        return allbookreserved;
+    }
+
+    public void setAllbookreserved(Boolean allbookreserved) {
+        this.allbookreserved = allbookreserved;
     }
 
     //to String
@@ -91,7 +111,9 @@ public class BookBean {
                 ", bookpictureurl='" + bookpictureurl + '\'' +
                 ", bookdescription='" + bookdescription + '\'' +
                 ", booklabel='" + booklabel + '\'' +
-                ", bookreservation=" + bookreservation +
+                ", nbrbookiteration=" + nbrbookiteration +
+                ", nbrbookiterationnotreserved=" + nbrbookiterationnotreserved +
+                ", allbookreserved=" + allbookreserved +
                 '}';
     }
 }

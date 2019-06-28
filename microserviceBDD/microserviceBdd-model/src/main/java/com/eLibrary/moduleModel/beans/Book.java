@@ -15,63 +15,99 @@ public class Book {
     private String bookpictureurl;
     private String bookdescription;
     private String booklabel;
-    private Boolean bookreservation;
+    private int nbrbookiteration;
+    private int nbrbookiterationnotreserved;
+    private Boolean allbookreserved;
 
+    //Constructor
     public Book() {
     }
 
-    public Book(String bookname, String bookauthor, String bookpictureurl, String bookdescription, String booklabel, Boolean bookreservation) {
+    public Book(String bookname, String bookauthor, String bookpictureurl, String bookdescription, String booklabel, int nbrbookiteration, int nbrbookiterationnotreserved, Boolean allbookreserved) {
         this.bookname = bookname;
         this.bookauthor = bookauthor;
         this.bookpictureurl = bookpictureurl;
         this.bookdescription = bookdescription;
         this.booklabel = booklabel;
-        this.bookreservation = bookreservation;
+        this.nbrbookiteration = nbrbookiteration;
+        this.nbrbookiterationnotreserved = nbrbookiterationnotreserved;
+        this.allbookreserved = allbookreserved;
     }
 
+    //getter and setter
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public String getBookname() {
         return bookname;
     }
+
     public void setBookname(String bookname) {
         this.bookname = bookname;
     }
+
     public String getBookauthor() {
         return bookauthor;
     }
+
     public void setBookauthor(String bookauthor) {
         this.bookauthor = bookauthor;
     }
+
     public String getBookpictureurl() {
         return bookpictureurl;
     }
+
     public void setBookpictureurl(String bookpictureurl) {
         this.bookpictureurl = bookpictureurl;
     }
+
     public String getBookdescription() {
         return bookdescription;
     }
+
     public void setBookdescription(String bookdescription) {
         this.bookdescription = bookdescription;
     }
+
     public String getBooklabel() {
         return booklabel;
     }
+
     public void setBooklabel(String booklabel) {
         this.booklabel = booklabel;
     }
-    public Boolean getBookreservation() {
-        return bookreservation;
-    }
-    public void setBookreservation(Boolean bookreservation) {
-        this.bookreservation = bookreservation;
+
+    public int getNbrbookiteration() {
+        return nbrbookiteration;
     }
 
+    public void setNbrbookiteration(int nbrbookiteration) {
+        this.nbrbookiteration = nbrbookiteration;
+    }
+
+    public int getNbrbookiterationnotreserved() {
+        return nbrbookiterationnotreserved;
+    }
+
+    public void setNbrbookiterationnotreserved(int nbrbookiterationnotreserved) {
+        this.nbrbookiterationnotreserved = nbrbookiterationnotreserved;
+    }
+
+    public Boolean getAllbookreserved() {
+        return allbookreserved;
+    }
+
+    public void setAllbookreserved(Boolean allbookreserved) {
+        this.allbookreserved = allbookreserved;
+    }
+
+    //to String
     @Override
     public String toString() {
         return "Book{" +
@@ -81,7 +117,9 @@ public class Book {
                 ", bookpictureurl='" + bookpictureurl + '\'' +
                 ", bookdescription='" + bookdescription + '\'' +
                 ", booklabel='" + booklabel + '\'' +
-                ", bookreservation=" + bookreservation +
+                ", nbrbookiteration=" + nbrbookiteration +
+                ", nbrbookiterationnotreserved=" + nbrbookiterationnotreserved +
+                ", allbookreserved=" + allbookreserved +
                 '}';
     }
 }
