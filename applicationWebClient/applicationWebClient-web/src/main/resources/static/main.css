@@ -7,8 +7,13 @@
 }
 
 .navbar {
-    margin: 0px;
+    /*margin: 0px;*/
     line-height: 15px;
+    margin-bottom: 10px;
+}
+
+body {
+    background-color: #DDD
 }
 
 .errors {
@@ -22,6 +27,12 @@
     border-spacing: 10px;
     font-size: small;
     font-weight: bold;
+}
+
+span.label{
+    position:relative;
+    top: -30px;
+    left: 5px;
 }
 
 h1{
