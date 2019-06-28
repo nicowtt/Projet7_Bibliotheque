@@ -20,9 +20,20 @@
         <div th:each="b : ${books}" class="col-md-2 my-1">
             <div th:text="${b.bookname}" style="text-align: center; font-weight: bold"></div>
             <div th:text="${b.bookauthor}"style="text-align: center; font-style: italic"></div>
-            <img th:src="${b.bookpictureurl}" style="width:150px;height:100 px; border:0px;" class="img-rounded"
+            <p></p>
+
+            <!-- cover and description (mouse over) -->
+            <img th:src="${b.bookpictureurl}" style="width:150px;height:200px; border:0px;" class="img-rounded"
                  th:title="${b.bookdescription}">
+            <!--<span class="label label-default" th:text="${b.booklabel}"></span>-->
+            <!-- tag -->
             <span class="label label-default" th:text="${b.booklabel}"></span>
+            <!-- disponibility -->
+            <div><button type="button" class="btn btn-xs btn-primary" th:if="${b.bookreservation}">disponible <span class="badge">1</span></button></div>
+
+            <!--<span class="label label-primary" th:if="${b.bookreservation}">Disponible</span>-->
+            <!--<span class="label label-danger" th:if="${!b.bookreservation}">Non-Disponible</span>-->
+
         </div>
     </div>
 </div>
