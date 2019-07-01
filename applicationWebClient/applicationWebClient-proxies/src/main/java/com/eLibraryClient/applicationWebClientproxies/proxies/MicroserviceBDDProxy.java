@@ -26,7 +26,7 @@ public interface MicroserviceBDDProxy {
      * Asking list of all users on microserviceBDD
      * @return
      */
-    @GetMapping(value = "/NewUser")
+    @GetMapping(value = "/Users")
     List<LibraryUserBean> getListOfUsers();
 
     /**

@@ -8,11 +8,11 @@
         </element>
         <element id="directory" name="lib">
           <element id="archive" name="microservice-dao-0.0.1-SNAPSHOT.jar">
-            <element id="module-output" name="microserviceBdd-Dao" />
+            <element id="module-output" name="microservice-dao" />
           </element>
           <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.2.5" />
           <element id="archive" name="microserviceBdd-model-0.0.1-SNAPSHOT.jar">
-            <element id="module-output" name="microserviceBdd-Model" />
+            <element id="module-output" name="microserviceBdd-model" />
           </element>
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:2.1.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.1.5.RELEASE" />

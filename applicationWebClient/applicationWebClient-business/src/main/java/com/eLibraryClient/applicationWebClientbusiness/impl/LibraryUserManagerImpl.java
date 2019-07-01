@@ -16,6 +16,11 @@ public class LibraryUserManagerImpl implements LibraryUserManager {
     private MicroserviceBDDProxy microserviceBDDProxy;
 
 
+    /**
+     * For check if user is present on BDD
+     * @param userSessionEmail -> bean user on session
+     * @return
+     */
     @Override
     public LibraryUserBean checkIfUserIsOnBDD(String userSessionEmail) {
 
@@ -32,5 +37,15 @@ public class LibraryUserManagerImpl implements LibraryUserManager {
             }
         }
         return userOnBdd;
+    }
+
+    /**
+     * For add new user on microservice BDD
+     * @param libraryUserBean
+     */
+    @Override
+    public void addNewUserOnBDD(LibraryUserBean libraryUserBean) {
+        //add new user on Bdd
+        microserviceBDDProxy.addUser(libraryUserBean);
     }
 }

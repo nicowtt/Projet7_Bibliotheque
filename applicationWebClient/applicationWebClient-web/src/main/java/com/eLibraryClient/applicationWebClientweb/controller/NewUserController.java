@@ -1,5 +1,6 @@
 package com.eLibraryClient.applicationWebClientweb.controller;
 
+import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryUserManager;
 import com.eLibraryClient.applicationWebClientbusiness.contract.PasswordEncoder;
 import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUserBean;
 import com.eLibraryClient.applicationWebClientproxies.proxies.MicroserviceBDDProxy;
@@ -23,7 +24,7 @@ public class NewUserController {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private MicroserviceBDDProxy microserviceBDDProxy;
+    private LibraryUserManager libraryUserManager;
 
     /**
      * For display newUser page
@@ -62,7 +63,7 @@ public class NewUserController {
             // set on bean newUser
             LibraryNewUser.setUserpassword(hashingPassword);
             // write on bdd
-            LibraryUserBean newUser = microserviceBDDProxy.addUser(LibraryNewUser);
+            libraryUserManager.addNewUserOnBDD(LibraryNewUser);
 
             return "confirmationhtml/userWrittingOk";
         }
