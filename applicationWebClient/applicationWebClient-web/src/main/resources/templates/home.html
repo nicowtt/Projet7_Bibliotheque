@@ -17,9 +17,9 @@
 <div class="container">
 
     <div class="row">
-        <div th:each="b : ${books}" class="col-md-2 my-1">
-            <div th:text="${b.bookname}" style="text-align: center; font-weight: bold"></div>
-            <div th:text="${b.bookauthor}"style="text-align: center; font-style: italic"></div>
+        <div th:each="b : ${books}" class="col-xs-4 col-sm-3 col-md-2">
+            <div th:text="${b.bookname}" style="font-weight: bold" id="bookName"></div>
+            <div th:text="${b.bookauthor}"style="font-style: italic" id="bookAuthor"></div>
             <p></p>
 
             <!-- cover and description (mouse over) -->
@@ -27,7 +27,7 @@
                  th:title="${b.bookdescription}">
             <!--<span class="label label-default" th:text="${b.booklabel}"></span>-->
             <!-- tag -->
-            <span class="label label-default" th:text="${b.booklabel}"></span>
+            <span class="label label-default" id="label" th:text="${b.booklabel}"></span>
             <!-- disponibility -->
             <div><button type="button" class="btn btn-xs btn-primary" id="onBook" th:if="${!b.allbookreserved}">disponible <span class="badge" th:text="${b.nbrbookiterationnotreserved}"></span></button></div>
 

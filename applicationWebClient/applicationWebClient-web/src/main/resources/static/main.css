@@ -29,7 +29,7 @@ body {
     font-weight: bold;
 }
 
-span.label{
+#label {
     position:relative;
     top: 0px;
     left: 5px;
@@ -40,6 +40,24 @@ span.label{
     top: -50px;
     left: 5px;
 }
+
+#bookName {
+    position:relative;
+    top: 0px;
+    left: 5px;
+}
+
+#bookAuthor {
+    position:relative;
+    top: 0px;
+    left: 5px;
+}
+
+[class*="col"] {
+    margin-bottom: 20px;
+}
+
+img {width: 100%}
 
 
 h1{
