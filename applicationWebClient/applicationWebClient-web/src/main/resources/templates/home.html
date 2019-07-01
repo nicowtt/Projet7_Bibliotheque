@@ -29,11 +29,9 @@
             <!-- tag -->
             <span class="label label-default" id="label" th:text="${b.booklabel}"></span>
             <!-- disponibility -->
-            <div><button type="button" class="btn btn-xs btn-primary" id="onBook" th:if="${!b.allbookreserved}">disponible <span class="badge" th:text="${b.nbrbookiterationnotreserved}"></span></button></div>
-
-            <!--<span class="label label-primary" th:if="${b.bookreservation}">Disponible</span>-->
-            <!--<span class="label label-danger" th:if="${!b.bookreservation}">Non-Disponible</span>-->
-
+            <div><a th:href="@{'/bookLibrary/'+ ${b.id}}" type="button" class="btn btn-xs btn-primary" id="onBook"
+                    th:if="${!b.allbookreserved}">disponible <span class="badge"
+                    th:text="${b.nbrbookiterationnotreserved}"></span></a></div>
         </div>
     </div>
 </div>
