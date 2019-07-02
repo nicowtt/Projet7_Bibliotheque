@@ -11,9 +11,13 @@ public class Libraryuser {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "public.libraryuser_id_seq")
     @SequenceGenerator(name = "public.libraryuser_id_seq", sequenceName = "public.libraryuser_id_seq", allocationSize = 1)
     private int id;
+    @Column
     private String userfirstname;
+    @Column
     private String username;
+    @Column
     private String userpassword;
+    @Column
     private String useremail;
 
     //constructor

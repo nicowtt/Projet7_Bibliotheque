@@ -12,21 +12,30 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "public.book_id_seq")
     @SequenceGenerator(name = "public.book_id_seq", sequenceName = "public.book_id_seq", allocationSize = 1)
     private int id;
+    @Column
     private String bookname;
+    @Column
     private String bookauthor;
+    @Column
     private String bookpictureurl;
+    @Column
     private String bookdescription;
+    @Column
     private String booklabel;
+    @Column
     private int nbrbookiteration;
+    @Column
     private int nbrbookiterationnotreserved;
+    @Column
     private Boolean allbookreserved;
+
 
 //    @ManyToMany()
 //    private Library library;
 
-    //library table
+//    //library table
 //    private String libraryname;
-
+//
 //    @JoinTable(name = "bookcatalog", joinColumns = @JoinColumn(name = "book_id"),
 //            inverseJoinColumns = @JoinColumn(name = "library_id"))
 //    Set<Library> libraries = new HashSet<Library>();
@@ -49,7 +58,6 @@ public class Book {
         this.nbrbookiterationnotreserved = nbrbookiterationnotreserved;
         this.allbookreserved = allbookreserved;
     }
-
     //getter and setter
     public int getId() {
         return id;
@@ -121,21 +129,5 @@ public class Book {
 
     public void setAllbookreserved(Boolean allbookreserved) {
         this.allbookreserved = allbookreserved;
-    }
-
-    //to String
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", bookname='" + bookname + '\'' +
-                ", bookauthor='" + bookauthor + '\'' +
-                ", bookpictureurl='" + bookpictureurl + '\'' +
-                ", bookdescription='" + bookdescription + '\'' +
-                ", booklabel='" + booklabel + '\'' +
-                ", nbrbookiteration=" + nbrbookiteration +
-                ", nbrbookiterationnotreserved=" + nbrbookiterationnotreserved +
-                ", allbookreserved=" + allbookreserved +
-                '}';
     }
 }

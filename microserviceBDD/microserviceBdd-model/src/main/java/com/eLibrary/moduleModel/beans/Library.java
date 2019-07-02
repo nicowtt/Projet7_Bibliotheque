@@ -11,6 +11,7 @@ public class Library {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "public.library_id_seq")
     @SequenceGenerator(name = "public.library_id_seq", sequenceName = "public.library_id_seq", allocationSize = 1)
     private int id;
+    @Column
     private String libraryname;
 
 //    @ManyToMany(mappedBy = "libraries")

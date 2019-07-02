@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -29,13 +28,13 @@ public class BookController {
         return booksList;
     }
 
-//    @GetMapping(value = "/LibraryChoice/{id}")
-//    public List<Book> oneBook(@PathVariable int id) {
-//        //todo 1 method pour avoir une liste de library en fonction de l'id d'un livre
-//        List <Book> listbookAnyLibraries = bookDao.listBookAnyLibraries(id) ;
-//
-//
-//        return listbookAnyLibraries;
-//    }
+    @GetMapping(value = "/LibraryChoice/{id}")
+    public List<Book> catalogForOneBook(@PathVariable int id) {
+        //todo 1 method pour avoir une liste de library en fonction de l'id d'un livre
+        List<Book> catalogListBook = bookDao.findAll();
+
+
+        return catalogListBook;
+    }
 
 }
