@@ -2,6 +2,7 @@ package com.eLibrary.moduleModel.beans;
 
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Library {
@@ -11,6 +12,12 @@ public class Library {
     @SequenceGenerator(name = "public.library_id_seq", sequenceName = "public.library_id_seq", allocationSize = 1)
     private int id;
     private String libraryname;
+
+//    @ManyToMany(mappedBy = "libraries")
+//    Set<Book> books;
+//    public Set<Book> getBooks() {
+//        return books;
+//    }
 
     //contructor
     public Library() {

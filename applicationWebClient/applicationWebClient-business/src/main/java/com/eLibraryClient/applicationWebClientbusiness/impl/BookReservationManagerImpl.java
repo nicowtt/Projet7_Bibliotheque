@@ -5,10 +5,12 @@ import com.eLibraryClient.applicationWebClientmodel.beans.BookBean;
 import com.eLibraryClient.applicationWebClientmodel.beans.BookReservationBean;
 import com.eLibraryClient.applicationWebClientproxies.proxies.MicroserviceBDDProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class BookReservationManagerImpl implements BookReservationManager {
 
     @Autowired
@@ -25,12 +27,6 @@ public class BookReservationManagerImpl implements BookReservationManager {
 
         return listWithBookVersion;
     }
-
-
-
-
-
-
 
 
     @Override

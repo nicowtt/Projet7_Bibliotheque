@@ -1,8 +1,11 @@
 package com.eLibrary.moduleModel.beans;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Table(name = "book")
 public class Book {
 
     @Id
@@ -17,6 +20,20 @@ public class Book {
     private int nbrbookiteration;
     private int nbrbookiterationnotreserved;
     private Boolean allbookreserved;
+
+//    @ManyToMany()
+//    private Library library;
+
+    //library table
+//    private String libraryname;
+
+//    @JoinTable(name = "bookcatalog", joinColumns = @JoinColumn(name = "book_id"),
+//            inverseJoinColumns = @JoinColumn(name = "library_id"))
+//    Set<Library> libraries = new HashSet<Library>();
+//    public Set<Library> getLibraries() {
+//        return libraries;
+//    }
+
 
     //Constructor
     public Book() {
