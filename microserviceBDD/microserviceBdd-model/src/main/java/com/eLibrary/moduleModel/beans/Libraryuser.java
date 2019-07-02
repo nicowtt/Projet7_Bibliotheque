@@ -3,8 +3,11 @@ package com.eLibrary.moduleModel.beans;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "libraryuser")
 public class Libraryuser {
 
     @Id
@@ -20,19 +23,23 @@ public class Libraryuser {
     @Column
     private String useremail;
 
+    @OneToMany(mappedBy = "libraryuser") //attribut Libraryuser libraryuser de BookReservation
+    private List<BookReservation> bookReservationList = new ArrayList<>();
+
+
     //constructor
     public Libraryuser() {
     }
 
-    public Libraryuser(String userfirstname, String username, String userpassword, String useremail) {
+    public Libraryuser(String userfirstname, String username, String userpassword, String useremail, List<BookReservation> bookReservationList) {
         this.userfirstname = userfirstname;
         this.username = username;
         this.userpassword = userpassword;
         this.useremail = useremail;
+        this.bookReservationList = bookReservationList;
     }
 
     //getter and setter
-
     public int getId() {
         return id;
     }
@@ -73,6 +80,15 @@ public class Libraryuser {
         this.useremail = useremail;
     }
 
+    public List<BookReservation> getBookReservationList() {
+        return bookReservationList;
+    }
+
+    public void setBookReservationList(List<BookReservation> bookReservationList) {
+        this.bookReservationList = bookReservationList;
+    }
+
+
     //to string
     @Override
     public String toString() {
@@ -82,6 +98,7 @@ public class Libraryuser {
                 ", username='" + username + '\'' +
                 ", userpassword='" + userpassword + '\'' +
                 ", useremail='" + useremail + '\'' +
+                ", bookReservationList=" + bookReservationList +
                 '}';
     }
 }

@@ -1,7 +1,9 @@
 package com.eLibrary.moduleModel.beans;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -29,19 +31,8 @@ public class Book {
     @Column
     private Boolean allbookreserved;
 
-
-//    @ManyToMany()
-//    private Library library;
-
-//    //library table
-//    private String libraryname;
-//
-//    @JoinTable(name = "bookcatalog", joinColumns = @JoinColumn(name = "book_id"),
-//            inverseJoinColumns = @JoinColumn(name = "library_id"))
-//    Set<Library> libraries = new HashSet<Library>();
-//    public Set<Library> getLibraries() {
-//        return libraries;
-//    }
+    @OneToMany(mappedBy = "book") //attribut Book book de BookReservation
+    private List<BookReservation> bookReservationList = new ArrayList<>();
 
 
     //Constructor
@@ -129,5 +120,22 @@ public class Book {
 
     public void setAllbookreserved(Boolean allbookreserved) {
         this.allbookreserved = allbookreserved;
+    }
+
+    //to string
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", bookname='" + bookname + '\'' +
+                ", bookauthor='" + bookauthor + '\'' +
+                ", bookpictureurl='" + bookpictureurl + '\'' +
+                ", bookdescription='" + bookdescription + '\'' +
+                ", booklabel='" + booklabel + '\'' +
+                ", nbrbookiteration=" + nbrbookiteration +
+                ", nbrbookiterationnotreserved=" + nbrbookiterationnotreserved +
+                ", allbookreserved=" + allbookreserved +
+                ", bookReservationList=" + bookReservationList +
+                '}';
     }
 }
