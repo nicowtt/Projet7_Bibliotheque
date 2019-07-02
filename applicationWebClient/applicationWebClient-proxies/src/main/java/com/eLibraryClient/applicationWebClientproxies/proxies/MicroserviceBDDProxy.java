@@ -15,6 +15,8 @@ import java.util.List;
 @FeignClient(name = "microserviceBdd", url = "http://localhost:9001")
 public interface MicroserviceBDDProxy {
 
+    //************ BOOK *************************//
+
     /**
      * asking list of all books on microserviceBDD
      * @return
@@ -22,6 +24,17 @@ public interface MicroserviceBDDProxy {
     @GetMapping(value = "/Books")
     List<BookBean> getBooksList();
 
+
+    /**
+     * Asking list of book (only version of one book)
+     * user will choice library
+     * @return
+     */
+    @GetMapping(value = "/LibraryChoice")
+    List<BookBean> getBookListOneBook();
+
+
+    //************ USER *************************//
     /**
      * Asking list of all users on microserviceBDD
      * @return

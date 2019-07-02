@@ -1,23 +1,36 @@
 package com.eLibraryClient.applicationWebClientweb.controller;
 
+import com.eLibraryClient.applicationWebClientbusiness.contract.BookReservationManager;
+import com.eLibraryClient.applicationWebClientmodel.beans.BookBean;
 import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUserBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class BookReservationController {
+
+    @Autowired
+    private BookReservationManager bookReservationManager;
 
     @GetMapping(value = "/bookLibrary/{bookId}")
     public String bookReservationLibraryChoice(@PathVariable Integer bookId,
                                                @SessionAttribute(value = "userSession") LibraryUserBean userSession,
                                                Model model) {
 
-        //todo 1 envoi le bookId a la couche business
+        List<BookBean> bookListOneBook = new ArrayList<>();
+
         // j'envoi a la couche business l'id du book afin de checker en BDD dans quelle library il
         // se trouve à l'instant T
+
+        bookListOneBook = bookReservationManager.askToBddOnWhichLibraryIsBook(bookId);
+
         // et ensuite J'affiche les beans possible du bouquin (afin que l'utilisateur choisisse la bibliotheque)
 
 
