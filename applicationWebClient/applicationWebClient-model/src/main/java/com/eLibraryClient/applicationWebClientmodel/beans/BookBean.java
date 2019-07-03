@@ -1,5 +1,8 @@
 package com.eLibraryClient.applicationWebClientmodel.beans;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class BookBean {
 
     private int id;
@@ -11,6 +14,12 @@ public class BookBean {
     private int nbrbookiteration;
     private int nbrbookiterationnotreserved;
     private Boolean allbookreserved;
+
+    //One to many
+//    private Set<BookReservationBean> bookReservations= new HashSet<>();
+
+    //many to many
+//    private Set<LibraryBean> libraries = new HashSet<>();
 
     //Constructor
     public BookBean() {
@@ -99,21 +108,5 @@ public class BookBean {
 
     public void setAllbookreserved(Boolean allbookreserved) {
         this.allbookreserved = allbookreserved;
-    }
-
-    //to String
-    @Override
-    public String toString() {
-        return "BookBean{" +
-                "id=" + id +
-                ", bookname='" + bookname + '\'' +
-                ", bookauthor='" + bookauthor + '\'' +
-                ", bookpictureurl='" + bookpictureurl + '\'' +
-                ", bookdescription='" + bookdescription + '\'' +
-                ", booklabel='" + booklabel + '\'' +
-                ", nbrbookiteration=" + nbrbookiteration +
-                ", nbrbookiterationnotreserved=" + nbrbookiterationnotreserved +
-                ", allbookreserved=" + allbookreserved +
-                '}';
     }
 }

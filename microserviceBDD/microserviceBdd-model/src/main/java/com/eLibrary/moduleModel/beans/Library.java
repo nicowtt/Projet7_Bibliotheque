@@ -1,6 +1,9 @@
 package com.eLibrary.moduleModel.beans;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,20 +19,29 @@ public class Library {
     @Column
     private String libraryname;
 
-    @OneToMany(mappedBy = "library") //attribut Library library de BookReservation
-    private List<BookReservation> bookReservationList = new ArrayList<>();
+    @OneToMany(mappedBy = "library") //attribut Library library from BookReservation
+    @JsonManagedReference
+    private Set<BookReservation> bookReservations;
 
+    @ManyToMany
+    @JsonBackReference
+    @JoinTable(name = "librarycatalog",
+            joinColumns = @JoinColumn(name = "library_id"),
+            inverseJoinColumns = @JoinColumn(name ="book_id"))
+    private Set<Book> books;
 
     //contructor
+
     public Library() {
     }
 
-    public Library(String libraryname, List<BookReservation> bookReservationList) {
+    public Library(String libraryname, Set<BookReservation> bookReservations, Set<Book> books) {
         this.libraryname = libraryname;
-        this.bookReservationList = bookReservationList;
+        this.bookReservations = bookReservations;
+        this.books = books;
     }
 
-    //getter and setter
+    //getters and setters
     public int getId() {
         return id;
     }
@@ -46,21 +58,19 @@ public class Library {
         this.libraryname = libraryname;
     }
 
-    public List<BookReservation> getBookReservationList() {
-        return bookReservationList;
+    public Set<BookReservation> getBookReservations() {
+        return bookReservations;
     }
 
-    public void setBookReservationList(List<BookReservation> bookReservationList) {
-        this.bookReservationList = bookReservationList;
+    public void setBookReservations(Set<BookReservation> bookReservations) {
+        this.bookReservations = bookReservations;
     }
 
-    //to string
-    @Override
-    public String toString() {
-        return "Library{" +
-                "id=" + id +
-                ", libraryname='" + libraryname + '\'' +
-                ", bookReservationList=" + bookReservationList +
-                '}';
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 }

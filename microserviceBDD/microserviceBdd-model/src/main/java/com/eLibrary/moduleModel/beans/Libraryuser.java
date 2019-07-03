@@ -1,10 +1,12 @@
 package com.eLibrary.moduleModel.beans;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "libraryuser")
@@ -23,20 +25,20 @@ public class Libraryuser {
     @Column
     private String useremail;
 
-    @OneToMany(mappedBy = "libraryuser") //attribut Libraryuser libraryuser de BookReservation
-    private List<BookReservation> bookReservationList = new ArrayList<>();
-
+    @OneToMany(mappedBy = "libraryuser") //attribut Libraryuser libraryuser from BookReservation
+    @JsonManagedReference
+    private Set<BookReservation> bookReservations; //todo 0.5 bug: quand cette relation existe je ne peux plus ecrire un nouvel utilisateur
 
     //constructor
     public Libraryuser() {
     }
 
-    public Libraryuser(String userfirstname, String username, String userpassword, String useremail, List<BookReservation> bookReservationList) {
+    public Libraryuser(String userfirstname, String username, String userpassword, String useremail, Set<BookReservation> bookReservations) {
         this.userfirstname = userfirstname;
         this.username = username;
         this.userpassword = userpassword;
         this.useremail = useremail;
-        this.bookReservationList = bookReservationList;
+        this.bookReservations = bookReservations;
     }
 
     //getter and setter
@@ -80,25 +82,11 @@ public class Libraryuser {
         this.useremail = useremail;
     }
 
-    public List<BookReservation> getBookReservationList() {
-        return bookReservationList;
+    public Set<BookReservation> getBookReservations() {
+        return bookReservations;
     }
 
-    public void setBookReservationList(List<BookReservation> bookReservationList) {
-        this.bookReservationList = bookReservationList;
-    }
-
-
-    //to string
-    @Override
-    public String toString() {
-        return "Libraryuser{" +
-                "id=" + id +
-                ", userfirstname='" + userfirstname + '\'' +
-                ", username='" + username + '\'' +
-                ", userpassword='" + userpassword + '\'' +
-                ", useremail='" + useremail + '\'' +
-                ", bookReservationList=" + bookReservationList +
-                '}';
+    public void setBookReservations(Set<BookReservation> bookReservations) {
+        this.bookReservations = bookReservations;
     }
 }

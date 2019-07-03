@@ -1,5 +1,7 @@
 package com.eLibrary.moduleModel.beans;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -31,15 +33,20 @@ public class Book {
     @Column
     private Boolean allbookreserved;
 
-    @OneToMany(mappedBy = "book") //attribut Book book de BookReservation
-    private List<BookReservation> bookReservationList = new ArrayList<>();
+    @OneToMany(mappedBy = "book") //attribut Book book from BookReservation
+    @JsonManagedReference
+    private Set<BookReservation> bookReservations = new HashSet<>();
+
+    @ManyToMany(mappedBy = "books") //attribut Book books from library
+    @JsonManagedReference
+    private Set<Library> libraries = new HashSet<>();
 
 
     //Constructor
     public Book() {
     }
 
-    public Book(String bookname, String bookauthor, String bookpictureurl, String bookdescription, String booklabel, int nbrbookiteration, int nbrbookiterationnotreserved, Boolean allbookreserved) {
+    public Book(String bookname, String bookauthor, String bookpictureurl, String bookdescription, String booklabel, int nbrbookiteration, int nbrbookiterationnotreserved, Boolean allbookreserved, Set<BookReservation> bookReservations, Set<Library> libraries) {
         this.bookname = bookname;
         this.bookauthor = bookauthor;
         this.bookpictureurl = bookpictureurl;
@@ -48,7 +55,10 @@ public class Book {
         this.nbrbookiteration = nbrbookiteration;
         this.nbrbookiterationnotreserved = nbrbookiterationnotreserved;
         this.allbookreserved = allbookreserved;
+        this.bookReservations = bookReservations;
+        this.libraries = libraries;
     }
+
     //getter and setter
     public int getId() {
         return id;
@@ -122,20 +132,19 @@ public class Book {
         this.allbookreserved = allbookreserved;
     }
 
-    //to string
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", bookname='" + bookname + '\'' +
-                ", bookauthor='" + bookauthor + '\'' +
-                ", bookpictureurl='" + bookpictureurl + '\'' +
-                ", bookdescription='" + bookdescription + '\'' +
-                ", booklabel='" + booklabel + '\'' +
-                ", nbrbookiteration=" + nbrbookiteration +
-                ", nbrbookiterationnotreserved=" + nbrbookiterationnotreserved +
-                ", allbookreserved=" + allbookreserved +
-                ", bookReservationList=" + bookReservationList +
-                '}';
+    public Set<BookReservation> getBookReservations() {
+        return bookReservations;
+    }
+
+    public void setBookReservations(Set<BookReservation> bookReservations) {
+        this.bookReservations = bookReservations;
+    }
+
+    public Set<Library> getLibraries() {
+        return libraries;
+    }
+
+    public void setLibraries(Set<Library> libraries) {
+        this.libraries = libraries;
     }
 }

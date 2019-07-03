@@ -1,5 +1,7 @@
 package com.eLibrary.moduleModel.beans;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,16 +22,19 @@ public class BookReservation {
     @Column(name = "extensionofreservation")
     private String extensionofreservation;
 
-    @ManyToOne //plusieurs reservation pour un user
+    @ManyToOne //many reservation for one user
     @JoinColumn(name = "user_id") //fk
+    @JsonBackReference
     private Libraryuser libraryuser;
 
-    @ManyToOne //plusieurs reservation pour un livre
+    @ManyToOne //many reservation for one livre
     @JoinColumn(name = "book_id") //fk
+    @JsonBackReference
     private Book book;
 
-    @ManyToOne //plusieurs reservation pour une library
+    @ManyToOne //many reservation for one library
     @JoinColumn(name = "library_id") //fk
+    @JsonBackReference
     private Library library;
 
 
