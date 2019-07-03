@@ -2,7 +2,10 @@ package com.eLibraryClient.applicationWebClientmodel.beans;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 public class LibraryUserBean {
 
@@ -23,16 +26,19 @@ public class LibraryUserBean {
     @NotBlank
     private String useremail;
 
+    private Set<BookReservationBean> bookReservations = new HashSet<>();
+
     // Constructor
     public LibraryUserBean() {
     }
 
-    public LibraryUserBean(int id, String userfirstname, String username, String userpassword, String useremail) {
+    public LibraryUserBean(int id, @NotBlank @Size(max = 50) String userfirstname, @NotBlank @Size(max = 50) String username, @NotBlank @Size(min = 2, max = 15) String userpassword, @NotBlank String useremail, Set<BookReservationBean> bookReservations) {
         this.id = id;
         this.userfirstname = userfirstname;
         this.username = username;
         this.userpassword = userpassword;
         this.useremail = useremail;
+        this.bookReservations = bookReservations;
     }
 
     //Getter and setter
@@ -76,7 +82,17 @@ public class LibraryUserBean {
         this.useremail = useremail;
     }
 
+    public Set<BookReservationBean> getBookReservations() {
+        return bookReservations;
+    }
+
+    public void setBookReservations(Set<BookReservationBean> bookReservations) {
+        this.bookReservations = bookReservations;
+    }
+
+
     // toString
+
 
     @Override
     public String toString() {
@@ -86,6 +102,7 @@ public class LibraryUserBean {
                 ", username='" + username + '\'' +
                 ", userpassword='" + userpassword + '\'' +
                 ", useremail='" + useremail + '\'' +
+                ", bookReservations=" + bookReservations +
                 '}';
     }
 }

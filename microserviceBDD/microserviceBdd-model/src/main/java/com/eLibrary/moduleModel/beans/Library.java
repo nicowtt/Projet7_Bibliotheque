@@ -1,15 +1,14 @@
 package com.eLibrary.moduleModel.beans;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "library")
 public class Library {
 
     @Id
@@ -20,11 +19,10 @@ public class Library {
     private String libraryname;
 
     @OneToMany(mappedBy = "library") //attribut Library library from BookReservation
-    @JsonManagedReference
-    private Set<BookReservation> bookReservations;
+    private Set<BookReservation> bookReservations = new HashSet<>();
 
     @ManyToMany
-    @JsonBackReference
+    @JsonIgnore
     @JoinTable(name = "librarycatalog",
             joinColumns = @JoinColumn(name = "library_id"),
             inverseJoinColumns = @JoinColumn(name ="book_id"))

@@ -1,11 +1,8 @@
 package com.eLibrary.moduleModel.beans;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,16 +15,18 @@ public class Libraryuser {
     private int id;
     @Column
     private String userfirstname;
+
     @Column
     private String username;
+
     @Column
     private String userpassword;
+
     @Column
     private String useremail;
 
     @OneToMany(mappedBy = "libraryuser") //attribut Libraryuser libraryuser from BookReservation
-    @JsonManagedReference
-    private Set<BookReservation> bookReservations; //todo 0.5 bug: quand cette relation existe je ne peux plus ecrire un nouvel utilisateur
+    private Set<BookReservation> bookReservations = new HashSet<>();
 
     //constructor
     public Libraryuser() {

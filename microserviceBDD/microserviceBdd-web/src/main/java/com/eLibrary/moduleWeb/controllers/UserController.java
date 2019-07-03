@@ -4,12 +4,11 @@ import com.eLibrary.moduleDao.dao.dao.LibraryUserDao;
 import com.eLibrary.moduleModel.beans.Libraryuser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -36,8 +35,11 @@ public class UserController {
      * @param newUser -> bean new user
      * @return
      */
-    @PostMapping(value = "/NewUser")
-    public ResponseEntity<Libraryuser> addUser(@RequestBody Libraryuser newUser) {
+//    @PostMapping(value = "/NewUser")
+//      @PostMapping(value = "/NewUser", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+      @RequestMapping(method = RequestMethod.POST, value = "/NewUser", consumes="application/json")
+      public ResponseEntity<Libraryuser> addUser(@RequestBody Libraryuser newUser) {
+
 
         //save newUser
         Libraryuser newUserSave = libraryUserDao.save(newUser);

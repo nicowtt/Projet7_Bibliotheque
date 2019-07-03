@@ -1,11 +1,8 @@
 package com.eLibrary.moduleModel.beans;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -33,12 +30,10 @@ public class Book {
     @Column
     private Boolean allbookreserved;
 
-    @OneToMany(mappedBy = "book") //attribut Book book from BookReservation
-    @JsonManagedReference
+    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER) //attribut Book book from BookReservation
     private Set<BookReservation> bookReservations = new HashSet<>();
 
-    @ManyToMany(mappedBy = "books") //attribut Book books from library
-    @JsonManagedReference
+    @ManyToMany(mappedBy = "books", fetch = FetchType.EAGER) //attribut Book books from library
     private Set<Library> libraries = new HashSet<>();
 
 
