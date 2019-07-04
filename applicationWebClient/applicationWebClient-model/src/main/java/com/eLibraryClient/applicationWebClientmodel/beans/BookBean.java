@@ -11,8 +11,6 @@ public class BookBean {
     private String bookpictureurl;
     private String bookdescription;
     private String booklabel;
-    private int nbrbookiteration;
-    private int nbrbookiterationnotreserved;
     private Boolean allbookreserved;
 
     // LibraryBean
@@ -22,15 +20,13 @@ public class BookBean {
     public BookBean() {
     }
 
-    public BookBean(int id, String bookname, String bookauthor, String bookpictureurl, String bookdescription, String booklabel, int nbrbookiteration, int nbrbookiterationnotreserved, Boolean allbookreserved, Set<LibraryBean> libraries) {
+    public BookBean(int id, String bookname, String bookauthor, String bookpictureurl, String bookdescription, String booklabel, Boolean allbookreserved, Set<LibraryBean> libraries) {
         this.id = id;
         this.bookname = bookname;
         this.bookauthor = bookauthor;
         this.bookpictureurl = bookpictureurl;
         this.bookdescription = bookdescription;
         this.booklabel = booklabel;
-        this.nbrbookiteration = nbrbookiteration;
-        this.nbrbookiterationnotreserved = nbrbookiterationnotreserved;
         this.allbookreserved = allbookreserved;
         this.libraries = libraries;
     }
@@ -82,22 +78,6 @@ public class BookBean {
 
     public void setBooklabel(String booklabel) {
         this.booklabel = booklabel;
-    }
-
-    public int getNbrbookiteration() {
-        return nbrbookiteration;
-    }
-
-    public void setNbrbookiteration(int nbrbookiteration) {
-        this.nbrbookiteration = nbrbookiteration;
-    }
-
-    public int getNbrbookiterationnotreserved() {
-        return nbrbookiterationnotreserved;
-    }
-
-    public void setNbrbookiterationnotreserved(int nbrbookiterationnotreserved) {
-        this.nbrbookiterationnotreserved = nbrbookiterationnotreserved;
     }
 
     public Boolean getAllbookreserved() {

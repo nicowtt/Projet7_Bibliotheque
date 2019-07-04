@@ -18,18 +18,19 @@ public class Book {
     private int id;
     @Column
     private String bookname;
+
     @Column
     private String bookauthor;
+
     @Column
     private String bookpictureurl;
+
     @Column
     private String bookdescription;
+
     @Column
     private String booklabel;
-    @Column
-    private int nbrbookiteration;
-    @Column
-    private int nbrbookiterationnotreserved;
+
     @Column
     private Boolean allbookreserved;
 
@@ -44,14 +45,12 @@ public class Book {
     public Book() {
     }
 
-    public Book(String bookname, String bookauthor, String bookpictureurl, String bookdescription, String booklabel, int nbrbookiteration, int nbrbookiterationnotreserved, Boolean allbookreserved, Set<Library> libraries) {
+    public Book(String bookname, String bookauthor, String bookpictureurl, String bookdescription, String booklabel, Boolean allbookreserved, Set<Library> libraries) {
         this.bookname = bookname;
         this.bookauthor = bookauthor;
         this.bookpictureurl = bookpictureurl;
         this.bookdescription = bookdescription;
         this.booklabel = booklabel;
-        this.nbrbookiteration = nbrbookiteration;
-        this.nbrbookiterationnotreserved = nbrbookiterationnotreserved;
         this.allbookreserved = allbookreserved;
         this.libraries = libraries;
     }
@@ -103,22 +102,6 @@ public class Book {
 
     public void setBooklabel(String booklabel) {
         this.booklabel = booklabel;
-    }
-
-    public int getNbrbookiteration() {
-        return nbrbookiteration;
-    }
-
-    public void setNbrbookiteration(int nbrbookiteration) {
-        this.nbrbookiteration = nbrbookiteration;
-    }
-
-    public int getNbrbookiterationnotreserved() {
-        return nbrbookiterationnotreserved;
-    }
-
-    public void setNbrbookiterationnotreserved(int nbrbookiterationnotreserved) {
-        this.nbrbookiterationnotreserved = nbrbookiterationnotreserved;
     }
 
     public Boolean getAllbookreserved() {
