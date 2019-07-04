@@ -31,7 +31,9 @@
             <!-- disponibility -->
             <div><a th:href="@{'/book/'+ ${b.id}}" type="button" class="btn btn-xs btn-primary" id="onBook"
                     th:if="${!b.allbookreserved}">disponible <span class="badge"
-                    th:text="${b.nbrbookiterationnotreserved}"></span></a></div>
+                    th:text="${b.nbrbookiterationnotreserved}"></span> sur <span class="badge"
+                    th:text="${b.nbrbookiteration}"></span>
+                    </a></div>
         </div>
     </div>
 </div>
