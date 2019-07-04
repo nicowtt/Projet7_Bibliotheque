@@ -25,19 +25,18 @@ public class Libraryuser {
     @Column
     private String useremail;
 
-    @OneToMany(mappedBy = "libraryuser") //attribut Libraryuser libraryuser from BookReservation
-    private Set<BookReservation> bookReservations = new HashSet<>();
+//    @OneToMany(mappedBy = "libraryuser") //attribut Libraryuser libraryuser from BookReservation
+//    private Set<BookReservation> bookReservations = new HashSet<>();
 
     //constructor
     public Libraryuser() {
     }
 
-    public Libraryuser(String userfirstname, String username, String userpassword, String useremail, Set<BookReservation> bookReservations) {
+    public Libraryuser(String userfirstname, String username, String userpassword, String useremail) {
         this.userfirstname = userfirstname;
         this.username = username;
         this.userpassword = userpassword;
         this.useremail = useremail;
-        this.bookReservations = bookReservations;
     }
 
     //getter and setter
@@ -79,13 +78,5 @@ public class Libraryuser {
 
     public void setUseremail(String useremail) {
         this.useremail = useremail;
-    }
-
-    public Set<BookReservation> getBookReservations() {
-        return bookReservations;
-    }
-
-    public void setBookReservations(Set<BookReservation> bookReservations) {
-        this.bookReservations = bookReservations;
     }
 }

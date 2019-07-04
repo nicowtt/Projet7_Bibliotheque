@@ -23,17 +23,17 @@ public class BookReservation {
 
     @ManyToOne //many reservation for one user
     @JoinColumn(name = "user_id") //fk
-    @JsonIgnore
+//    @JsonIgnore
     private Libraryuser libraryuser;
 
     @ManyToOne //many reservation for one livre
     @JoinColumn(name = "book_id") //fk
-    @JsonIgnore
+//    @JsonIgnore
     private Book book;
 
     @ManyToOne //many reservation for one library
     @JoinColumn(name = "library_id") //fk
-    @JsonIgnore
+//    @JsonIgnore
     private Library library;
 
 

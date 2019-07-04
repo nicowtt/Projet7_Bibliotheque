@@ -7,6 +7,7 @@ import com.eLibrary.moduleModel.beans.BookReservation;
 import com.eLibrary.moduleModel.beans.Library;
 import com.eLibrary.moduleModel.beans.Libraryuser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +25,7 @@ public class BookController {
      *
      * @return
      */
-    @GetMapping(value = "/Books")
+    @GetMapping(value = "/Books", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<Book> booksList() {
 
         List<Book> booksList = bookDao.findAll();
@@ -32,13 +33,16 @@ public class BookController {
         return booksList;
     }
 
-//    @GetMapping(value = "/LibraryChoice/{id}")
-//    public Libraryuser catalogForOneBook(@PathVariable int id) {
-//        //todo 1 method pour avoir une liste de library en fonction de l'id d'un livre
-//        Libraryuser catalogListBook = libraryUserDao.listBookAnyLibraries(id);
-//
-//
-//        return catalogListBook;
-//    }
+    /**
+     * Get information about one book
+     * @param id -> id of book
+     * @return
+     */
+    @GetMapping(value = "/Book/{id}")
+    public Book OneBook(@PathVariable int id) {
+        Book oneBook = bookDao.getOne(id);
+
+        return oneBook;
+    }
 
 }

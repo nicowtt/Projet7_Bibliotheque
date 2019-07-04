@@ -9,4 +9,5 @@ import java.util.List;
 @Service
 public interface BookManager {
     List<BookBean> getListAllBooks();
+    BookBean getOneBook(int pBookId);
 }

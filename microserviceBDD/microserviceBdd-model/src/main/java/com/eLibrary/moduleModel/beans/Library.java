@@ -18,8 +18,8 @@ public class Library {
     @Column
     private String libraryname;
 
-    @OneToMany(mappedBy = "library") //attribut Library library from BookReservation
-    private Set<BookReservation> bookReservations = new HashSet<>();
+//    @OneToMany(mappedBy = "library") //attribut Library library from BookReservation
+//    private Set<BookReservation> bookReservations = new HashSet<>();
 
     @ManyToMany
     @JsonIgnore
@@ -33,13 +33,13 @@ public class Library {
     public Library() {
     }
 
-    public Library(String libraryname, Set<BookReservation> bookReservations, Set<Book> books) {
+    public Library(String libraryname, Set<Book> books) {
         this.libraryname = libraryname;
-        this.bookReservations = bookReservations;
         this.books = books;
     }
 
     //getters and setters
+
     public int getId() {
         return id;
     }
@@ -54,14 +54,6 @@ public class Library {
 
     public void setLibraryname(String libraryname) {
         this.libraryname = libraryname;
-    }
-
-    public Set<BookReservation> getBookReservations() {
-        return bookReservations;
-    }
-
-    public void setBookReservations(Set<BookReservation> bookReservations) {
-        this.bookReservations = bookReservations;
     }
 
     public Set<Book> getBooks() {

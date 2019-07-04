@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:insert="_include/head.html"></div>
+</head>
+
+<header class="raw">
+    <div th:insert="_include/header.html"></div>
+</header>
+
+<body>
+
+
+<div class="container">
+
+    <div class="row">
+        <p></p>
+        <b>Ce livre est disponible dans plusieurs bibliothèques.</b>
+        <p></p>
+        <form name='f' th:object="${book}" method='POST'>
+            <div class="form-group">
+                <labelfor="libraryChoice">Veuillez Choisir la bibliothèque pour le prêt de 4 semaines:</label>
+                <p></p>
+                <select class="form-control" id="libraryChoice" style="width: auto" th:field="*{bookname}">
+                    <option value=""> -- </option>
+                    <option th:each="b : ${book.libraries}"
+                            th:value="${b.libraryname}"
+                            th:utext="${b.libraryname}"/>
+                </select>
+                <p></p>
+                <button type="submit" class="btn btn-primary">Emprunter</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- Javascript de Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<!-- tooltip -->
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="popover"]').popover()
+    })
+</script>
+
+
+</body>
+</html>

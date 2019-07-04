@@ -6,6 +6,7 @@ import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUserBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -27,11 +28,11 @@ public interface MicroserviceBDDProxy {
 
     /**
      * Asking list of book (only version of one book)
-     * user will choice library
+     * -> user will choice library
      * @return
      */
-    @GetMapping(value = "/LibraryChoice")
-    List<BookBean> getBookListOneBook();
+    @GetMapping(value = "/Book/{id}")
+    BookBean getOneBook(@PathVariable("id") Integer id);
 
 
     //************ USER *************************//

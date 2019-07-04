@@ -18,18 +18,6 @@ public class BookReservationManagerImpl implements BookReservationManager {
 
 
     @Override
-    public  List<BookBean> askToBddOnWhichLibraryIsBook(int pBookId) {
-
-        List<BookBean> listWithBookVersion = new ArrayList<>();
-
-        //todo 2 method pour aller chercher une liste de bean avec l'id  d'un livre
-        listWithBookVersion = microserviceBDDProxy.getBookListOneBook();
-
-        return listWithBookVersion;
-    }
-
-
-    @Override
     public void writeBookReservationOnBdd(BookReservationBean bookReservationBean) {
         //todo 5 method pour ecrire une reservation
         // pour faire une reservation il me faut

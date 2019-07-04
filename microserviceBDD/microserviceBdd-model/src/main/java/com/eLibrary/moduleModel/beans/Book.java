@@ -1,12 +1,15 @@
 package com.eLibrary.moduleModel.beans;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "book")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Book {
 
     @Id
@@ -30,8 +33,8 @@ public class Book {
     @Column
     private Boolean allbookreserved;
 
-    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER) //attribut Book book from BookReservation
-    private Set<BookReservation> bookReservations = new HashSet<>();
+//    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER) //attribut Book book from BookReservation
+//    private Set<BookReservation> bookReservations = new HashSet<>();
 
     @ManyToMany(mappedBy = "books", fetch = FetchType.EAGER) //attribut Book books from library
     private Set<Library> libraries = new HashSet<>();
@@ -41,7 +44,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(String bookname, String bookauthor, String bookpictureurl, String bookdescription, String booklabel, int nbrbookiteration, int nbrbookiterationnotreserved, Boolean allbookreserved, Set<BookReservation> bookReservations, Set<Library> libraries) {
+    public Book(String bookname, String bookauthor, String bookpictureurl, String bookdescription, String booklabel, int nbrbookiteration, int nbrbookiterationnotreserved, Boolean allbookreserved, Set<Library> libraries) {
         this.bookname = bookname;
         this.bookauthor = bookauthor;
         this.bookpictureurl = bookpictureurl;
@@ -50,11 +53,10 @@ public class Book {
         this.nbrbookiteration = nbrbookiteration;
         this.nbrbookiterationnotreserved = nbrbookiterationnotreserved;
         this.allbookreserved = allbookreserved;
-        this.bookReservations = bookReservations;
         this.libraries = libraries;
     }
 
-    //getter and setter
+    //getters and setters
     public int getId() {
         return id;
     }
@@ -125,14 +127,6 @@ public class Book {
 
     public void setAllbookreserved(Boolean allbookreserved) {
         this.allbookreserved = allbookreserved;
-    }
-
-    public Set<BookReservation> getBookReservations() {
-        return bookReservations;
-    }
-
-    public void setBookReservations(Set<BookReservation> bookReservations) {
-        this.bookReservations = bookReservations;
     }
 
     public Set<Library> getLibraries() {
