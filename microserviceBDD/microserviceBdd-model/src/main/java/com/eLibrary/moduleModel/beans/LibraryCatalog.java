@@ -1,15 +1,14 @@
 package com.eLibrary.moduleModel.beans;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
-@Entity
+
+@Embeddable
 @Table(name = "librarycatalog")
 public class LibraryCatalog {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "public.book_id_seq")
-    @SequenceGenerator(name = "public.book_id_seq", sequenceName = "public.book_id_seq", allocationSize = 1)
-    private int id;
 
     @Column(name = "library_id")
     private int libraryId;
@@ -31,14 +30,6 @@ public class LibraryCatalog {
     }
 
     //getters and setters
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getLibraryId() {
         return libraryId;
     }
@@ -46,7 +37,6 @@ public class LibraryCatalog {
     public void setLibraryId(int libraryId) {
         this.libraryId = libraryId;
     }
-
     public int getBookId() {
         return bookId;
     }
