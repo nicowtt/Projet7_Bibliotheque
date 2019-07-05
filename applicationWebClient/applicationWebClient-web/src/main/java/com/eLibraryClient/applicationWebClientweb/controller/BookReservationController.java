@@ -92,8 +92,11 @@ public class BookReservationController {
 
             //send for complete date of reservation and write on bdd
             bookReservationManager.completeWithDate(newBookReservation);
+
+            //model for log
+            model.addAttribute("log", userSession);
         }
-        return "home"; //todo faire une page pour comfirmer l'ecriture
+        return "/confirmationhtml/bookReservationOk";
     }
 
 }

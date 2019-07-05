@@ -13,41 +13,50 @@ public class BookReservation {
     private int id;
 
     @Column(name = "beginofreservationdate")
-    private String beginOfReservationDate;
+    private String beginofreservationdate;
 
     @Column(name = "endofreservationdate")
-    private String endOfReservationDate;
+    private String endofreservationdate;
 
     @Column(name = "extensionofreservation")
     private int extensionofreservation;
 
-    @ManyToOne //many reservation for one user
-    @JoinColumn(name = "user_id") //fk
-//    @JsonIgnore
-    private Libraryuser libraryuser;
+    @Column
+    private int user_id;
 
-    @ManyToOne //many reservation for one livre
-    @JoinColumn(name = "book_id") //fk
-//    @JsonIgnore
-    private Book book;
+    @Column
+    private int book_id;
 
-    @ManyToOne //many reservation for one library
-    @JoinColumn(name = "library_id") //fk
-//    @JsonIgnore
-    private Library library;
+    @Column
+    private int library_id;
+
+//    @ManyToOne //many reservation for one user
+//    @JoinColumn(name = "user_id") //fk
+////    @JsonIgnore
+//    private Libraryuser libraryuser;
+
+//    @ManyToOne //many reservation for one livre
+//    @JoinColumn(name = "book_id") //fk
+////    @JsonIgnore
+//    private Book book;
+
+//    @ManyToOne //many reservation for one library
+//    @JoinColumn(name = "library_id") //fk
+////    @JsonIgnore
+//    private Library library;
 
 
     //constructor
     public BookReservation() {
     }
 
-    public BookReservation(String beginOfReservationDate, String endOfReservationDate, int extensionofreservation, Libraryuser libraryuser, Book book, Library library) {
-        this.beginOfReservationDate = beginOfReservationDate;
-        this.endOfReservationDate = endOfReservationDate;
+    public BookReservation(String beginofreservationdate, String endofreservationdate, int extensionofreservation, int user_id, int book_id, int library_id) {
+        this.beginofreservationdate = beginofreservationdate;
+        this.endofreservationdate = endofreservationdate;
         this.extensionofreservation = extensionofreservation;
-        this.libraryuser = libraryuser;
-        this.book = book;
-        this.library = library;
+        this.user_id = user_id;
+        this.book_id = book_id;
+        this.library_id = library_id;
     }
 
     //getter and setter
@@ -59,20 +68,20 @@ public class BookReservation {
         this.id = id;
     }
 
-    public String getBeginOfReservationDate() {
-        return beginOfReservationDate;
+    public String getBeginofreservationdate() {
+        return beginofreservationdate;
     }
 
-    public void setBeginOfReservationDate(String beginOfReservationDate) {
-        this.beginOfReservationDate = beginOfReservationDate;
+    public void setBeginofreservationdate(String beginofreservationdate) {
+        this.beginofreservationdate = beginofreservationdate;
     }
 
-    public String getEndOfReservationDate() {
-        return endOfReservationDate;
+    public String getEndofreservationdate() {
+        return endofreservationdate;
     }
 
-    public void setEndOfReservationDate(String endOfReservationDate) {
-        this.endOfReservationDate = endOfReservationDate;
+    public void setEndofreservationdate(String endofreservationdate) {
+        this.endofreservationdate = endofreservationdate;
     }
 
     public int getExtensionofreservation() {
@@ -83,28 +92,28 @@ public class BookReservation {
         this.extensionofreservation = extensionofreservation;
     }
 
-    public Libraryuser getLibraryuser() {
-        return libraryuser;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setLibraryuser(Libraryuser libraryuser) {
-        this.libraryuser = libraryuser;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
-    public Book getBook() {
-        return book;
+    public int getBook_id() {
+        return book_id;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setBook_id(int book_id) {
+        this.book_id = book_id;
     }
 
-    public Library getLibrary() {
-        return library;
+    public int getLibrary_id() {
+        return library_id;
     }
 
-    public void setLibrary(Library library) {
-        this.library = library;
+    public void setLibrary_id(int library_id) {
+        this.library_id = library_id;
     }
 
     //to string
@@ -112,12 +121,12 @@ public class BookReservation {
     public String toString() {
         return "BookReservation{" +
                 "id=" + id +
-                ", beginOfReservationDate='" + beginOfReservationDate + '\'' +
-                ", endOfReservationDate='" + endOfReservationDate + '\'' +
+                ", beginofreservationdate='" + beginofreservationdate + '\'' +
+                ", endofreservationdate='" + endofreservationdate + '\'' +
                 ", extensionofreservation=" + extensionofreservation +
-                ", libraryuser=" + libraryuser +
-                ", book=" + book +
-                ", library=" + library +
+                ", user_id=" + user_id +
+                ", book_id=" + book_id +
+                ", library_id=" + library_id +
                 '}';
     }
 }

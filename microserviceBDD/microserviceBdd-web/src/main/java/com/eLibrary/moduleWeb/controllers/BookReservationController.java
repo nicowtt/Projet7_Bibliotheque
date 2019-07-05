@@ -41,7 +41,7 @@ public class BookReservationController {
         //save newBookReservation
         BookReservation newBookReservation = bookReservationDao.save(bookReservation);
 
-        //send 201 CREATED for confirm new user is saved
+        //send 201 CREATED for confirm new reservation is saved
         return new ResponseEntity<BookReservation>(newBookReservation, HttpStatus.CREATED);
     }
 
