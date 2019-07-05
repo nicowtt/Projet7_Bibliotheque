@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface BookDao extends JpaRepository<Book, Integer> {
 
-//    @Query("SELECT '*' FROM book WHERE book.id = :Id")
-//    List<Book> listBookAnyLibraries(@Param("Id") int Id);
+//    @Query("SELECT bookname FROM Book book WHERE book.id = 1")
+//    List<Book> listBookOneLibraries();
 }

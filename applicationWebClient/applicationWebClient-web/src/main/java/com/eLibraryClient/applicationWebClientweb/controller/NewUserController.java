@@ -42,16 +42,16 @@ public class NewUserController {
 
     /**
      * For write on microserviceDD
-     * @param LibraryNewUser -> bean to validate
+     * @param libraryNewUser -> bean to validate
      * @param bindingResult -> list of error
      * @param model -> models
      * @return
      */
     @PostMapping(value = "/newUserPost")
-    public String newUserPost(@Valid @ModelAttribute("newUser") LibraryUserBean LibraryNewUser, BindingResult bindingResult, Model model) {
+    public String newUserPost(@Valid @ModelAttribute("newUser") LibraryUserBean libraryNewUser, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("newUser", LibraryNewUser);
+            model.addAttribute("newUser", libraryNewUser);
             logger.info("*********");
             logger.info("erreur lors du remplissage formulaire enregistrement nouvel utilisateur");
             logger.debug("debug");
@@ -59,11 +59,11 @@ public class NewUserController {
             return "/newUser";
         } else {
             // hashing new password
-            String hashingPassword = passwordEncoder.hashPassword(LibraryNewUser.getUserpassword());
+            String hashingPassword = passwordEncoder.hashPassword(libraryNewUser.getUserpassword());
             // set on bean newUser
-            LibraryNewUser.setUserpassword(hashingPassword);
+            libraryNewUser.setUserpassword(hashingPassword);
             // write on bdd
-            libraryUserManager.addNewUserOnBDD(LibraryNewUser);
+            libraryUserManager.addNewUserOnBDD(libraryNewUser);
 
             return "confirmationhtml/userWrittingOk";
         }

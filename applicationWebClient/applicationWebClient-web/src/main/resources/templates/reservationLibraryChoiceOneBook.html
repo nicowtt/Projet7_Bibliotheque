@@ -20,20 +20,37 @@
         <p></p>
         <b>Ce livre est disponible dans plusieurs bibliothèques.</b>
         <p></p>
-        <form name='f' th:object="${book}" method='POST'>
+        <form action="#" th:action="@{|/bookReservation/${book.id}|}"
+              th:object="${book}" method='POST'>
             <div class="form-group">
-                <labelfor="libraryChoice">Veuillez Choisir la bibliothèque pour le prêt de 4 semaines:</label>
+                <label for="libraryChoice">Veuillez Choisir la bibliothèque pour le prêt de 4 semaines:</label>
                 <p></p>
-                <select class="form-control" id="libraryChoice" style="width: auto" th:field="*{bookname}">
+                <select th:object="${book}" th:field="*{reservationlibrary}"class="form-control" id="libraryChoice" style="width: auto">
                     <option value=""> -- </option>
                     <option th:each="b : ${book.libraries}"
                             th:value="${b.libraryname}"
-                            th:utext="${b.libraryname}"/>
+                            th:text="${b.libraryname.toString()}"></option>
                 </select>
                 <p></p>
                 <button type="submit" class="btn btn-primary">Emprunter</button>
             </div>
         </form>
+
+        <!--<form action='#' th:action="@{|/bookReservation/${book.id}|}"-->
+              <!--th:object="${book}" method="POST">-->
+            <!--<table class="lignesEspacees">-->
+                <!--<tr>-->
+                    <!--&lt;!&ndash;display for "nom"&ndash;&gt;-->
+                    <!--<td>Votre prénom:*: <input type="text" th:field="*{bookname}"></td>-->
+                    <!--<td class="errors" th:if="${#fields.hasErrors('*')}" th:errors="*{bookname}"></td>-->
+                    <!--<td></td>-->
+                <!--</tr>-->
+            <!--</table>-->
+            <!--<p></p>-->
+            <!--<p>(*) obligatoire</p>-->
+            <!--<p></p>-->
+            <!--<input type="submit" value="Envoyer">-->
+        <!--</form>-->
 
     </div>
 </div>
