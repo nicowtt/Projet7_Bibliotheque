@@ -48,4 +48,15 @@ public class LibraryUserManagerImpl implements LibraryUserManager {
         //add new user on Bdd
         microserviceBDDProxy.addUser(libraryUserBean);
     }
+
+    /**
+     * get bean with one user
+     * @param userEmail
+     * @return
+     */
+    @Override
+    public LibraryUserBean getOneUser(String userEmail) {
+        LibraryUserBean getOneUser = microserviceBDDProxy.getOneUser(userEmail);
+        return getOneUser;
+    }
 }

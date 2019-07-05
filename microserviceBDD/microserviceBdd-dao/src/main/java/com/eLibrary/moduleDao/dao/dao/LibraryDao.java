@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LibraryDao extends JpaRepository<Library, Integer> {
 
+    Library findByLibraryname(String libraryName);
+
 
 }

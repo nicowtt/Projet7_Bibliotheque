@@ -3,7 +3,9 @@ package com.eLibrary.moduleWeb.controllers;
 import com.eLibrary.moduleDao.dao.dao.LibraryDao;
 import com.eLibrary.moduleModel.beans.Library;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -25,4 +27,19 @@ public class LibraryController {
 
         return librariesList;
     }
+
+    /**
+     * get one library
+     * @param name
+     * @return
+     */
+    @GetMapping(value = "/Library/{name}")
+    public Library getOneLibrary(@PathVariable String name) {
+
+        Library oneLibrary = libraryDao.findByLibraryname(name);
+
+        return oneLibrary;
+    }
+
+
 }

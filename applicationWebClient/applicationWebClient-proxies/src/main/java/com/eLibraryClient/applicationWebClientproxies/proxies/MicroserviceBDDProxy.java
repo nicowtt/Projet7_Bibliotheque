@@ -2,6 +2,7 @@ package com.eLibraryClient.applicationWebClientproxies.proxies;
 
 
 import com.eLibraryClient.applicationWebClientmodel.beans.BookBean;
+import com.eLibraryClient.applicationWebClientmodel.beans.LibraryBean;
 import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUserBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import sun.awt.SunHints;
 
 import java.util.List;
 
@@ -44,10 +46,28 @@ public interface MicroserviceBDDProxy {
     List<LibraryUserBean> getListOfUsers();
 
     /**
+     * Asking one user bean
+     * @param pEmail
+     * @return
+     */
+    @GetMapping(value = "/User/{email}")
+    LibraryUserBean getOneUser(@PathVariable("email") String pEmail);
+
+    /**
      * Write new user on microserviceBDD
      * @param libraryUserBean -> new user bean
      * @return
      */
     @PostMapping(value = "/NewUser")
     LibraryUserBean addUser(@RequestBody LibraryUserBean libraryUserBean);
+
+    //************ Library *************************//
+
+    /**
+     * get one library
+     * @param name
+     * @return
+     */
+    @GetMapping(value = "/Library/{name}")
+    LibraryBean getOneLibrary(@PathVariable("name") String name);
 }

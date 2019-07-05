@@ -1,10 +1,13 @@
 package com.eLibraryClient.applicationWebClientweb.controller;
 
 import com.eLibraryClient.applicationWebClientbusiness.contract.BookManager;
+import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryManager;
+import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryUserManager;
 import com.eLibraryClient.applicationWebClientmodel.beans.BookBean;
 import com.eLibraryClient.applicationWebClientmodel.beans.BookReservationBean;
 import com.eLibraryClient.applicationWebClientmodel.beans.LibraryBean;
 import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUserBean;
+import org.apache.tomcat.jni.Library;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +23,13 @@ public class BookReservationController {
 
     @Autowired
     private BookManager bookManager;
+
+    @Autowired
+    private LibraryUserManager libraryUserManager;
+
+    @Autowired
+    private LibraryManager libraryManager;
+
 
     /**
      * User choose library to reserve one book
@@ -68,10 +78,12 @@ public class BookReservationController {
         } else {
             //set book to reserve
             newBookReservation.setBook_id(bookId);
-            // need user_id
-            //todo 2 chercher l'user-id avec l'email
+            // set user_id
+            LibraryUserBean userOnSession = libraryUserManager.getOneUser(userSession.getUseremail());
+            newBookReservation.setUser_id(userOnSession.getId());
             // need library_id
-            //todo 3 chercher la libray_id avec le nom de la library
+            LibraryBean libraryForreservation = libraryManager.getOneLibrary(newbook.getReservationlibrary());
+            newBookReservation.setLibrary_id(libraryForreservation.getId());
             //todo 4 envoi le bean non rempli a la couche business
 
         }

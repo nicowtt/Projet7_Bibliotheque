@@ -31,6 +31,19 @@ public class UserController {
     }
 
     /**
+     * get one user
+     * @param email
+     * @return
+     */
+    @GetMapping(value = "/User/{email}")
+    public Libraryuser getOneUser(@PathVariable String email) {
+
+        Libraryuser oneUser = libraryUserDao.findByUseremail(email);
+
+        return oneUser;
+    }
+
+    /**
      * write new user
      * @param newUser -> bean new user
      * @return
