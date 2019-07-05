@@ -92,12 +92,8 @@ public class BookReservationController {
 
             //send for complete date of reservation and write on bdd
             bookReservationManager.completeWithDate(newBookReservation);
-
-            System.out.println("reservation ok");
-            return "home"; //todo faire une page pour comfirmer l'ecriture
-
         }
-
+        return "home"; //todo faire une page pour comfirmer l'ecriture
     }
 
 }
