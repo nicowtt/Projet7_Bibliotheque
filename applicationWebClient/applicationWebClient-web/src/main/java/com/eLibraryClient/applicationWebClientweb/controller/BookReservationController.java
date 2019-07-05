@@ -1,6 +1,7 @@
 package com.eLibraryClient.applicationWebClientweb.controller;
 
 import com.eLibraryClient.applicationWebClientbusiness.contract.BookManager;
+import com.eLibraryClient.applicationWebClientbusiness.contract.BookReservationManager;
 import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryManager;
 import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryUserManager;
 import com.eLibraryClient.applicationWebClientmodel.beans.BookBean;
@@ -29,6 +30,10 @@ public class BookReservationController {
 
     @Autowired
     private LibraryManager libraryManager;
+
+    @Autowired
+    private BookReservationManager bookReservationManager;
+
 
 
     /**
@@ -84,20 +89,15 @@ public class BookReservationController {
             // need library_id
             LibraryBean libraryForreservation = libraryManager.getOneLibrary(newbook.getReservationlibrary());
             newBookReservation.setLibrary_id(libraryForreservation.getId());
-            //todo 4 envoi le bean non rempli a la couche business
+
+            //send for complete date of reservation and write on bdd
+            bookReservationManager.completeWithDate(newBookReservation);
+
+            System.out.println("reservation ok");
+            return "home"; //todo faire une page pour comfirmer l'ecriture
 
         }
 
-
-
-
-        // j'envoi a la couche business le bean BookReservationBean avec l'userId, bookId et libraryId.
-        // je finirais de remplir le bean dans la couche business (manque la date du jour, la date de retour et l'extension)
-        // et je retourne la page qui dit reservation ok
-
-        return "home"; //todo 6 ici aussi il faudra crée une nouvelle page de confirmation d'ecriture
-
     }
-
 
 }

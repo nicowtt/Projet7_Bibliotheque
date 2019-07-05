@@ -1,6 +1,7 @@
 package com.eLibraryClient.applicationWebClientbusiness.impl;
 
 import com.eLibraryClient.applicationWebClientbusiness.contract.BookReservationManager;
+import com.eLibraryClient.applicationWebClientbusiness.contract.DateManager;
 import com.eLibraryClient.applicationWebClientmodel.beans.BookBean;
 import com.eLibraryClient.applicationWebClientmodel.beans.BookReservationBean;
 import com.eLibraryClient.applicationWebClientproxies.proxies.MicroserviceBDDProxy;
@@ -16,16 +17,29 @@ public class BookReservationManagerImpl implements BookReservationManager {
     @Autowired
     private MicroserviceBDDProxy microserviceBDDProxy;
 
+    @Autowired
+    private DateManager dateManager;
 
+    /**
+     * For complete date of reservation
+     * @param bookReservation
+     */
     @Override
-    public void writeBookReservationOnBdd(BookReservationBean bookReservationBean) {
-        //todo 5 method pour ecrire une reservation
-        // pour faire une reservation il me faut
-        // un userId
-        // un bookId
-        // une library Id
-        //date du jour
+    public void completeWithDate(BookReservationBean bookReservation) {
+        //get today date
+        String todayDate = dateManager.todayDate();
+        //get 4 week after date
+        String endOfReservationDate = dateManager.addDaysOnTodayDate(28);
 
-        // et je demande a la bdd dans quel bibliotheque est ce livre
+        //set reservation dates
+        bookReservation.setBeginofreservationdate(todayDate);
+        bookReservation.setEndofreservationdate(endOfReservationDate);
+
+        //set extention of reservation
+        bookReservation.setExtensionofreservation(0);
+
+        //Write on  microserviceBDD
+        microserviceBDDProxy.addReservation(bookReservation);
     }
+
 }

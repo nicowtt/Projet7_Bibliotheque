@@ -2,6 +2,7 @@ package com.eLibraryClient.applicationWebClientproxies.proxies;
 
 
 import com.eLibraryClient.applicationWebClientmodel.beans.BookBean;
+import com.eLibraryClient.applicationWebClientmodel.beans.BookReservationBean;
 import com.eLibraryClient.applicationWebClientmodel.beans.LibraryBean;
 import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUserBean;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -70,4 +71,14 @@ public interface MicroserviceBDDProxy {
      */
     @GetMapping(value = "/Library/{name}")
     LibraryBean getOneLibrary(@PathVariable("name") String name);
+
+    //************ Reservation *************************//
+
+    /**
+     * write new reservation on microserviceBDD
+     * @param bookReservationBean
+     * @return
+     */
+    @PostMapping(value = "/NewBookReservation")
+    BookReservationBean addReservation(@RequestBody BookReservationBean bookReservationBean);
 }

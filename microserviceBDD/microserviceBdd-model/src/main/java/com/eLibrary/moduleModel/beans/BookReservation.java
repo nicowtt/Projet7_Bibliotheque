@@ -19,7 +19,7 @@ public class BookReservation {
     private String endOfReservationDate;
 
     @Column(name = "extensionofreservation")
-    private String extensionofreservation;
+    private int extensionofreservation;
 
     @ManyToOne //many reservation for one user
     @JoinColumn(name = "user_id") //fk
@@ -41,7 +41,7 @@ public class BookReservation {
     public BookReservation() {
     }
 
-    public BookReservation(String beginOfReservationDate, String endOfReservationDate, String extensionofreservation, Libraryuser libraryuser, Book book, Library library) {
+    public BookReservation(String beginOfReservationDate, String endOfReservationDate, int extensionofreservation, Libraryuser libraryuser, Book book, Library library) {
         this.beginOfReservationDate = beginOfReservationDate;
         this.endOfReservationDate = endOfReservationDate;
         this.extensionofreservation = extensionofreservation;
@@ -75,11 +75,11 @@ public class BookReservation {
         this.endOfReservationDate = endOfReservationDate;
     }
 
-    public String getExtensionofreservation() {
+    public int getExtensionofreservation() {
         return extensionofreservation;
     }
 
-    public void setExtensionofreservation(String extensionofreservation) {
+    public void setExtensionofreservation(int extensionofreservation) {
         this.extensionofreservation = extensionofreservation;
     }
 
@@ -114,7 +114,7 @@ public class BookReservation {
                 "id=" + id +
                 ", beginOfReservationDate='" + beginOfReservationDate + '\'' +
                 ", endOfReservationDate='" + endOfReservationDate + '\'' +
-                ", extensionofreservation='" + extensionofreservation + '\'' +
+                ", extensionofreservation=" + extensionofreservation +
                 ", libraryuser=" + libraryuser +
                 ", book=" + book +
                 ", library=" + library +

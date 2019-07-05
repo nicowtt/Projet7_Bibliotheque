@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface BookReservationManager {
-    void writeBookReservationOnBdd(BookReservationBean bookReservationBean);
+    void completeWithDate(BookReservationBean bookReservation);
 }
