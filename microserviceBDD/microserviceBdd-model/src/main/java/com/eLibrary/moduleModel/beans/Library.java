@@ -4,11 +4,14 @@ package com.eLibrary.moduleModel.beans;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "library")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Library {
 
     @Id
@@ -20,6 +23,13 @@ public class Library {
 
 //    @OneToMany(mappedBy = "library") //attribut Library library from BookReservation
 //    private Set<BookReservation> bookReservations = new HashSet<>();
+
+//    @OneToMany(
+//            mappedBy = "library",
+//            cascade = CascadeType.ALL,
+//            orphanRemoval = true
+//    )
+//    private Set<LibraryCatalog> libraryCatalogList = new HashSet<>();
 
     @ManyToMany
     @JsonIgnore
@@ -33,13 +43,13 @@ public class Library {
     public Library() {
     }
 
-    public Library(String libraryname, Set<Book> books) {
+    public Library(String libraryname, Set<LibraryCatalog> libraryCatalogList, Set<Book> books) {
         this.libraryname = libraryname;
+//        this.libraryCatalogList = libraryCatalogList;
         this.books = books;
     }
 
     //getters and setters
-
     public int getId() {
         return id;
     }
@@ -55,6 +65,14 @@ public class Library {
     public void setLibraryname(String libraryname) {
         this.libraryname = libraryname;
     }
+
+//    public Set<LibraryCatalog> getLibraryCatalogList() {
+//        return libraryCatalogList;
+//    }
+//
+//    public void setLibraryCatalogList(Set<LibraryCatalog> libraryCatalogList) {
+//        this.libraryCatalogList = libraryCatalogList;
+//    }
 
     public Set<Book> getBooks() {
         return books;

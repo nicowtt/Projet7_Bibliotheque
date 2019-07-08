@@ -1,8 +1,6 @@
 package com.eLibraryClient.applicationWebClientmodel.beans;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +18,7 @@ public class LibraryUserBean {
     private String username;
 
     @NotBlank
-    @Size(min=2, max = 15)
+    @Size(min=2, max = 15, message = "La taille doit être comprise entre 2 et 15 caractères")
     private String userpassword;
 
     @NotBlank

@@ -1,48 +1,60 @@
 package com.eLibrary.moduleModel.beans;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 
-
-@Embeddable
+@Entity
 @Table(name = "librarycatalog")
 public class LibraryCatalog {
 
+    @EmbeddedId
+    private LibraryCatalogId id;
 
-    @Column(name = "library_id")
-    private int libraryId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("libraryId")
+    private Library library;
 
-    @Column(name = "book_id")
-    private int bookId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("bookId")
+    private Book book;
 
-    @Column(name = "bookiteration")
+    @Column(name = "bookiteration",updatable = false, insertable = false)
     private int bookIteration;
 
     //contructor
+
     public LibraryCatalog() {
     }
 
-    public LibraryCatalog(int libraryId, int bookId, int bookIteration) {
-        this.libraryId = libraryId;
-        this.bookId = bookId;
+    public LibraryCatalog(LibraryCatalogId id, Library library, Book book, int bookIteration) {
+        this.id = id;
+        this.library = library;
+        this.book = book;
         this.bookIteration = bookIteration;
     }
 
-    //getters and setters
-    public int getLibraryId() {
-        return libraryId;
+    //getter and setters
+    public LibraryCatalogId getId() {
+        return id;
     }
 
-    public void setLibraryId(int libraryId) {
-        this.libraryId = libraryId;
-    }
-    public int getBookId() {
-        return bookId;
+    public void setId(LibraryCatalogId id) {
+        this.id = id;
     }
 
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
+    public Library getLibrary() {
+        return library;
+    }
+
+    public void setLibrary(Library library) {
+        this.library = library;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     public int getBookIteration() {
@@ -53,3 +65,5 @@ public class LibraryCatalog {
         this.bookIteration = bookIteration;
     }
 }
+
+
