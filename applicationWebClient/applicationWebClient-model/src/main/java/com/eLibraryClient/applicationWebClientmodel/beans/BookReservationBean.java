@@ -5,7 +5,8 @@ public class BookReservationBean {
     private int id;
     private String beginofreservationdate;
     private String endofreservationdate;
-    private int extensionofreservation;
+    private boolean extensionofreservation;
+    private boolean bookback;
     private int user_id;
     private int book_id;
     private int library_id;
@@ -14,11 +15,12 @@ public class BookReservationBean {
     public BookReservationBean() {
     }
 
-    public BookReservationBean(int id, String beginofreservationdate, String endofreservationdate, int extensionofreservation, int user_id, int book_id, int library_id) {
+    public BookReservationBean(int id, String beginofreservationdate, String endofreservationdate, boolean extensionofreservation, boolean bookback, int user_id, int book_id, int library_id) {
         this.id = id;
         this.beginofreservationdate = beginofreservationdate;
         this.endofreservationdate = endofreservationdate;
         this.extensionofreservation = extensionofreservation;
+        this.bookback = bookback;
         this.user_id = user_id;
         this.book_id = book_id;
         this.library_id = library_id;
@@ -49,12 +51,20 @@ public class BookReservationBean {
         this.endofreservationdate = endofreservationdate;
     }
 
-    public int getExtensionofreservation() {
+    public boolean isExtensionofreservation() {
         return extensionofreservation;
     }
 
-    public void setExtensionofreservation(int extensionofreservation) {
+    public void setExtensionofreservation(boolean extensionofreservation) {
         this.extensionofreservation = extensionofreservation;
+    }
+
+    public boolean isBookback() {
+        return bookback;
+    }
+
+    public void setBookback(boolean bookback) {
+        this.bookback = bookback;
     }
 
     public int getUser_id() {
@@ -89,6 +99,7 @@ public class BookReservationBean {
                 ", beginofreservationdate='" + beginofreservationdate + '\'' +
                 ", endofreservationdate='" + endofreservationdate + '\'' +
                 ", extensionofreservation=" + extensionofreservation +
+                ", bookback=" + bookback +
                 ", user_id=" + user_id +
                 ", book_id=" + book_id +
                 ", library_id=" + library_id +

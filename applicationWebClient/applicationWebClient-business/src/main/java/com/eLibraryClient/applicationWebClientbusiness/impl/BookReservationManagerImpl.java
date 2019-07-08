@@ -36,7 +36,7 @@ public class BookReservationManagerImpl implements BookReservationManager {
         bookReservation.setEndofreservationdate(endOfReservationDate);
 
         //set extention of reservation
-        bookReservation.setExtensionofreservation(0);
+        bookReservation.setExtensionofreservation(false);
 
         //Write on  microserviceBDD
         microserviceBDDProxy.addReservation(bookReservation);
