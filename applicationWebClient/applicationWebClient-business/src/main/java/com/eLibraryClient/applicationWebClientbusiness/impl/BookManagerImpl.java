@@ -54,6 +54,7 @@ public class BookManagerImpl implements BookManager {
      * @param bookId
      * @return
      */
+    @Override
     public int getNbrOfIterationForOneBook(int bookId) {
 
         int nbrIteration = 0;
@@ -65,6 +66,19 @@ public class BookManagerImpl implements BookManager {
         }
 
         return nbrIteration;
+    }
+
+    /**
+     * For check if user can reserved book
+     * @param nbrReservationInProgressForOneBook
+     * @param nbrIteration
+     */
+    @Override
+    public void checkForChangedisponibility(int nbrReservationInProgressForOneBook, int nbrIteration) {
+        if (nbrReservationInProgressForOneBook == nbrIteration) {
+            //todo method pour passer le boolean "allBookReserved" dans book a true!
+            System.out.println("changement boolean on ne peut plus reserver ce livre !!");
+        }
     }
 
 

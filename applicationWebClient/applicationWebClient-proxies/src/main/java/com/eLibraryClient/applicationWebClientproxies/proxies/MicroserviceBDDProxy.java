@@ -16,7 +16,9 @@ import java.util.List;
 @FeignClient(name = "microserviceBdd", url = "http://localhost:9001")
 public interface MicroserviceBDDProxy {
 
+    //*******************************************//
     //************ BOOK *************************//
+    //*******************************************//
 
     /**
      * asking list of all books on microserviceBDD
@@ -35,7 +37,10 @@ public interface MicroserviceBDDProxy {
     BookBean getOneBook(@PathVariable("id") Integer id);
 
 
+    //*******************************************//
     //************ USER *************************//
+    //*******************************************//
+
     /**
      * Asking list of all users on microserviceBDD
      * @return
@@ -59,7 +64,10 @@ public interface MicroserviceBDDProxy {
     @PostMapping(value = "/NewUser")
     LibraryUserBean addUser(@RequestBody LibraryUserBean libraryUserBean);
 
-    //************ Library *************************//
+    //*******************************************//
+    //************ Library **********************//
+    //*******************************************//
+
 
     /**
      * get one library
@@ -69,7 +77,10 @@ public interface MicroserviceBDDProxy {
     @GetMapping(value = "/Library/{name}")
     LibraryBean getOneLibrary(@PathVariable("name") String name);
 
-    //************ LibraryCatalog *************************//
+    //*******************************************//
+    //************ LibraryCatalog ***************//
+    //*******************************************//
+
 
     /**
      * get libraries Catalog
@@ -85,7 +96,12 @@ public interface MicroserviceBDDProxy {
     @GetMapping(value = "/Librariescatalog/{bookId}")
     List<LibraryCatalogBean> getLibrariesCatalogForOneBook(@PathVariable("bookId") Integer bookId);
 
-    //************ Reservation *************************//
+
+
+    //*******************************************//
+    //************ Reservation ******************//
+    //*******************************************//
+
 
     /**
      * write new reservation on microserviceBDD
@@ -94,4 +110,11 @@ public interface MicroserviceBDDProxy {
      */
     @PostMapping(value = "/NewBookReservation")
     BookReservationBean addReservation(@RequestBody BookReservationBean bookReservationBean);
+
+    /**
+     * get all reservations
+     * @return
+     */
+    @GetMapping(value = "/BookReservation")
+    List<BookReservationBean> getAllReservation();
 }

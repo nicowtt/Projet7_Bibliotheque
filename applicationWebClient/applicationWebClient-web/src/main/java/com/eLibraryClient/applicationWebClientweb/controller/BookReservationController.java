@@ -91,12 +91,14 @@ public class BookReservationController {
             //send for complete date of reservation and write on bdd
             bookReservationManager.completeWithDate(newBookReservation);
 
-            //update disponibility of book
+            //update if needed disponibility of book ->>
+
             //get iteration number of book on all city
             int nbrIterationBook = bookManager.getNbrOfIterationForOneBook(newBookReservation.getBook_id());
-            //todo faire une methode pour voir les reservation cette date et voir si on peut encore reserver le livre
-
-
+            //get count number of reservation for one book in progress
+            int countReservationForOneBookInProgress = bookReservationManager.countReservationInProgressForOneBook(newBookReservation.getBook_id());
+            // change disponibility of book to false if needed
+            bookManager.checkForChangedisponibility(countReservationForOneBookInProgress, nbrIterationBook);
 
             //model for log
             model.addAttribute("log", userSession);

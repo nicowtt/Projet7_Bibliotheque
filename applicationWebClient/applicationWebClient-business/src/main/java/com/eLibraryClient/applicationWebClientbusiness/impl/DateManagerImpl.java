@@ -55,7 +55,7 @@ public class DateManagerImpl implements DateManager {
      * @return-> enum CompareDate
      */
     @Override
-    public Enum<CompareDate> compareDateWithToday(String pDate) {
+    public CompareDate compareDateWithToday(String pDate) {
 
         Date newDate = null;
         CompareDate CompareDateEnum = CompareDate.ISBEFORE;

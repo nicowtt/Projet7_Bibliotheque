@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 public interface DateManager {
     String todayDate();
     String addDaysOnTodayDate(int pNbrOfDay);
-    Enum<CompareDate> compareDateWithToday(String pDate);
+    CompareDate compareDateWithToday(String pDate);
 }
