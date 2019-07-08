@@ -26,7 +26,7 @@
                 <label for="libraryChoice">Veuillez Choisir la bibliothèque pour le prêt de 4 semaines:</label>
                 <p></p>
                 <select th:object="${book}" th:field="*{reservationlibrary}"class="form-control" id="libraryChoice" style="width: auto">
-                    <option value=""> -- </option>
+                    <!--<option value=""> &#45;&#45; </option>-->
                     <option th:each="b : ${book.libraries}"
                             th:value="${b.libraryname}"
                             th:text="${b.libraryname.toString()}"></option>

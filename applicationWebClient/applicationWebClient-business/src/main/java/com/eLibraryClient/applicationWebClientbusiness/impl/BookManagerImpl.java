@@ -1,7 +1,10 @@
 package com.eLibraryClient.applicationWebClientbusiness.impl;
 
+import ch.qos.logback.core.pattern.FormatInfo;
 import com.eLibraryClient.applicationWebClientbusiness.contract.BookManager;
+import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryCatalogManager;
 import com.eLibraryClient.applicationWebClientmodel.beans.BookBean;
+import com.eLibraryClient.applicationWebClientmodel.beans.LibraryCatalogBean;
 import com.eLibraryClient.applicationWebClientproxies.proxies.MicroserviceBDDProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,6 +19,9 @@ public class BookManagerImpl implements BookManager {
 
     @Autowired
     private MicroserviceBDDProxy microserviceBDDProxy;
+
+    @Autowired
+    private LibraryCatalogManager libraryCatalogManager;
 
     static final Log logger = LogFactory.getLog(BookManagerImpl.class);
 
@@ -41,6 +47,24 @@ public class BookManagerImpl implements BookManager {
     public BookBean getOneBook(int pBookId) {
         BookBean oneBook = microserviceBDDProxy.getOneBook(pBookId);
         return oneBook;
+    }
+
+    /**
+     * Find number of iteration of one book in the city
+     * @param bookId
+     * @return
+     */
+    public int getNbrOfIterationForOneBook(int bookId) {
+
+        int nbrIteration = 0;
+
+        List<LibraryCatalogBean> librariescatalogForOneBook = libraryCatalogManager.getLibrariesCatalogForOneBook(bookId);
+
+        for (int i = 0; i < librariescatalogForOneBook.size(); i++) {
+            nbrIteration = nbrIteration + librariescatalogForOneBook.get(i).getBookIteration();
+        }
+
+        return nbrIteration;
     }
 
 

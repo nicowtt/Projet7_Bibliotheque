@@ -1,13 +1,7 @@
 package com.eLibraryClient.applicationWebClientweb.controller;
 
-import com.eLibraryClient.applicationWebClientbusiness.contract.BookManager;
-import com.eLibraryClient.applicationWebClientbusiness.contract.BookReservationManager;
-import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryManager;
-import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryUserManager;
-import com.eLibraryClient.applicationWebClientmodel.beans.BookBean;
-import com.eLibraryClient.applicationWebClientmodel.beans.BookReservationBean;
-import com.eLibraryClient.applicationWebClientmodel.beans.LibraryBean;
-import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUserBean;
+import com.eLibraryClient.applicationWebClientbusiness.contract.*;
+import com.eLibraryClient.applicationWebClientmodel.beans.*;
 import org.apache.tomcat.jni.Library;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -33,6 +28,9 @@ public class BookReservationController {
 
     @Autowired
     private BookReservationManager bookReservationManager;
+
+    @Autowired
+    private LibraryCatalogManager libraryCatalogManager;
 
 
 
@@ -92,6 +90,13 @@ public class BookReservationController {
 
             //send for complete date of reservation and write on bdd
             bookReservationManager.completeWithDate(newBookReservation);
+
+            //update disponibility of book
+            //get iteration number of book on all city
+            int nbrIterationBook = bookManager.getNbrOfIterationForOneBook(newBookReservation.getBook_id());
+            //todo faire une methode pour voir les reservation cette date et voir si on peut encore reserver le livre
+
+
 
             //model for log
             model.addAttribute("log", userSession);

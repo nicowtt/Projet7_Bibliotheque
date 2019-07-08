@@ -10,4 +10,5 @@ import java.util.List;
 public interface BookManager {
     List<BookBean> getListAllBooks();
     BookBean getOneBook(int pBookId);
+    int getNbrOfIterationForOneBook(int bookId);
 }
