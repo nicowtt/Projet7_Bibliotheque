@@ -98,7 +98,7 @@ public class BookReservationController {
             //get count number of reservation for one book in progress
             int countReservationForOneBookInProgress = bookReservationManager.countReservationInProgressForOneBook(newBookReservation.getBook_id());
             // change disponibility of book to false if needed
-            bookManager.checkForChangedisponibility(countReservationForOneBookInProgress, nbrIterationBook);
+            bookManager.changedisponibilityOfOneBookIfNeeded(countReservationForOneBookInProgress, nbrIterationBook, newBookReservation.getBook_id());
 
             //model for log
             model.addAttribute("log", userSession);

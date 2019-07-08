@@ -36,6 +36,13 @@ public interface MicroserviceBDDProxy {
     @GetMapping(value = "/Book/{id}")
     BookBean getOneBook(@PathVariable("id") Integer id);
 
+    /**
+     * For change disponibility of One book to true (no more book iteration to reserve)
+     * @param bookId
+     */
+    @GetMapping(value = "/ChangeDisponibilityTrue/{bookId}")
+    void bookNotDisponible(@PathVariable("bookId")Integer bookId);
+
 
     //*******************************************//
     //************ USER *************************//

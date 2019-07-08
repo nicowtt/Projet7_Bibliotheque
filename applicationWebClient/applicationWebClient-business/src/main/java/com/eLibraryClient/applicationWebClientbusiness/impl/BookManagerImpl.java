@@ -69,15 +69,16 @@ public class BookManagerImpl implements BookManager {
     }
 
     /**
-     * For check if user can reserved book
+     * For change disponibility of one book when there is no more iteration of book for reservation
      * @param nbrReservationInProgressForOneBook
      * @param nbrIteration
+     * @param bookId
      */
     @Override
-    public void checkForChangedisponibility(int nbrReservationInProgressForOneBook, int nbrIteration) {
+    public void changedisponibilityOfOneBookIfNeeded(int nbrReservationInProgressForOneBook, int nbrIteration, int bookId) {
         if (nbrReservationInProgressForOneBook == nbrIteration) {
-            //todo method pour passer le boolean "allBookReserved" dans book a true!
-            System.out.println("changement boolean on ne peut plus reserver ce livre !!");
+            // change book disponibility
+            microserviceBDDProxy.bookNotDisponible(bookId);
         }
     }
 

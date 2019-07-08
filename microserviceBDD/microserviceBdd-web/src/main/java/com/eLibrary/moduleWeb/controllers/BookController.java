@@ -1,12 +1,10 @@
 package com.eLibrary.moduleWeb.controllers;
 
 import com.eLibrary.moduleDao.dao.dao.BookDao;
-import com.eLibrary.moduleDao.dao.dao.LibraryUserDao;
 import com.eLibrary.moduleModel.beans.Book;
-import com.eLibrary.moduleModel.beans.BookReservation;
-import com.eLibrary.moduleModel.beans.Library;
-import com.eLibrary.moduleModel.beans.Libraryuser;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,6 +41,32 @@ public class BookController {
         Book oneBook = bookDao.getOne(id);
 
         return oneBook;
+    }
+
+    /**
+     * change book disponibility to TRUE
+     * @param bookId
+     * @return
+     */
+    @GetMapping(value = "/ChangeDisponibilityTrue/{bookId}")
+    public HttpStatus changeDisponibilityTrueForOneBook(@PathVariable int bookId) {
+        bookDao.changeDisponibilityToTrueForOneBook(bookId);
+
+        //send httpStatus -> ok
+        return HttpStatus.OK;
+    }
+
+    /**
+     * Change book disponibility to FALSE
+     * @param bookId
+     * @return
+     */
+    @GetMapping(value = "/ChangeDisponibilityFalse/{bookId}")
+    public HttpStatus changeDisponibilityFalseForOneBook(@PathVariable int bookId) {
+        bookDao.changeDisponibilityToFalseForOneBook(bookId);
+
+        //send httpStatus -> ok
+        return HttpStatus.OK;
     }
 
 }
