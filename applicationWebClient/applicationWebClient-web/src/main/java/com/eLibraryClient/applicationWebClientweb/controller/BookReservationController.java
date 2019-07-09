@@ -48,65 +48,75 @@ public class BookReservationController {
     public String bookReservationLibraryChoice(@PathVariable Integer bookId,
                                                @SessionAttribute(value = "userSession", required = false) LibraryUserBean userSession,
                                                Model model) {
+        int correctionDisponibility = 0;
+        int reservationInProgress = 0;
+        int result = 0;
 
-        if (userSession == null) {
-            return "errorHtml/errorMissAuth";
 
-        } else {
-            BookBean book = bookManager.getOneBook(bookId);
-            model.addAttribute("book", book);
+        if (userSession != null) {
+            // je vais chercher la liste des library qui ont ce livre
+            List<LibraryCatalogBean> libraryCatalogIOneBookList = libraryCatalogManager.getLibrariesCatalogForOneBook(bookId);
+
+            // dans cette liste de library je vais verifier si il y a en cours des reservation sur le livre
+            // afin d'affiner la disponibiliter
+            for (int i = 0; i < libraryCatalogIOneBookList.size(); i++) {
+                reservationInProgress = bookReservationManager.nbrBookReservationInProgressForOneLibraryAndOneBookList(libraryCatalogIOneBookList.get(i).getLibrary().getId(), bookId);
+
+                int iterationOfBook = libraryCatalogIOneBookList.get(i).getId().getBookIteration();
+                result = iterationOfBook - reservationInProgress;
+                libraryCatalogIOneBookList.get(i).getId().setBookIteration(result);
+                logger.info("correction d'iteration disponible: " + iterationOfBook + " - " + reservationInProgress + "=" + result + " sur la bibliotheque: " + libraryCatalogIOneBookList.get(i).getLibrary().getLibraryname());
+            }
+            model.addAttribute("books", libraryCatalogIOneBookList);
+            model.addAttribute("book", new BookBean());
             model.addAttribute("log", userSession);
-
-            return "reservationLibraryChoiceOneBook";
+        } else {
+            return "errorHtml/errorMissAuth";
         }
+
+        return "reservationLibraryChoiceOneBook";
+
     }
 
     /**
      * For create a book reservation
-     * @param newbook -> bean for libraryChoice input
-     * @param bindingResult -> list of form error
      * @param bookId -> bookid to reserve
      * @param userSession -> user id to reserve
      * @param model -> model
      * @return
      */
-    @RequestMapping(value = "/bookReservation/{bookId}", method = RequestMethod.POST)
-    public String bookReservation(@Valid @ModelAttribute("book") BookBean newbook, BindingResult bindingResult,
-                                  @PathVariable Integer bookId,
+    @RequestMapping(value = "/bookReservation/{bookId}/{libraryId}", method = RequestMethod.GET)
+    public String bookReservation(@PathVariable Integer bookId,@PathVariable Integer libraryId,
                                   @SessionAttribute(value = "userSession", required = false) LibraryUserBean userSession,
                                   Model model) {
 
         BookReservationBean newBookReservation = new BookReservationBean();
 
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("book", newbook);
-            System.out.println("error");
-        } else {
-            //set book to reserve
-            newBookReservation.setBook_id(bookId);
-            // set user_id
-            LibraryUserBean userOnSession = libraryUserManager.getOneUser(userSession.getUseremail());
-            newBookReservation.setUser_id(userOnSession.getId());
-            // need library_id
-            LibraryBean libraryForreservation = libraryManager.getOneLibrary(newbook.getReservationlibrary());
-            newBookReservation.setLibrary_id(libraryForreservation.getId());
+        //set book to reserve
+        newBookReservation.setBook_id(bookId);
+        // set user_id
+        LibraryUserBean userOnSession = libraryUserManager.getOneUser(userSession.getUseremail());
+        newBookReservation.setUser_id(userOnSession.getId());
+        // need library_id
+//            LibraryBean libraryForreservation = libraryManager.getOneLibrary(newbook.getReservationlibrary());
+        newBookReservation.setLibrary_id(libraryId);
 
-            //send for complete date of reservation and write on bdd
-//            bookReservationManager.completeWithDate(newBookReservation);
-            logger.info("nouvelle reservation sur livre d'ID: " + bookId);
+        //send for complete date of reservation and write on bdd
+        bookReservationManager.completeWithDate(newBookReservation);
+        logger.info("nouvelle reservation sur livre d'ID: " + bookId + " dans la bibliotheque d'Id " + libraryId);
 
-            //update if needed disponibility of book ->>
+        //update if needed disponibility of book ->>
 
-            //get iteration number of book on all city
-            int nbrIterationBook = bookManager.getNbrOfIterationForOneBook(newBookReservation.getBook_id());
-            //get count number of reservation for one book in progress
-            int countReservationForOneBookInProgress = bookReservationManager.countReservationInProgressForOneBook(newBookReservation.getBook_id());
-            // change disponibility of book to false if needed
-            bookManager.changedisponibilityOfOneBookIfNeeded(countReservationForOneBookInProgress, nbrIterationBook, newBookReservation.getBook_id());
+        //get iteration number of book on all city
+        int nbrIterationBook = bookManager.getNbrOfIterationForOneBook(newBookReservation.getBook_id());
+        //get count number of reservation for one book in progress
+        int countReservationForOneBookInProgress = bookReservationManager.countReservationInProgressForOneBook(newBookReservation.getBook_id());
+        // change disponibility of book to false if needed
+        bookManager.changedisponibilityOfOneBookIfNeeded(countReservationForOneBookInProgress, nbrIterationBook, newBookReservation.getBook_id());
 
-            //model for log
-            model.addAttribute("log", userSession);
-        }
+        //model for log
+        model.addAttribute("log", userSession);
+
         return "/confirmationhtml/bookReservationOk";
     }
 

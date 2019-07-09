@@ -11,4 +11,5 @@ public interface BookReservationManager {
     void completeWithDate(BookReservationBean bookReservation);
     List<BookReservationBean> bookReservationInProgressList();
     int countReservationInProgressForOneBook(int bookId);
+    int nbrBookReservationInProgressForOneLibraryAndOneBookList(int libraryId, int bookId);
 }

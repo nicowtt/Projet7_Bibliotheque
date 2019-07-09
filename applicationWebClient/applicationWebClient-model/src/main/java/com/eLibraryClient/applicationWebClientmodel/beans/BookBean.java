@@ -16,14 +16,13 @@ public class BookBean {
     // LibraryBean
     private Set<LibraryBean> libraries = new HashSet<>();
 
-    //library
-    private String Reservationlibrary;
-
     //Constructor
     public BookBean() {
     }
 
-    public BookBean(int id, String bookname, String bookauthor, String bookpictureurl, String bookdescription, String booklabel, Boolean allbookreserved, Set<LibraryBean> libraries, String reservationlibrary) {
+    public BookBean(int id, String bookname, String bookauthor, String bookpictureurl,
+                    String bookdescription, String booklabel, Boolean allbookreserved,
+                    Set<LibraryBean> libraries) {
         this.id = id;
         this.bookname = bookname;
         this.bookauthor = bookauthor;
@@ -32,7 +31,6 @@ public class BookBean {
         this.booklabel = booklabel;
         this.allbookreserved = allbookreserved;
         this.libraries = libraries;
-        Reservationlibrary = reservationlibrary;
     }
 
     //getter and setter
@@ -98,13 +96,5 @@ public class BookBean {
 
     public void setLibraries(Set<LibraryBean> libraries) {
         this.libraries = libraries;
-    }
-
-    public String getReservationlibrary() {
-        return Reservationlibrary;
-    }
-
-    public void setReservationlibrary(String reservationlibrary) {
-        Reservationlibrary = reservationlibrary;
     }
 }

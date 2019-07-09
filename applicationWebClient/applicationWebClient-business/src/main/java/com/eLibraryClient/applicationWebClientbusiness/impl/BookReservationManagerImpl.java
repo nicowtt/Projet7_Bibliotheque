@@ -103,4 +103,29 @@ public class BookReservationManagerImpl implements BookReservationManager {
         return bookReservationInProgress;
     }
 
+    /**
+     * Get a number of reservation in progress on a library and for one book
+     * @return
+     */
+    @Override
+    public int nbrBookReservationInProgressForOneLibraryAndOneBookList(int libraryId, int bookId) {
+        int count = 0;
+
+        List<BookReservationBean> bookReservationInProgress = bookReservationInProgressList();
+
+        List<BookReservationBean> bookReservationListKeep = new ArrayList<>();
+
+        //keep only bookId and libraryId
+        for (int i = 0; i < bookReservationInProgress.size(); i++) {
+            if (bookReservationInProgress.get(i).getBook_id() == bookId && bookReservationInProgress.get(i).getLibrary_id() == libraryId) {
+                bookReservationListKeep.add(bookReservationInProgress.get(i));
+            }
+
+        }
+        for (int j = 0; j < bookReservationListKeep.size(); j++) {
+            count++;
+        }
+        return count;
+    }
+
 }
