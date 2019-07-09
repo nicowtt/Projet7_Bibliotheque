@@ -79,6 +79,7 @@ public class BookManagerImpl implements BookManager {
         if (nbrReservationInProgressForOneBook == nbrIteration) {
             // change book disponibility
             microserviceBDDProxy.bookNotDisponible(bookId);
+            logger.info("Le livre d'ID:"+ bookId +" n'est plus reservable" );
         }
     }
 

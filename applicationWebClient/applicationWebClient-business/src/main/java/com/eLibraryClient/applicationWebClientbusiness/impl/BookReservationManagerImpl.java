@@ -5,6 +5,8 @@ import com.eLibraryClient.applicationWebClientbusiness.contract.BookReservationM
 import com.eLibraryClient.applicationWebClientbusiness.contract.DateManager;
 import com.eLibraryClient.applicationWebClientmodel.beans.BookReservationBean;
 import com.eLibraryClient.applicationWebClientproxies.proxies.MicroserviceBDDProxy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +19,8 @@ import static com.eLibraryClient.applicationWebClientbusiness.Enums.CompareDate.
 
 @Component
 public class BookReservationManagerImpl implements BookReservationManager {
+
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private MicroserviceBDDProxy microserviceBDDProxy;

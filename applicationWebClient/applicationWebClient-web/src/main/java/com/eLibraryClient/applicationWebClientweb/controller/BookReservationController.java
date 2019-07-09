@@ -3,12 +3,13 @@ package com.eLibraryClient.applicationWebClientweb.controller;
 import com.eLibraryClient.applicationWebClientbusiness.contract.*;
 import com.eLibraryClient.applicationWebClientmodel.beans.*;
 import org.apache.tomcat.jni.Library;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
+import org.slf4j.LoggerFactory;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,8 @@ import java.util.List;
 
 @Controller
 public class BookReservationController {
+
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private BookManager bookManager;
@@ -89,7 +92,8 @@ public class BookReservationController {
             newBookReservation.setLibrary_id(libraryForreservation.getId());
 
             //send for complete date of reservation and write on bdd
-            bookReservationManager.completeWithDate(newBookReservation);
+//            bookReservationManager.completeWithDate(newBookReservation);
+            logger.info("nouvelle reservation sur livre d'ID: " + bookId);
 
             //update if needed disponibility of book ->>
 

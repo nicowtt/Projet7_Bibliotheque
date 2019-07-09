@@ -2,7 +2,9 @@ package com.eLibraryClient.applicationWebClientbusiness.impl;
 
 import com.eLibraryClient.applicationWebClientbusiness.Enums.CompareDate;
 import com.eLibraryClient.applicationWebClientbusiness.contract.DateManager;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
+import org.slf4j.LoggerFactory;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -12,6 +14,8 @@ import java.util.Date;
 
 @Component
 public class DateManagerImpl implements DateManager {
+
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
      * for today date (dd/MM/yyyy)
@@ -82,19 +86,19 @@ public class DateManagerImpl implements DateManager {
 
         //Compare dates
         if (todayDate.equals(dateToCompare)) {
-            System.out.println(todayDateString + " is the same as " + dateToCompareString);
+            logger.info(todayDateString + " is the same as " + dateToCompareString);
 
             CompareDateEnum = CompareDate.ISTODAY;
         }
 
         if (todayDate.after(dateToCompare)) {
-            System.out.println(todayDateString + " is after " + dateToCompareString);
+            logger.info(todayDateString + " is after " + dateToCompareString);
 
             CompareDateEnum = CompareDate.ISAFTER;
         }
 
         if (todayDate.before(dateToCompare)) {
-            System.out.println(todayDateString + " is before " + dateToCompareString);
+            logger.info(todayDateString + " is before " + dateToCompareString);
 
             CompareDateEnum = CompareDate.ISBEFORE;
         }
