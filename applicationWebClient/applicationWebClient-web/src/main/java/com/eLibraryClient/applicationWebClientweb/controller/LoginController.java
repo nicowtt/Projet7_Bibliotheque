@@ -95,7 +95,7 @@ public class LoginController {
         List<BookBean> books = bookManager.getListAllBooks();
         model.addAttribute("books", books);
 
-        logger.info(userSession.getUseremail() + "est déconnecté");
+        logger.info(userSession.getUseremail() + " est déconnecté");
 
         return "home";
     }

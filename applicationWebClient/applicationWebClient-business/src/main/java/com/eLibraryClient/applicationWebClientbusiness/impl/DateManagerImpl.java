@@ -86,19 +86,19 @@ public class DateManagerImpl implements DateManager {
 
         //Compare dates
         if (todayDate.equals(dateToCompare)) {
-            logger.info(todayDateString + " is the same as " + dateToCompareString);
+            logger.debug(todayDateString + " is the same as " + dateToCompareString);
 
             CompareDateEnum = CompareDate.ISTODAY;
         }
 
         if (todayDate.after(dateToCompare)) {
-            logger.info(todayDateString + " is after " + dateToCompareString);
+            logger.debug(todayDateString + " is after " + dateToCompareString);
 
             CompareDateEnum = CompareDate.ISAFTER;
         }
 
         if (todayDate.before(dateToCompare)) {
-            logger.info(todayDateString + " is before " + dateToCompareString);
+            logger.debug(todayDateString + " is before " + dateToCompareString);
 
             CompareDateEnum = CompareDate.ISBEFORE;
         }

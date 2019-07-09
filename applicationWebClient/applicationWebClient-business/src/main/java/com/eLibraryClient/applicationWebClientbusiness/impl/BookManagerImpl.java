@@ -2,6 +2,7 @@ package com.eLibraryClient.applicationWebClientbusiness.impl;
 
 import ch.qos.logback.core.pattern.FormatInfo;
 import com.eLibraryClient.applicationWebClientbusiness.contract.BookManager;
+import com.eLibraryClient.applicationWebClientbusiness.contract.BookReservationManager;
 import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryCatalogManager;
 import com.eLibraryClient.applicationWebClientmodel.beans.BookBean;
 import com.eLibraryClient.applicationWebClientmodel.beans.LibraryCatalogBean;
@@ -22,6 +23,9 @@ public class BookManagerImpl implements BookManager {
 
     @Autowired
     private LibraryCatalogManager libraryCatalogManager;
+
+    @Autowired
+    private BookReservationManager bookReservationManager;
 
     static final Log logger = LogFactory.getLog(BookManagerImpl.class);
 
@@ -70,13 +74,17 @@ public class BookManagerImpl implements BookManager {
 
     /**
      * For change disponibility of one book when there is no more iteration of book for reservation
-     * @param nbrReservationInProgressForOneBook
-     * @param nbrIteration
      * @param bookId
      */
     @Override
-    public void changedisponibilityOfOneBookIfNeeded(int nbrReservationInProgressForOneBook, int nbrIteration, int bookId) {
-        if (nbrReservationInProgressForOneBook == nbrIteration) {
+    public void changedisponibilityOfOneBookIfNeeded(int bookId) {
+
+        //get iteration number of book on all city
+        int nbrIterationBook = getNbrOfIterationForOneBook(bookId);
+        //get count number of reservation for one book in progress
+        int countReservationForOneBookInProgress = bookReservationManager.countReservationInProgressForOneBook(bookId);
+
+        if (countReservationForOneBookInProgress == nbrIterationBook) {
             // change book disponibility
             microserviceBDDProxy.bookNotDisponible(bookId);
             logger.info("Le livre d'ID:"+ bookId +" n'est plus reservable" );
