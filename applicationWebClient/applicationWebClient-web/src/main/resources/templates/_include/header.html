@@ -29,7 +29,10 @@
 
             <!-- if user is login -->
             <div th:if="${log}!=null"> <div style="color:white" th:text="${log.useremail}"></div>
-                <!--<a href="/personalSpace">Mon espace personnel</a><br>-->
+                <a th:href="@{/PersonalSpace}">Mon espace personnel</a><br>
+                <!--<a th:href="@{'/book/'+ ${b.id}}" type="button" class="btn btn-xs btn-primary" id="onBook"-->
+                   <!--th:if="${!b.allbookreserved}">Emprunter</a>-->
+                <p></p>
                 <a href="/logout">Se deconnecter </a>
             </div>
 

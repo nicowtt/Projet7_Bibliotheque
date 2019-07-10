@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:insert="_include/head.html"></div>
+</head>
+
+<header class="raw">
+    <div th:insert="_include/header.html"></div>
+</header>
+
+<body>
+
+
+<div class="container">
+    <p>test</p>
+
+    <!--<div class="row">-->
+        <!--<div th:each="b : ${books}" class="col-xs-4 col-sm-3 col-md-2">-->
+            <!--<div th:text="${b.bookname}" style="font-weight: bold" id="bookName"></div>-->
+            <!--<div th:text="${b.bookauthor}"style="font-style: italic" id="bookAuthor"></div>-->
+            <!--<p></p>-->
+
+            <!--&lt;!&ndash; cover and description (mouse over) &ndash;&gt;-->
+            <!--<img th:src="${b.bookpictureurl}" style="width:150px;height:200px; border:0px;" class="img-rounded"-->
+                 <!--th:title="${b.bookdescription}">-->
+            <!--&lt;!&ndash;<span class="label label-default" th:text="${b.booklabel}"></span>&ndash;&gt;-->
+            <!--&lt;!&ndash; tag &ndash;&gt;-->
+            <!--<span class="label label-default" id="label" th:text="${b.booklabel}"></span>-->
+            <!--&lt;!&ndash; disponibility &ndash;&gt;-->
+            <!--<div><a th:href="@{'/book/'+ ${b.id}}" type="button" class="btn btn-xs btn-primary" id="onBook"-->
+                    <!--th:if="${!b.allbookreserved}">Emprunter</a></div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+</div>
+
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- Javascript de Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<!-- tooltip -->
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="popover"]').popover()
+    })
+</script>
+
+
+</body>
+</html>

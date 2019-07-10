@@ -9,15 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Repository
+@Transactional
 public interface BookDao extends JpaRepository<Book, Integer> {
 
     @Modifying
-    @Transactional
     @Query(value = "UPDATE book  SET allbookreserved = true WHERE id = ?1", nativeQuery = true)
     void changeDisponibilityToTrueForOneBook(int bookId);
 
     @Modifying
-    @Transactional
     @Query(value = "UPDATE book  SET allbookreserved = false WHERE id = ?1", nativeQuery = true)
     void changeDisponibilityToFalseForOneBook(int bookId);
 
