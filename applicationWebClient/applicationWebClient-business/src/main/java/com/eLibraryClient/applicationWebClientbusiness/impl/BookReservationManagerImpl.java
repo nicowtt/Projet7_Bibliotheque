@@ -142,4 +142,24 @@ public class BookReservationManagerImpl implements BookReservationManager {
         return bookReservationListForOneUser;
     }
 
+    /**
+     * get one Book Reservation
+     * @param reservationId
+     * @return
+     */
+    @Override
+    public BookReservationBean getOneBookReservation(int reservationId) {
+
+        BookReservationBean oneBookReservation =
+                microserviceBDDProxy.getOneBookReservation(reservationId);
+
+        return oneBookReservation;
+    }
+
+    @Override
+    public void updateBookReservation(BookReservationBean bookReservationBean) {
+
+        microserviceBDDProxy.updateReservation(bookReservationBean);
+    }
+
 }

@@ -106,37 +106,4 @@ public class DateManagerImpl implements DateManager {
         return CompareDateEnum;
 
     }
-
-
-//        //comparaison
-//        Calendar someCalendar1 = Calendar.getInstance(); // current date/time
-//        someCalendar1.add(Calendar.DATE, -11);
-//
-//        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-//        Date someDate = null;
-//        try {
-//            someDate = df.parse("01/07/2099");
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        Calendar someCalendar2 = Calendar.getInstance();
-//        someCalendar2.setTime(someDate);
-//
-//        String cal1 = df.format(someCalendar1.getTime());
-//        String cal2 = df.format(someCalendar2.getTime());
-//
-//        if (someCalendar1.equals(someCalendar2)) {
-//            System.out.println(cal1 + " is the same as " + cal2);
-//        }
-//
-//        if (someCalendar1.after(someCalendar2)) {
-//            System.out.println(cal1 + " is after " + cal2);
-//        }
-//
-//        if (someCalendar1.before(someCalendar2)) {
-//            System.out.println(cal1 + " is before " + cal2);
-//        }
-
-
-
 }

@@ -130,6 +130,23 @@ public interface MicroserviceBDDProxy {
      * @param userId
      * @return
      */
-    @GetMapping(value = "/BookReservation/{userId}")
+    @GetMapping(value = "/UserBookReservation/{userId}")
     List<BookReservationBean> getbookReservationForOneUserList(@PathVariable("userId") Integer userId);
+
+    /**
+     * get one reservation
+     * @param reservationId
+     * @return
+     */
+    @GetMapping(value = "/OneBookReservation/{reservationId}")
+    BookReservationBean getOneBookReservation(@PathVariable("reservationId") Integer reservationId);
+
+
+    /**
+     * for update book Reservation
+     * @param bookReservationBean
+     * @return
+     */
+    @PostMapping(value = "/UpdateBookReservation")
+    BookReservationBean updateReservation(@RequestBody BookReservationBean bookReservationBean);
 }

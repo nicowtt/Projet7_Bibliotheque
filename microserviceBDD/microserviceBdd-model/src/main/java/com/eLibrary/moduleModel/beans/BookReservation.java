@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "bookreservation")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class BookReservation {
 
     @Id

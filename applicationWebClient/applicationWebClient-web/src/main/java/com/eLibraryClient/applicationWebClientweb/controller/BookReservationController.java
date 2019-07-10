@@ -24,7 +24,7 @@ public class BookReservationController {
     private LibraryUserManager libraryUserManager;
 
     @Autowired
-    private LibraryManager libraryManager;
+    private DateManager dateManager;
 
     @Autowired
     private BookReservationManager bookReservationManager;
@@ -99,5 +99,41 @@ public class BookReservationController {
 
         return "/confirmationhtml/bookReservationOk";
     }
+
+    /**
+     * For extend book back end time (only one time)
+     * @param reservationId
+     * @param userSession
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/ExtendTime/{reservationId}", method = RequestMethod.GET)
+    public String extendReservationTime(@PathVariable Integer reservationId,
+                                        @SessionAttribute(value = "userSession", required = false) LibraryUserBean userSession,
+                                        Model model) {
+
+        // get book reservation bean in BDD
+        BookReservationBean bookReservationBeanToUpdate = bookReservationManager.getOneBookReservation(reservationId);
+        // add 30 days from today on endofreservationdate
+        String extendDate = dateManager.addDaysOnTodayDate(30);
+        // change boolean extensionofreservation to true -> user can extend date only one time
+        bookReservationBeanToUpdate.setExtensionOfReservation(true);
+        // set new end date on bean
+        bookReservationBeanToUpdate.setEndOfReservationDate(extendDate);
+        // send to microserviceBdd to update this reservation
+        bookReservationManager.updateBookReservation(bookReservationBeanToUpdate);
+
+        //for display updated personalSpace
+        //get full bean userOnSession
+        LibraryUserBean userOnSession = libraryUserManager.getOneUser(userSession.getUseremail());
+        //get list of reservation for this user
+        List<BookReservationBean> bookReservationListForOneUser = bookReservationManager.bookReservationListForOneUser(userOnSession.getId());
+        // model for display
+        model.addAttribute("reservation", bookReservationListForOneUser);
+        model.addAttribute("log", userSession);
+
+        return "/PersonalSpace";
+    }
+
 
 }

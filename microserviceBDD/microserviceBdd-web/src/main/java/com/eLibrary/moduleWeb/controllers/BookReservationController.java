@@ -34,7 +34,7 @@ public class BookReservationController {
      * get list all reservation for one user
      * @return
      */
-    @GetMapping(value = "/BookReservation/{userId}")
+    @GetMapping(value = "/UserBookReservation/{userId}")
     public List<BookReservation> getListReservationForOneUser(@PathVariable Integer userId) {
 
         List<BookReservation> bookReservationList = bookReservationDao.getBookReservationsByUserId(userId);
@@ -56,6 +56,34 @@ public class BookReservationController {
 
         //send 201 CREATED for confirm new reservation is saved
         return new ResponseEntity<BookReservation>(newBookReservation, HttpStatus.CREATED);
+    }
+
+    /**
+     * get One Book reservation
+     * @param reservationId
+     * @return
+     */
+    @GetMapping(value = "/OneBookReservation/{reservationId}")
+    public BookReservation getOneBookReservation(@PathVariable Integer reservationId) {
+
+        BookReservation oneBookReservation = bookReservationDao.getOne(reservationId);
+
+        return oneBookReservation;
+    }
+
+    /**
+     * For extend end date of book reservation
+     * @param bookReservation
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/UpdateBookReservation", consumes = "application/json")
+    public void updateBookReservation(@RequestBody BookReservation bookReservation) {
+
+        String newEndDate = bookReservation.getEndOfReservationDate();
+        int bookReservationId = bookReservation.getId();
+
+        //update newBookreservation
+        bookReservationDao.updateBookReservationExtendEndDate(newEndDate, bookReservationId);
+
     }
 
 
