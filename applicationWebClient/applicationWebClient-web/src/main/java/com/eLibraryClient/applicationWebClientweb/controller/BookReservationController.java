@@ -83,9 +83,9 @@ public class BookReservationController {
         //get userId
         LibraryUserBean userOnSession = libraryUserManager.getOneUser(userSession.getUseremail());
         //set newBookReservation
-        newBookReservation.setBook_id(bookId);
-        newBookReservation.setUser_id(userOnSession.getId());
-        newBookReservation.setLibrary_id(libraryId);
+        newBookReservation.setBookId(bookId);
+        newBookReservation.setUserId(userOnSession.getId());
+        newBookReservation.setLibraryId(libraryId);
 
         //send for complete date of reservation and write on bdd
         bookReservationManager.completeWithDate(newBookReservation);

@@ -31,6 +31,19 @@ public class BookReservationController {
     }
 
     /**
+     * get list all reservation for one user
+     * @return
+     */
+    @GetMapping(value = "/BookReservation/{userId}")
+    public List<BookReservation> getListReservationForOneUser(@PathVariable Integer userId) {
+
+        List<BookReservation> bookReservationList = bookReservationDao.getBookReservationsByUserId(userId);
+
+        return bookReservationList;
+    }
+
+
+    /**
      * Write new reservation
      * @param bookReservation
      * @return

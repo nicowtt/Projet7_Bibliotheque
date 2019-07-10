@@ -12,4 +12,5 @@ public interface BookReservationManager {
     List<BookReservationBean> bookReservationInProgressList();
     int countReservationInProgressForOneBook(int bookId);
     int nbrBookReservationInProgressForOneLibraryAndOneBookList(int libraryId, int bookId);
+    List<BookReservationBean> bookReservationListForOneUser(int userId);
 }
