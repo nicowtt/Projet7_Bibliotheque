@@ -20,42 +20,24 @@
     <div id="listerTopoPapier">
         <table class="table">
             <tr>
-                <th>Date début</th>
+                <th>Livre</th>
+                <th>Auteur</th>
+                <th>date début prêt</th>
                 <th>Date de retour max</th>
                 <th>Prolonger 1 mois</th>
-                <th>Bibliothèque ID</th>
+                <th>Bibliothèque</th>
             </tr>
             <tr th:each="r:${reservation}" th:if="${!r.bookBack}">
+                <td th:text="${r.book.bookname}" id="bookName"></td>
+                <td th:text="${r.book.bookauthor}" id="bookAuthor"></td>
                 <td th:text="${r.beginOfReservationDate}" id="beginReservationDate"></td>
                 <td th:text="${r.endOfReservationDate}" id="endOfReservationDate"></td>
-                <td th:text="${r.extensionOfReservation}" id="extensionOfReservation"></td>
-                <td th:text="${r.libraryId}" id="libraryId"></td>
-                <!--<td>${to.disponibilite ? "oui" : "non"} </td>-->
-                <!--<td><a href="<%=pathWebcontent%>/availabilityTopoPapier/${to.id}">Changer la diponibilité </a></td>-->
-                <!--<td><a href="<%=pathWebcontent%>/updatePaperTopo/${to.id}">modifier </a></td>-->
-                <!--<td><a href="<%=pathWebcontent%>/comfirmationForDeleteTopoPaper/${to.id}">supprimer </a></td>-->
+                <td th:if="${!r.extensionOfReservation}"> <a th:href="@{'/ExtendTime/'+ ${r.id}}">prolonger</a></td>
+                <td th:text="${r.library.libraryname}" id="libraryName"></td>
+                <td><a th:href="@{'/BookBack/' + ${r.book.id}}">Finir le prêt</td>
             </tr>
         </table>
     </div>
-
-    <!--<div class="row">-->
-        <!--<div th:each="b : ${reservation}" class="col-xs-4 col-sm-3 col-md-2">-->
-            <!--<div th:text="${b.bookname}" style="font-weight: bold" id="bookName"></div>-->
-            <!--<div th:text="${b.bookauthor}"style="font-style: italic" id="bookAuthor"></div>-->
-            <!--<p></p>-->
-
-            <!--&lt;!&ndash; cover and description (mouse over) &ndash;&gt;-->
-            <!--<img th:src="${b.bookpictureurl}" style="width:150px;height:200px; border:0px;" class="img-rounded"-->
-                 <!--th:title="${b.bookdescription}">-->
-            <!--&lt;!&ndash;<span class="label label-default" th:text="${b.booklabel}"></span>&ndash;&gt;-->
-            <!--&lt;!&ndash; tag &ndash;&gt;-->
-            <!--<span class="label label-default" id="label" th:text="${b.booklabel}"></span>-->
-            <!--&lt;!&ndash; disponibility &ndash;&gt;-->
-            <!--<div><a th:href="@{'/book/'+ ${b.id}}" type="button" class="btn btn-xs btn-primary" id="onBook"-->
-                    <!--th:if="${!b.allbookreserved}">Emprunter</a></div>-->
-
-        <!--</div>-->
-    <!--</div>-->
 </div>
 
 

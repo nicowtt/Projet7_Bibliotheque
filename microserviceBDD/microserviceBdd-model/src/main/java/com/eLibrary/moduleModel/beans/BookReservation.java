@@ -33,27 +33,24 @@ public class BookReservation {
     @Column(name = "library_id")
     private int libraryId;
 
-//    @ManyToOne //many reservation for one user
-//    @JoinColumn(name = "user_id") //fk
-////    @JsonIgnore
-//    private Libraryuser libraryuser;
+    @ManyToOne //many reservation for one user
+    @JoinColumn(name = "user_id", referencedColumnName = "id", insertable= false, updatable= false) //fk
+    private Libraryuser libraryuser;
 
-//    @ManyToOne //many reservation for one livre
-//    @JoinColumn(name = "book_id") //fk
-////    @JsonIgnore
-//    private Book book;
+    @ManyToOne //many reservation for one livre
+    @JoinColumn(name = "book_id", referencedColumnName = "id", insertable= false, updatable= false) //fk
+    private Book book;
 
-//    @ManyToOne //many reservation for one library
-//    @JoinColumn(name = "library_id") //fk
-////    @JsonIgnore
-//    private Library library;
+    @ManyToOne //many reservation for one library
+    @JoinColumn(name = "library_id", referencedColumnName = "id", insertable= false, updatable= false) //fk
+    private Library library;
 
 
     //constructor
     public BookReservation() {
     }
 
-    public BookReservation(String beginOfReservationDate, String endOfReservationDate, boolean extensionOfReservation, boolean bookBack, int userId, int bookId, int libraryId) {
+    public BookReservation(String beginOfReservationDate, String endOfReservationDate, boolean extensionOfReservation, boolean bookBack, int userId, int bookId, int libraryId, Libraryuser libraryuser, Book book, Library library) {
         this.beginOfReservationDate = beginOfReservationDate;
         this.endOfReservationDate = endOfReservationDate;
         this.extensionOfReservation = extensionOfReservation;
@@ -61,6 +58,9 @@ public class BookReservation {
         this.userId = userId;
         this.bookId = bookId;
         this.libraryId = libraryId;
+        this.libraryuser = libraryuser;
+        this.book = book;
+        this.library = library;
     }
 
     //getter and setter
@@ -128,7 +128,46 @@ public class BookReservation {
         this.libraryId = libraryId;
     }
 
+    public Libraryuser getLibraryuser() {
+        return libraryuser;
+    }
+
+    public void setLibraryuser(Libraryuser libraryuser) {
+        this.libraryuser = libraryuser;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public Library getLibrary() {
+        return library;
+    }
+
+    public void setLibrary(Library library) {
+        this.library = library;
+    }
+
 
     //to string
-
+    @Override
+    public String toString() {
+        return "BookReservation{" +
+                "id=" + id +
+                ", beginOfReservationDate='" + beginOfReservationDate + '\'' +
+                ", endOfReservationDate='" + endOfReservationDate + '\'' +
+                ", extensionOfReservation=" + extensionOfReservation +
+                ", bookBack=" + bookBack +
+                ", userId=" + userId +
+                ", bookId=" + bookId +
+                ", libraryId=" + libraryId +
+                ", libraryuser=" + libraryuser +
+                ", book=" + book +
+                ", library=" + library +
+                '}';
+    }
 }
