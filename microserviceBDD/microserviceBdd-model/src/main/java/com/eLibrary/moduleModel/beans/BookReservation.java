@@ -27,10 +27,10 @@ public class BookReservation {
     @Column(name = "user_id")
     private int userId;
 
-    @Column
+    @Column(name = "book_id")
     private int bookId;
 
-    @Column
+    @Column(name = "library_id")
     private int libraryId;
 
 //    @ManyToOne //many reservation for one user

@@ -25,7 +25,7 @@
                 <th>Prolonger 1 mois</th>
                 <th>Bibliothèque ID</th>
             </tr>
-            <tr th:each="r:${reservation}">
+            <tr th:each="r:${reservation}" th:if="${!r.bookBack}">
                 <td th:text="${r.beginOfReservationDate}" id="beginReservationDate"></td>
                 <td th:text="${r.endOfReservationDate}" id="endOfReservationDate"></td>
                 <td th:text="${r.extensionOfReservation}" id="extensionOfReservation"></td>
