@@ -77,7 +77,7 @@ public class BookManagerImpl implements BookManager {
      * @param bookId
      */
     @Override
-    public void changedisponibilityOfOneBookIfNeeded(int bookId) {
+    public void changeDisponibilityOfOneBookToTrue(int bookId) {
 
         //get iteration number of book on all city
         int nbrIterationBook = getNbrOfIterationForOneBook(bookId);
@@ -89,6 +89,16 @@ public class BookManagerImpl implements BookManager {
             microserviceBDDProxy.bookNotDisponible(bookId);
             logger.info("Le livre d'ID:"+ bookId +" n'est plus reservable" );
         }
+    }
+
+    /**
+     * For change disponibily of one book to false (user can reserve a iteration)
+     * @param bookId
+     */
+    @Override
+    public void changeDisponibilityToFalse(int bookId) {
+        microserviceBDDProxy.bookIsDisponible(bookId);
+
     }
 
 

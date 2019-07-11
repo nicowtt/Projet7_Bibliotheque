@@ -43,6 +43,13 @@ public interface MicroserviceBDDProxy {
     @GetMapping(value = "/ChangeDisponibilityTrue/{bookId}")
     void bookNotDisponible(@PathVariable("bookId")Integer bookId);
 
+    /**
+     * For change disponibility of one book to false (there is book iteration to reserve)
+     * @param bookId
+     */
+    @GetMapping(value = "/ChangeDisponibilityFalse/{bookId}")
+    void bookIsDisponible(@PathVariable("bookId") Integer bookId);
+
 
     //*******************************************//
     //************ USER *************************//
@@ -149,4 +156,11 @@ public interface MicroserviceBDDProxy {
      */
     @PostMapping(value = "/UpdateBookReservation")
     BookReservationBean updateReservation(@RequestBody BookReservationBean bookReservationBean);
+
+    /**
+     * For reservation bookBack
+     * @param reservationId
+     */
+    @GetMapping(value = "/BookBack/{reservationId}")
+    void bookBack(@PathVariable("reservationId") Integer reservationId);
 }

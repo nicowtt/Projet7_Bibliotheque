@@ -35,7 +35,7 @@
                 <td th:if="${!r.extensionOfReservation}"> <a th:href="@{'/ExtendTime/'+ ${r.id}}">prolonger</a></td>
                 <td th:if="${r.extensionOfReservation}"> plus disponible</td>
                 <td th:text="${r.library.libraryname}" id="libraryName"></td>
-                <td><a th:href="@{'/BookBack/' + ${r.book.id}}">Finir le prêt</td>
+                <td><a th:href="@{'/BookBack/' + ${r.getId()}}">Finir le prêt</td>
             </tr>
         </table>
     </div>

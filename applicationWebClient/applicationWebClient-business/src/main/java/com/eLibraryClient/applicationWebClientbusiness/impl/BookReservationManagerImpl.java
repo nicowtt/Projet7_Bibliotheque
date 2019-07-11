@@ -156,10 +156,25 @@ public class BookReservationManagerImpl implements BookReservationManager {
         return oneBookReservation;
     }
 
+    /**
+     * For update a reservation (exemple: extend endtime)
+     * @param bookReservationBean
+     */
     @Override
     public void updateBookReservation(BookReservationBean bookReservationBean) {
 
         microserviceBDDProxy.updateReservation(bookReservationBean);
+    }
+
+    /**
+     * For reservation book back
+     * @param reservationId
+     */
+    @Override
+    public void bookBack(int reservationId) {
+
+        microserviceBDDProxy.bookBack(reservationId);
+
     }
 
 }

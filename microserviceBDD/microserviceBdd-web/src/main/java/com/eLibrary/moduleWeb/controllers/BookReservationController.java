@@ -82,5 +82,15 @@ public class BookReservationController {
 
     }
 
+    /**
+     * For change bookback boolean to true (reservation is end)
+     * @param reservationId
+     */
+    @GetMapping(value = "/BookBack/{reservationId}")
+    public void bookBack(@PathVariable Integer reservationId) {
+
+        bookReservationDao.changeBookBackToTrueForOneReservation(reservationId);
+    }
+
 
 }

@@ -92,7 +92,7 @@ public class BookReservationController {
         logger.info("nouvelle reservation sur livre d'ID: " + bookId + " dans la bibliotheque d'Id " + libraryId);
 
         // change disponibility of book to false if all iteration of this book is reserved
-        bookManager.changedisponibilityOfOneBookIfNeeded(bookId);
+        bookManager.changeDisponibilityOfOneBookToTrue(bookId);
 
         //model for log
         model.addAttribute("log", userSession);
@@ -137,6 +137,32 @@ public class BookReservationController {
         + bookReservationBeanToUpdate.getLibrary().getLibraryname() + ".");
 
         return "/PersonalSpace";
+    }
+
+    /**
+     * For book back
+     * @param reservationId
+     * @param userSession
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/BookBack/{reservationId}", method = RequestMethod.GET)
+    public String bookBack(@PathVariable Integer reservationId,
+                           @SessionAttribute(value = "userSession", required = false)LibraryUserBean userSession,
+                           Model model) {
+        //get reservation bean
+        BookReservationBean bookReservationBeanToUpdate = bookReservationManager.getOneBookReservation(reservationId);
+
+        // for change boolean on microservice
+        bookReservationManager.bookBack(reservationId); // bookback
+        bookManager.changeDisponibilityToFalse(bookReservationBeanToUpdate.getBook().getId()); //allbookreserved
+
+        // model for log
+        model.addAttribute("log", userSession);
+
+        logger.info("L'utilisateur " + userSession.getUseremail() + " a rendu le livre de la reservation d'id: " + reservationId);
+
+        return "/Confirmationhtml/bookBackOk";
     }
 
 

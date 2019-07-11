@@ -11,5 +11,6 @@ public interface BookManager {
     List<BookBean> getListAllBooks();
     BookBean getOneBook(int pBookId);
     int getNbrOfIterationForOneBook(int bookId);
-    void changedisponibilityOfOneBookIfNeeded(int bookId);
+    void changeDisponibilityOfOneBookToTrue(int bookId);
+    void changeDisponibilityToFalse(int bookId);
 }

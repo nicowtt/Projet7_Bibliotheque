@@ -15,4 +15,5 @@ public interface BookReservationManager {
     List<BookReservationBean> bookReservationListForOneUser(int userId);
     BookReservationBean getOneBookReservation(int reservationId);
     void updateBookReservation(BookReservationBean bookReservationBean);
+    void bookBack(int reservationId);
 }
