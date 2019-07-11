@@ -114,8 +114,8 @@ public class BookReservationController {
 
         // get book reservation bean in BDD
         BookReservationBean bookReservationBeanToUpdate = bookReservationManager.getOneBookReservation(reservationId);
-        // add 30 days from today on endofreservationdate
-        String extendDate = dateManager.addDaysOnTodayDate(30);
+        // get end date of reservation and add 28 days (4 weeks)
+        String extendDate = dateManager.addDaysOnOneDate(bookReservationBeanToUpdate.getEndOfReservationDate(), 28);
         // change boolean extensionofreservation to true -> user can extend date only one time
         bookReservationBeanToUpdate.setExtensionOfReservation(true);
         // set new end date on bean
@@ -131,6 +131,10 @@ public class BookReservationController {
         // model for display
         model.addAttribute("reservation", bookReservationListForOneUser);
         model.addAttribute("log", userSession);
+
+        logger.info("L'utilisateur " + userOnSession.getUseremail() + " à prolongé la reservation du livre:"
+        + bookReservationBeanToUpdate.getBook().getBookname() + " dans la bibliothèque:"
+        + bookReservationBeanToUpdate.getLibrary().getLibraryname() + ".");
 
         return "/PersonalSpace";
     }

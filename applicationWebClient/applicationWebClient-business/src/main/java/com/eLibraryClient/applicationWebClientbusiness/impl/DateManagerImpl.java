@@ -34,7 +34,7 @@ public class DateManagerImpl implements DateManager {
     }
 
     /**
-     * For add days to today date (dd/MM/yyyy))
+     * For add days to today date (dd/MM/yyyy)
      *
      * @param pNbrOfDay -> number of days to add
      * @return
@@ -49,6 +49,39 @@ public class DateManagerImpl implements DateManager {
 
         //add days
         calendar.add(Calendar.DATE, pNbrOfDay);
+
+        return simpleDate.format(calendar.getTime());
+    }
+
+    /**
+     * For add day on input date (String -> dd/MM/yyyy)
+     * @param inputDate
+     * @param nbrOfDay
+     * @return
+     */
+    @Override
+    public String addDaysOnOneDate(String inputDate, int nbrOfDay) {
+
+        Date newDate = new Date();
+        DateFormat formatter;
+        Calendar calendar = Calendar.getInstance();
+
+        //template
+        SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
+        formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+        //convert
+        try {
+            newDate = (Date) formatter.parse(inputDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        //set new date on calendar
+        calendar.setTime(newDate);
+
+        //add nbrOfDay
+        calendar.add(Calendar.DATE, nbrOfDay);
 
         return simpleDate.format(calendar.getTime());
     }
