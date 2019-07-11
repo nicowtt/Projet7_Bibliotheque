@@ -8,7 +8,7 @@
         </element>
         <element id="directory" name="lib">
           <element id="archive" name="microservice-dao-0.0.1-SNAPSHOT.jar">
-            <element id="module-output" name="microserviceBdd-dao" />
+            <element id="module-output" name="microservice-dao" />
           </element>
           <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.2.5" />
           <element id="archive" name="microserviceBdd-model-0.0.1-SNAPSHOT.jar">

@@ -14,7 +14,4 @@ public interface BookReservationDao extends JpaRepository<BookReservation, Integ
 
     List<BookReservation> getBookReservationsByUserId(int userId);
 
-    @Modifying
-    @Query(value = "UPDATE bookreservation  SET endofreservationdate = ?1 , extensionofreservation = true WHERE id = ?2", nativeQuery = true)
-    void updateBookReservationExtendEndDate(String newDate, int reservationId);
 }

@@ -72,17 +72,13 @@ public class BookReservationController {
     }
 
     /**
-     * For extend end date of book reservation
+     * For update Book Reservation ( extend endtime and one boolean for avoid another extend to true)
      * @param bookReservation
      */
     @RequestMapping(method = RequestMethod.POST, value = "/UpdateBookReservation", consumes = "application/json")
     public void updateBookReservation(@RequestBody BookReservation bookReservation) {
 
-        String newEndDate = bookReservation.getEndOfReservationDate();
-        int bookReservationId = bookReservation.getId();
-
-        //update newBookreservation
-        bookReservationDao.updateBookReservationExtendEndDate(newEndDate, bookReservationId);
+        bookReservationDao.save(bookReservation);
 
     }
 
