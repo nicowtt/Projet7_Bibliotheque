@@ -6,6 +6,8 @@ import com.eLibraryClient.applicationWebClientproxies.proxies.MicroserviceBDDPro
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class LibraryManagerImpl implements LibraryManager {
 
@@ -22,5 +24,16 @@ public class LibraryManagerImpl implements LibraryManager {
         LibraryBean oneLibrary = microserviceBDDProxy.getOneLibrary(libraryName);
 
         return oneLibrary;
+    }
+
+    /**
+     * To get all libraries list
+     * @return
+     */
+    @Override
+    public List<LibraryBean> getAllLibraries() {
+        List<LibraryBean> allLibrarieslist = microserviceBDDProxy.getAllLibraries();
+
+        return allLibrarieslist;
     }
 }

@@ -91,6 +91,13 @@ public interface MicroserviceBDDProxy {
     @GetMapping(value = "/Library/{name}")
     LibraryBean getOneLibrary(@PathVariable("name") String name);
 
+    /**
+     * Get list of all libraries
+     * @return
+     */
+    @GetMapping(value = "/Libraries")
+    List<LibraryBean> getAllLibraries();
+
     //*******************************************//
     //************ LibraryCatalog ***************//
     //*******************************************//

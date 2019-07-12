@@ -48,7 +48,8 @@ public class NewUserController {
      * @return
      */
     @PostMapping(value = "/newUserPost")
-    public String newUserPost(@Valid @ModelAttribute("newUser") LibraryUserBean libraryNewUser, BindingResult bindingResult, Model model) {
+    public String newUserPost(@Valid @ModelAttribute("newUser") LibraryUserBean libraryNewUser,
+                              BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("newUser", libraryNewUser);
