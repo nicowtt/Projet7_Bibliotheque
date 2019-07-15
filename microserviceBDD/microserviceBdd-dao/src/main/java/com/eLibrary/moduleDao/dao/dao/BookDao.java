@@ -13,11 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 public interface BookDao extends JpaRepository<Book, Integer> {
 
     @Modifying
-    @Query(value = "UPDATE book  SET allbookreserved = true WHERE id = ?1", nativeQuery = true)
-    void changeDisponibilityToTrueForOneBook(int bookId);
-
-    @Modifying
-    @Query(value = "UPDATE book  SET allbookreserved = false WHERE id = ?1", nativeQuery = true)
-    void changeDisponibilityToFalseForOneBook(int bookId);
+    @Query(value = "UPDATE book set allbookreserved = ?2 WHERE id = ?1", nativeQuery = true)
+    void changeDisponibilityForOneBook(int bookId, boolean booleanStatus);
 
 }

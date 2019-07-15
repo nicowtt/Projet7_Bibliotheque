@@ -44,26 +44,14 @@ public class BookController {
     }
 
     /**
-     * change book disponibility to TRUE
+     * change book disponibility
      * @param bookId
      * @return
      */
-    @GetMapping(value = "/ChangeDisponibilityTrue/{bookId}")
-    public HttpStatus changeDisponibilityTrueForOneBook(@PathVariable int bookId) {
-        bookDao.changeDisponibilityToTrueForOneBook(bookId);
-
-        //send httpStatus -> ok
-        return HttpStatus.OK;
-    }
-
-    /**
-     * Change book disponibility to FALSE
-     * @param bookId
-     * @return
-     */
-    @GetMapping(value = "/ChangeDisponibilityFalse/{bookId}")
-    public HttpStatus changeDisponibilityFalseForOneBook(@PathVariable int bookId) {
-        bookDao.changeDisponibilityToFalseForOneBook(bookId);
+    @GetMapping(value = "/ChangeBookDisponibility/{bookId}/{booleanStatus}")
+    public HttpStatus changeBookDisponibilityForOneBook(@PathVariable int bookId,
+                                                        @PathVariable boolean booleanStatus) {
+        bookDao.changeDisponibilityForOneBook(bookId, booleanStatus);
 
         //send httpStatus -> ok
         return HttpStatus.OK;

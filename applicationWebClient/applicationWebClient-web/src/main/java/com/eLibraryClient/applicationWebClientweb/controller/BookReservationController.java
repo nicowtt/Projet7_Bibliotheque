@@ -91,8 +91,8 @@ public class BookReservationController {
         bookReservationManager.completeWithDate(newBookReservation);
         logger.info("nouvelle reservation sur livre d'ID: " + bookId + " dans la bibliotheque d'Id " + libraryId);
 
-        // change disponibility of book to false if all iteration of this book is reserved
-        bookManager.changeDisponibilityOfOneBookToTrue(bookId);
+        // change disponibility of book if needed
+        bookManager.changeDisponibilityForOneBook(bookId);
 
         //model for log
         model.addAttribute("log", userSession);
@@ -153,9 +153,9 @@ public class BookReservationController {
         //get reservation bean
         BookReservationBean bookReservationBeanToUpdate = bookReservationManager.getOneBookReservation(reservationId);
 
-        // for change boolean on microservice
+        // for change boolean's on microservice
         bookReservationManager.bookBack(reservationId); // bookback
-        bookManager.changeDisponibilityToFalse(bookReservationBeanToUpdate.getBook().getId()); //allbookreserved
+        bookManager.changeDisponibilityForOneBook(bookReservationBeanToUpdate.getBook().getId()); //allbookreserved
 
         // model for log
         model.addAttribute("log", userSession);

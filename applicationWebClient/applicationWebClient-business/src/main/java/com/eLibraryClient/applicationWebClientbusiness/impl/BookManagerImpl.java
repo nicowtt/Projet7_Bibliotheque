@@ -73,11 +73,13 @@ public class BookManagerImpl implements BookManager {
     }
 
     /**
-     * For change disponibility of one book when there is no more iteration of book for reservation
+     * For change disponibility for one book
      * @param bookId
      */
     @Override
-    public void changeDisponibilityOfOneBookToTrue(int bookId) {
+    public void changeDisponibilityForOneBook(int bookId) {
+
+        boolean booleanStatus = false;
 
         //get iteration number of book on all city
         int nbrIterationBook = getNbrOfIterationForOneBook(bookId);
@@ -85,21 +87,18 @@ public class BookManagerImpl implements BookManager {
         int countReservationForOneBookInProgress = bookReservationManager.countReservationInProgressForOneBook(bookId);
 
         if (countReservationForOneBookInProgress == nbrIterationBook) {
-            // change book disponibility
-            microserviceBDDProxy.bookNotDisponible(bookId);
-            logger.info("Le livre d'ID:"+ bookId +" n'est plus reservable" );
+            // change book disponibility to true
+            booleanStatus = true;
+            microserviceBDDProxy.changeBookDisponibility(bookId,booleanStatus);
+            logger.info("Le livre d'ID:" + bookId +" n'est plus reservable" );
+        } else {
+            microserviceBDDProxy.changeBookDisponibility(bookId, booleanStatus);
+            logger.info("Il y a " + countReservationForOneBookInProgress + " reservation(s) sur " +
+            nbrIterationBook + " possible du livre d'ID " + bookId + " en cours.");
         }
     }
 
-    /**
-     * For change disponibily of one book to false (user can reserve a iteration)
-     * @param bookId
-     */
-    @Override
-    public void changeDisponibilityToFalse(int bookId) {
-        microserviceBDDProxy.bookIsDisponible(bookId);
 
-    }
 
 
 }
