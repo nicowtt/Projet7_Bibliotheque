@@ -11,6 +11,7 @@
         <module name="applicationWebClient-proxies" />
         <module name="applicationWebClient-web" />
         <module name="mDao" />
+        <module name="microserviceBdd-business" />
         <module name="microserviceBdd-dao" />
         <module name="microserviceBdd-Dao" />
         <module name="microserviceBdd-Model" />
@@ -28,6 +29,7 @@
       <module name="applicationWebClient-web" target="1.8" />
       <module name="mDao" target="1.8" />
       <module name="microserviceBDD" target="1.8" />
+      <module name="microserviceBdd-business" target="1.8" />
       <module name="microserviceBdd-Dao" target="1.8" />
       <module name="microserviceBdd-dao" target="1.8" />
       <module name="microserviceBdd-Model" target="1.8" />

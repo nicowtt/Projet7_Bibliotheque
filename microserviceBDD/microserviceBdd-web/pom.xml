@@ -19,7 +19,7 @@
 	<packaging>war</packaging>
 
 	<!-- ===== Informations générales ===== -->
-	<name>microserviceBdd-web</name>
+	<name>microservice-web</name>
 	<description>module for controllers</description>
 	<version>0.0.1-SNAPSHOT</version>
 
@@ -37,7 +37,13 @@
 		<!-- ===== Modules ===== -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>microservice-dao</artifactId>
+			<artifactId>microserviceBdd-business</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>microserviceBdd-dao</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 

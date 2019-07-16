@@ -1,15 +1,13 @@
 package com.eLibrary.moduleWeb.controllers;
 
+import com.eLibrary.moduleBusiness.contract.BookReservationManager;
 import com.eLibrary.moduleDao.dao.dao.BookReservationDao;
 import com.eLibrary.moduleModel.beans.BookReservation;
-import com.eLibrary.moduleModel.beans.Libraryuser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,6 +15,11 @@ public class BookReservationController {
 
     @Autowired
     private BookReservationDao bookReservationDao;
+
+    @Autowired
+    private BookReservationManager bookReservationManager;
+
+
 
     /**
      * get list all reservation
@@ -90,6 +93,18 @@ public class BookReservationController {
     public void bookBack(@PathVariable Integer reservationId) {
 
         bookReservationDao.changeBookBackToTrueForOneReservation(reservationId);
+    }
+
+    /**
+     * Get book reservation late
+     * @return
+     */
+    @GetMapping(value = "/BookReservationLate")
+    public List<BookReservation> bookReservationLate() {
+
+        List<BookReservation> bookReservationListLate = bookReservationManager.getBookReservationLate();
+
+        return bookReservationListLate;
     }
 
 
