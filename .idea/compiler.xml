@@ -10,6 +10,9 @@
         <module name="applicationWebClient-model" />
         <module name="applicationWebClient-proxies" />
         <module name="applicationWebClient-web" />
+        <module name="batchMail-business" />
+        <module name="batchMail-model" />
+        <module name="batchMail-proxies" />
         <module name="mDao" />
         <module name="microserviceBdd-business" />
         <module name="microserviceBdd-dao" />
@@ -27,6 +30,10 @@
       <module name="applicationWebClient-model" target="1.8" />
       <module name="applicationWebClient-proxies" target="1.8" />
       <module name="applicationWebClient-web" target="1.8" />
+      <module name="batchMail" target="1.8" />
+      <module name="batchMail-business" target="1.8" />
+      <module name="batchMail-model" target="1.8" />
+      <module name="batchMail-proxies" target="1.8" />
       <module name="mDao" target="1.8" />
       <module name="microserviceBDD" target="1.8" />
       <module name="microserviceBdd-business" target="1.8" />

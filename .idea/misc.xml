@@ -32,6 +32,10 @@
         <option value="$PROJECT_DIR$/applicationWebClient/applicationWebClient-model/pom.xml" />
         <option value="$PROJECT_DIR$/applicationWebClient/applicationWebClient-proxies/pom.xml" />
         <option value="$PROJECT_DIR$/applicationWebClient/applicationWebClient-web/pom.xml" />
+        <option value="$PROJECT_DIR$/batchMail/pom.xml" />
+        <option value="$PROJECT_DIR$/batchMail/batchMail-business/pom.xml" />
+        <option value="$PROJECT_DIR$/batchMail/batchMail-proxies/pom.xml" />
+        <option value="$PROJECT_DIR$/batchMail/batchMail-model/pom.xml" />
       </list>
     </option>
   </component>
