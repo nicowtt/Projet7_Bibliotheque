@@ -21,7 +21,6 @@ public class PersonalSpaceController {
 
     @Autowired
     BookReservationManager bookReservationManager;
-
     @Autowired
     LibraryUserManager libraryUserManager;
 
@@ -35,14 +34,11 @@ public class PersonalSpaceController {
     public String personalSpace(@SessionAttribute(value = "userSession", required = false)LibraryUserBean userSession,
                                 Model model) {
 
-        //get full bean userOnSession
         LibraryUserBean userOnSession = libraryUserManager.getOneUser(userSession.getUseremail());
-        //get list of reservation for this user
         List<BookReservationBean> bookReservationListForOneUser = bookReservationManager.bookReservationListForOneUser(userOnSession.getId());
-        // model for display
+
         model.addAttribute("reservation", bookReservationListForOneUser);
         model.addAttribute("log", userSession);
-
         return "PersonalSpace";
     }
 

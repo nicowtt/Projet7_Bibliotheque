@@ -15,29 +15,25 @@ public class LibraryUserManagerImpl implements LibraryUserManager {
     @Autowired
     private MicroserviceBDDProxy microserviceBDDProxy;
 
-
     /**
      * For check if user is present on BDD
-     * @param userSessionEmail -> bean user on session
+     * @param userSessionEmail
      * @return
      */
     @Override
     public LibraryUserBean checkIfUserIsOnBDD(String userSessionEmail) {
-
         List<LibraryUserBean> userBddList = new ArrayList<>();
-        LibraryUserBean userOnBdd = new LibraryUserBean();
-
-        // get list of all user on bdd
+        LibraryUserBean beanUserOnBdd = new LibraryUserBean();
         userBddList = microserviceBDDProxy.getListOfUsers();
 
-        // check if user is on this list
         for (int i = 0; i < userBddList.size(); i++) {
             if (userBddList.get(i).getUseremail().equals(userSessionEmail)) {
-                userOnBdd = userBddList.get(i);
+                beanUserOnBdd = userBddList.get(i);
             }
         }
-        return userOnBdd;
+        return beanUserOnBdd;
     }
+
 
     /**
      * For add new user on microservice BDD
@@ -45,12 +41,11 @@ public class LibraryUserManagerImpl implements LibraryUserManager {
      */
     @Override
     public void addNewUserOnBDD(LibraryUserBean libraryUserBean) {
-        //add new user on Bdd
         microserviceBDDProxy.addUser(libraryUserBean);
     }
 
     /**
-     * get bean with one user
+     * get bean with one user mail
      * @param userEmail
      * @return
      */

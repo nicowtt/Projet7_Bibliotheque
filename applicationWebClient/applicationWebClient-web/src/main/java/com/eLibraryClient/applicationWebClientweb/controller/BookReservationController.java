@@ -35,7 +35,8 @@ public class BookReservationController {
 
 
     /**
-     * User choose library to reserve one book
+     * When user choose a book
+     * -> need choose library to reserve this book
      * @param bookId
      * @param userSession
      * @param model
@@ -46,16 +47,12 @@ public class BookReservationController {
                                                @SessionAttribute(value = "userSession", required = false) LibraryUserBean userSession,
                                                Model model) {
 
-
         if (userSession != null) {
-            // get library list for this book
             List<LibraryCatalogBean> libraryCatalogOnOneBookList = libraryCatalogManager.getLibrariesCatalogForOneBook(bookId);
+            List<LibraryCatalogBean> refineLibraryCatalogOnOneBookList =
+                    libraryCatalogManager.refineDisponibilityWithBookReservationInProgress(bookId, libraryCatalogOnOneBookList );
 
-            // refine book disponibility according to book reservation in progress
-            List<LibraryCatalogBean> affinedLibraryCatalogOnOneBookList = libraryCatalogManager.refineDisponibilityWithBookReservationInProgress(bookId, libraryCatalogOnOneBookList );
-
-            //display model
-            model.addAttribute("books", affinedLibraryCatalogOnOneBookList);
+            model.addAttribute("books", refineLibraryCatalogOnOneBookList);
             model.addAttribute("book", new BookBean());
             model.addAttribute("log", userSession);
         } else {
@@ -68,33 +65,25 @@ public class BookReservationController {
 
     /**
      * For create a book reservation
-     * @param bookId -> bookid to reserve
-     * @param userSession -> user id to reserve
-     * @param model -> model
+     * @param bookId
+     * @param userSession
+     * @param model
      * @return
      */
     @RequestMapping(value = "/bookReservation/{bookId}/{libraryId}", method = RequestMethod.GET)
     public String bookReservation(@PathVariable Integer bookId,@PathVariable Integer libraryId,
                                   @SessionAttribute(value = "userSession", required = false) LibraryUserBean userSession,
                                   Model model) {
-
         BookReservationBean newBookReservation = new BookReservationBean();
 
-        //get userId
-        LibraryUserBean userOnSession = libraryUserManager.getOneUser(userSession.getUseremail());
-        //set newBookReservation
+        LibraryUserBean beanUserOnSession = libraryUserManager.getOneUser(userSession.getUseremail());
         newBookReservation.setBookId(bookId);
-        newBookReservation.setUserId(userOnSession.getId());
+        newBookReservation.setUserId(beanUserOnSession.getId());
         newBookReservation.setLibraryId(libraryId);
-
-        //send for complete date of reservation and write on bdd
         bookReservationManager.completeWithDate(newBookReservation);
         logger.info("nouvelle reservation sur livre d'ID: " + bookId + " dans la bibliotheque d'Id " + libraryId);
-
-        // change disponibility of book if needed
         bookManager.changeDisponibilityForOneBook(bookId);
 
-        //model for log
         model.addAttribute("log", userSession);
 
         return "/confirmationhtml/bookReservationOk";
@@ -111,28 +100,19 @@ public class BookReservationController {
     public String extendReservationTime(@PathVariable Integer reservationId,
                                         @SessionAttribute(value = "userSession", required = false) LibraryUserBean userSession,
                                         Model model) {
+        LibraryUserBean beanUserOnSession = libraryUserManager.getOneUser(userSession.getUseremail());
+        List<BookReservationBean> bookReservationListForOneUser = bookReservationManager.bookReservationListForOneUser(beanUserOnSession.getId());
 
-        // get book reservation bean in BDD
         BookReservationBean bookReservationBeanToUpdate = bookReservationManager.getOneBookReservation(reservationId);
-        // get end date of reservation and add 28 days (4 weeks)
         String extendDate = dateManager.addDaysOnOneDate(bookReservationBeanToUpdate.getEndOfReservationDate(), 28);
-        // change boolean extensionofreservation to true -> user can extend date only one time
         bookReservationBeanToUpdate.setExtensionOfReservation(true);
-        // set new end date on bean
         bookReservationBeanToUpdate.setEndOfReservationDate(extendDate);
-        // send to microserviceBdd to update this reservation
         bookReservationManager.updateBookReservation(bookReservationBeanToUpdate);
 
-        //for display updated personalSpace
-        //get full bean userOnSession
-        LibraryUserBean userOnSession = libraryUserManager.getOneUser(userSession.getUseremail());
-        //get list of reservation for this user
-        List<BookReservationBean> bookReservationListForOneUser = bookReservationManager.bookReservationListForOneUser(userOnSession.getId());
-        // model for display
         model.addAttribute("reservation", bookReservationListForOneUser);
         model.addAttribute("log", userSession);
 
-        logger.info("L'utilisateur " + userOnSession.getUseremail() + " à prolongé la reservation du livre:"
+        logger.info("L'utilisateur " + beanUserOnSession.getUseremail() + " à prolongé la reservation du livre:"
         + bookReservationBeanToUpdate.getBook().getBookname() + " dans la bibliothèque:"
         + bookReservationBeanToUpdate.getLibrary().getLibraryname() + ".");
 
@@ -140,7 +120,7 @@ public class BookReservationController {
     }
 
     /**
-     * For book back
+     * For book bring back
      * @param reservationId
      * @param userSession
      * @param model
@@ -150,14 +130,11 @@ public class BookReservationController {
     public String bookBack(@PathVariable Integer reservationId,
                            @SessionAttribute(value = "userSession", required = false)LibraryUserBean userSession,
                            Model model) {
-        //get reservation bean
         BookReservationBean bookReservationBeanToUpdate = bookReservationManager.getOneBookReservation(reservationId);
 
-        // for change boolean's on microservice
-        bookReservationManager.bookBack(reservationId); // bookback
-        bookManager.changeDisponibilityForOneBook(bookReservationBeanToUpdate.getBook().getId()); //allbookreserved
+        bookReservationManager.bookBack(reservationId);
+        bookManager.changeDisponibilityForOneBook(bookReservationBeanToUpdate.getBook().getId());
 
-        // model for log
         model.addAttribute("log", userSession);
 
         logger.info("L'utilisateur " + userSession.getUseremail() + " a rendu le livre de la reservation d'id: " + reservationId);

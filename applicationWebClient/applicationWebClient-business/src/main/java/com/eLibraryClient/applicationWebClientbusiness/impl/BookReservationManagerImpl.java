@@ -24,7 +24,6 @@ public class BookReservationManagerImpl implements BookReservationManager {
 
     @Autowired
     private MicroserviceBDDProxy microserviceBDDProxy;
-
     @Autowired
     private DateManager dateManager;
 
@@ -34,19 +33,11 @@ public class BookReservationManagerImpl implements BookReservationManager {
      */
     @Override
     public void completeWithDate(BookReservationBean bookReservation) {
-        //get today date
         String todayDate = dateManager.todayDate();
-        //get 4 week after date
         String endOfReservationDate = dateManager.addDaysOnTodayDate(28);
-
-        //set reservation dates
         bookReservation.setBeginOfReservationDate(todayDate);
         bookReservation.setEndOfReservationDate(endOfReservationDate);
-
-        //set extention of reservation
         bookReservation.setExtensionOfReservation(false);
-
-        //Write on  microserviceBDD
         microserviceBDDProxy.addReservation(bookReservation);
     }
 
@@ -56,28 +47,19 @@ public class BookReservationManagerImpl implements BookReservationManager {
      */
     @Override
     public List<BookReservationBean> bookReservationInProgressList() {
-
         CompareDate beginCompareEnum = ISBEFORE;
-
-        //get all reservations
         List<BookReservationBean> allReservations = microserviceBDDProxy.getAllReservation();
-
-        //create a list of reservation is in progress
         List<BookReservationBean> reservationInProgress = new ArrayList<>();
 
         for (int i = 0; i < allReservations.size(); i++) {
             String beginOfReservationDate = allReservations.get(i).getBeginOfReservationDate();
-            String endOfReservationDate = allReservations.get(i).getEndOfReservationDate();
-
             beginCompareEnum = dateManager.compareDateWithToday(beginOfReservationDate);
-            if ((beginCompareEnum == ISTODAY
-                    || beginCompareEnum == ISAFTER)
+
+            if ((beginCompareEnum == ISTODAY || beginCompareEnum == ISAFTER)
                     && !allReservations.get(i).isBookBack()) {
                 reservationInProgress.add(allReservations.get(i));
             }
-
         }
-
         return reservationInProgress;
 
     }
@@ -90,13 +72,10 @@ public class BookReservationManagerImpl implements BookReservationManager {
     @Override
     public int countReservationInProgressForOneBook(int bookId) {
         int bookReservationInProgress = 0;
+        List<BookReservationBean> reservationInProgress = bookReservationInProgressList();
 
-        //get all reservation in progress
-        List<BookReservationBean> reservationinProgress = bookReservationInProgressList();
-
-        //count for one book
-        for (int i = 0; i < reservationinProgress.size(); i++) {
-            if (reservationinProgress.get(i).getBookId() == bookId) {
+        for (int i = 0; i < reservationInProgress.size(); i++) {
+            if (reservationInProgress.get(i).getBookId() == bookId) {
                 bookReservationInProgress++;
             }
         }
@@ -110,17 +89,13 @@ public class BookReservationManagerImpl implements BookReservationManager {
     @Override
     public int nbrBookReservationInProgressForOneLibraryAndOneBookList(int libraryId, int bookId) {
         int count = 0;
-
         List<BookReservationBean> bookReservationInProgress = bookReservationInProgressList();
-
         List<BookReservationBean> bookReservationListKeep = new ArrayList<>();
 
-        //keep only bookId and libraryId
         for (int i = 0; i < bookReservationInProgress.size(); i++) {
             if (bookReservationInProgress.get(i).getBookId() == bookId && bookReservationInProgress.get(i).getLibraryId() == libraryId) {
                 bookReservationListKeep.add(bookReservationInProgress.get(i));
             }
-
         }
         for (int j = 0; j < bookReservationListKeep.size(); j++) {
             count++;
@@ -135,10 +110,8 @@ public class BookReservationManagerImpl implements BookReservationManager {
      */
     @Override
     public List<BookReservationBean> bookReservationListForOneUser(int userId) {
-
         List<BookReservationBean> bookReservationListForOneUser =
                 microserviceBDDProxy.getbookReservationForOneUserList(userId);
-
         return bookReservationListForOneUser;
     }
 
@@ -149,10 +122,8 @@ public class BookReservationManagerImpl implements BookReservationManager {
      */
     @Override
     public BookReservationBean getOneBookReservation(int reservationId) {
-
         BookReservationBean oneBookReservation =
                 microserviceBDDProxy.getOneBookReservation(reservationId);
-
         return oneBookReservation;
     }
 
@@ -162,7 +133,6 @@ public class BookReservationManagerImpl implements BookReservationManager {
      */
     @Override
     public void updateBookReservation(BookReservationBean bookReservationBean) {
-
         microserviceBDDProxy.updateReservation(bookReservationBean);
     }
 
@@ -172,9 +142,7 @@ public class BookReservationManagerImpl implements BookReservationManager {
      */
     @Override
     public void bookBack(int reservationId) {
-
         microserviceBDDProxy.bookBack(reservationId);
-
     }
 
 }

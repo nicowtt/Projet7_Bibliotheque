@@ -22,7 +22,6 @@ public class LibraryManagerImpl implements LibraryManager {
     @Override
     public LibraryBean getOneLibrary(String libraryName) {
         LibraryBean oneLibrary = microserviceBDDProxy.getOneLibrary(libraryName);
-
         return oneLibrary;
     }
 
@@ -33,7 +32,6 @@ public class LibraryManagerImpl implements LibraryManager {
     @Override
     public List<LibraryBean> getAllLibraries() {
         List<LibraryBean> allLibrarieslist = microserviceBDDProxy.getAllLibraries();
-
         return allLibrarieslist;
     }
 }

@@ -28,15 +28,13 @@ public class SearchController {
 
     @Autowired
     BookManager bookManager;
-
     @Autowired
     LibraryManager libraryManager;
-
     @Autowired
     LibraryCatalogManager libraryCatalogManager;
 
     /**
-     * For display filters (by library or by book label)
+     * For display filters (by library or/and by book label)
      * @param userSession
      * @param model
      * @return
@@ -44,21 +42,15 @@ public class SearchController {
     @GetMapping(value = "/Search")
     public String search(@SessionAttribute(value = "userSession", required = false)LibraryUserBean userSession,
                          Model model) {
-
         BookBean newBook = new BookBean();
-
-        // faire un model pour afficher la liste des bibliothèques
         List<LibraryBean> allLibrariesList = libraryManager.getAllLibraries();
+        List<BookBean> books = bookManager.getListAllBooks();
+        //todo ->amélioration faire une methode pour avoir une liste de bookBean sans repetition (label) à checker
+
         model.addAttribute("libraries", allLibrariesList);
         model.addAttribute("library", new LibraryBean());
-
-        //faire un model pour afficher le choix des tags
-        //todo ->amélioration faire une methode pour avoir une liste de bookBean sans repetition (label) à checker
-        List<BookBean> books = bookManager.getListAllBooks();
         model.addAttribute("books", books);
         model.addAttribute("book", newBook);
-
-        //model for "library user session"
         if (userSession != null) {
             model.addAttribute("log", userSession);
         }
@@ -78,13 +70,10 @@ public class SearchController {
                              @Valid @ModelAttribute("book") BookBean bookBean,
                              @SessionAttribute(value = "userSession", required = false)LibraryUserBean userSession,
                              Model model) {
-
         List<LibraryCatalogBean> LibraryCatalogListWithFilter = libraryCatalogManager.getListOfLibraryCatalogWithLibraryNameAndBookLabelFilter(libraryBean.getLibraryname(), bookBean.getBooklabel());
 
-        //model for display all books
         model.addAttribute("libraryCatalog", LibraryCatalogListWithFilter);
         model.addAttribute("log", userSession);
-
         return "/resultOfSearch";
 
     }

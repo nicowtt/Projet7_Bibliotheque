@@ -23,22 +23,18 @@ public class HomeController {
     /**
      * For display home page
      *
-     * @param model -> model
-     * @return home.html
+     * @param model
+     * @return
      */
     @RequestMapping("/home")
     public String accueil(Model model, @SessionAttribute(value = "userSession", required = false)LibraryUserBean userSession){
 
         List<BookBean> books = bookManager.getListAllBooks();
 
-        //model for display all books
         model.addAttribute("books", books);
-
-        //model for "library user session"
         if (userSession != null) {
             model.addAttribute("log", userSession);
         }
-
         return "home";
     }
 }

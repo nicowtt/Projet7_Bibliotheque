@@ -11,15 +11,14 @@ public class PasswordEncoderImpl implements PasswordEncoder {
     /**
      * For hash password
      *
-     * @param password_plaintext -> clear text
+     * @param password_plaintext
      * @return -> hashed password
      */
     @Override
     public String hashPassword(String password_plaintext) {
-
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String hashedPassword = passwordEncoder.encode(password_plaintext);
 
+        String hashedPassword = passwordEncoder.encode(password_plaintext);
         return hashedPassword;
     }
 
@@ -32,11 +31,9 @@ public class PasswordEncoderImpl implements PasswordEncoder {
      */
     @Override
     public boolean checkPassword(String pPasswordPlainText, String pHashingPassword) {
-
         boolean pass = false;
 
         pass = BCrypt.checkpw(pPasswordPlainText,pHashingPassword);
-
         return pass;
     }
 }

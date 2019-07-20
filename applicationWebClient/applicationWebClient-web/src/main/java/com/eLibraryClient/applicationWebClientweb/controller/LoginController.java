@@ -23,10 +23,8 @@ public class LoginController {
 
     @Autowired
     private LibraryUserManager libraryUserManager;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
-
     @Autowired
     private BookManager bookManager;
 
@@ -46,18 +44,13 @@ public class LoginController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String doLogin(@ModelAttribute("userSession")LibraryUserBean userSession, WebRequest request, SessionStatus status, Model model) {
-
         boolean checkPassword = false;
-        LibraryUserBean userIsOnBdd = new LibraryUserBean();
+        LibraryUserBean beanUserIsOnBdd = new LibraryUserBean();
+        List<BookBean> listBooks = bookManager.getListAllBooks();
 
-        //set form input; user session email and password
-        userIsOnBdd.setUseremail(userSession.getUseremail());
-
-        //check if user exist on BDD
-        userIsOnBdd = libraryUserManager.checkIfUserIsOnBDD(userSession.getUseremail());
-
-        //check password input
-        checkPassword = passwordEncoder.checkPassword(userSession.getUserpassword(), userIsOnBdd.getUserpassword());
+        beanUserIsOnBdd.setUseremail(userSession.getUseremail());
+        beanUserIsOnBdd = libraryUserManager.checkIfUserIsOnBDD(userSession.getUseremail());
+        checkPassword = passwordEncoder.checkPassword(userSession.getUserpassword(), beanUserIsOnBdd.getUserpassword());
 
         if (checkPassword) {
             model.addAttribute("log", userSession);
@@ -66,37 +59,31 @@ public class LoginController {
             request.removeAttribute("userSession", WebRequest.SCOPE_SESSION);
             return "errorHtml/errorLogin";
         }
-        //for display all books -> home page
-        List<BookBean> books = bookManager.getListAllBooks();
-        model.addAttribute("books", books);
 
+        model.addAttribute("books", listBooks);
         logger.info(userSession.getUseremail() + " est en session");
-
         return "home";
     }
 
     /**
-     * for logout
+     * for user logout
      *
-     * @param userSession -> user on session
-     * @param request
-     * @param status
-     * @param model -> model
+     * @param userSession
+     * @param webRequest
+     * @param sessionStatus
+     * @param model
      * @return
      */
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String doLogout(@SessionAttribute(value = "userSession")LibraryUserBean userSession, WebRequest request, SessionStatus status, Model model) {
-
-        // remove session
-        status.setComplete();
-        request.removeAttribute("userSession", WebRequest.SCOPE_SESSION);
-
-        //for display home page
+    public String doLogout(@SessionAttribute(value = "userSession")LibraryUserBean userSession,
+                           WebRequest webRequest, SessionStatus sessionStatus, Model model) {
         List<BookBean> books = bookManager.getListAllBooks();
+
+        sessionStatus.setComplete();
+        webRequest.removeAttribute("userSession", WebRequest.SCOPE_SESSION);
+
         model.addAttribute("books", books);
-
         logger.info(userSession.getUseremail() + " est déconnecté");
-
         return "home";
     }
 

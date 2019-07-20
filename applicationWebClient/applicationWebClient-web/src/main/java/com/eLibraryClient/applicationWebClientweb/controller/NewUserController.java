@@ -22,51 +22,44 @@ public class NewUserController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
     @Autowired
     private LibraryUserManager libraryUserManager;
 
     /**
      * For display newUser page
-     * @param model -> model
+     * @param model
      * @return
      */
     @GetMapping(value = "/newUser")
     public String newUser(Model model) {
 
-        //model for display new user form
         model.addAttribute("newUser", new LibraryUserBean());
-
         return "/newUser";
     }
 
     /**
-     * For write on microserviceDD
-     * @param libraryNewUser -> bean to validate
-     * @param bindingResult -> list of error
-     * @param model -> models
+     * save new user
+     * @param libraryNewUserBean
+     * @param bindingResult
+     * @param model
      * @return
      */
     @PostMapping(value = "/newUserPost")
-    public String newUserPost(@Valid @ModelAttribute("newUser") LibraryUserBean libraryNewUser,
+    public String newUserPost(@Valid @ModelAttribute("newUser") LibraryUserBean libraryNewUserBean,
                               BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("newUser", libraryNewUser);
+            model.addAttribute("newUser", libraryNewUserBean);
             logger.info("*********");
             logger.info("erreur lors du remplissage formulaire enregistrement nouvel utilisateur");
             logger.debug("debug");
-
             return "/newUser";
         } else {
-            // hashing new password
-            String hashingPassword = passwordEncoder.hashPassword(libraryNewUser.getUserpassword());
-            // set on bean newUser
-            libraryNewUser.setUserpassword(hashingPassword);
-            // write on bdd
-            libraryUserManager.addNewUserOnBDD(libraryNewUser);
-
+            String hashingPassword = passwordEncoder.hashPassword(libraryNewUserBean.getUserpassword());
+            libraryNewUserBean.setUserpassword(hashingPassword);
+            libraryUserManager.addNewUserOnBDD(libraryNewUserBean);
             return "confirmationhtml/userWrittingOk";
         }
     }
 }
+
