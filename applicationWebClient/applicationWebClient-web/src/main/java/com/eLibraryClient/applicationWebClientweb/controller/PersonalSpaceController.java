@@ -39,6 +39,7 @@ public class PersonalSpaceController {
 
         model.addAttribute("reservation", bookReservationListForOneUser);
         model.addAttribute("log", userSession);
+
         return "PersonalSpace";
     }
 

@@ -12,6 +12,8 @@ public class MailConfig {
     @Bean
     public JavaMailSender getJavaMailSender() {
 
+        // injecter le .properties
+
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);

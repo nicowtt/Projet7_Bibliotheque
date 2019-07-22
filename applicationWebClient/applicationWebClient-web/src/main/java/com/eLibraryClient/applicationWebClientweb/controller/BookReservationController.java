@@ -19,20 +19,14 @@ public class BookReservationController {
 
     @Autowired
     private BookManager bookManager;
-
     @Autowired
     private LibraryUserManager libraryUserManager;
-
     @Autowired
     private DateManager dateManager;
-
     @Autowired
     private BookReservationManager bookReservationManager;
-
     @Autowired
     private LibraryCatalogManager libraryCatalogManager;
-
-
 
     /**
      * When user choose a book
@@ -82,6 +76,7 @@ public class BookReservationController {
         newBookReservation.setLibraryId(libraryId);
         bookReservationManager.completeWithDate(newBookReservation);
         logger.info("nouvelle reservation sur livre d'ID: " + bookId + " dans la bibliotheque d'Id " + libraryId);
+        // check book disponibility if needed
         bookManager.changeDisponibilityForOneBook(bookId);
 
         model.addAttribute("log", userSession);
@@ -133,6 +128,7 @@ public class BookReservationController {
         BookReservationBean bookReservationBeanToUpdate = bookReservationManager.getOneBookReservation(reservationId);
 
         bookReservationManager.bookBack(reservationId);
+        // check book disponibility
         bookManager.changeDisponibilityForOneBook(bookReservationBeanToUpdate.getBook().getId());
 
         model.addAttribute("log", userSession);

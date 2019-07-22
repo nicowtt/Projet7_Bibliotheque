@@ -18,7 +18,6 @@ public class EmailService {
     @Qualifier("getJavaMailSender")
     @Autowired
     private JavaMailSender emailSender;
-
     @Autowired
     private MicroserviceBDDProxy microserviceBDDProxy;
 
@@ -31,13 +30,11 @@ public class EmailService {
         String subject = "";
         String text = "";
 
-        //get late book reservation list from microserviceBDD
         List<BookReservationBean> lateBookReservation =
                 microserviceBDDProxy.getBookReservationLate();
 
         // send email for each reservation
         for (int i = 0; i < lateBookReservation.size(); i++) {
-            //information for mail
             to = lateBookReservation.get(i).getLibraryuser().getUseremail();
             subject = "Rappel, date de fin de réservation dépassé !";
             text = "Bonjour " + lateBookReservation.get(i).getLibraryuser().getUserfirstname() + "," +

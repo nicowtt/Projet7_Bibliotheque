@@ -39,6 +39,7 @@
 		<module>batchMail-business</module>
 		<module>batchMail-proxies</module>
 		<module>batchMail-model</module>
+		<module>../commons/libraryModels</module>
 	</modules>
 
 	<!-- =============================================================== -->

@@ -32,9 +32,11 @@ public class HomeController {
         List<BookBean> books = bookManager.getListAllBooks();
 
         model.addAttribute("books", books);
+        //for display user on session
         if (userSession != null) {
             model.addAttribute("log", userSession);
         }
+
         return "home";
     }
 }

@@ -137,7 +137,7 @@ public class BookReservationManagerImpl implements BookReservationManager {
     }
 
     /**
-     * For reservation book back
+     * For reservation book back (when user bring back book)
      * @param reservationId
      */
     @Override

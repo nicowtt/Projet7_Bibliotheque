@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class PasswordEncoderImpl implements PasswordEncoder {
 
     /**
-     * For hash password
+     * For hashing password
      *
      * @param password_plaintext
      * @return -> hashed password

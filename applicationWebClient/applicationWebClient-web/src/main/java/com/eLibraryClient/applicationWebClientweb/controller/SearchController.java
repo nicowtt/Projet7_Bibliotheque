@@ -74,6 +74,7 @@ public class SearchController {
 
         model.addAttribute("libraryCatalog", LibraryCatalogListWithFilter);
         model.addAttribute("log", userSession);
+
         return "/resultOfSearch";
 
     }

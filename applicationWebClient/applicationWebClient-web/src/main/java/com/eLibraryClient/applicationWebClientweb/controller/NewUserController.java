@@ -26,7 +26,7 @@ public class NewUserController {
     private LibraryUserManager libraryUserManager;
 
     /**
-     * For display newUser page
+     * For display new User page
      * @param model
      * @return
      */
@@ -34,6 +34,7 @@ public class NewUserController {
     public String newUser(Model model) {
 
         model.addAttribute("newUser", new LibraryUserBean());
+
         return "/newUser";
     }
 
@@ -53,11 +54,13 @@ public class NewUserController {
             logger.info("*********");
             logger.info("erreur lors du remplissage formulaire enregistrement nouvel utilisateur");
             logger.debug("debug");
+
             return "/newUser";
         } else {
             String hashingPassword = passwordEncoder.hashPassword(libraryNewUserBean.getUserpassword());
             libraryNewUserBean.setUserpassword(hashingPassword);
             libraryUserManager.addNewUserOnBDD(libraryNewUserBean);
+
             return "confirmationhtml/userWrittingOk";
         }
     }

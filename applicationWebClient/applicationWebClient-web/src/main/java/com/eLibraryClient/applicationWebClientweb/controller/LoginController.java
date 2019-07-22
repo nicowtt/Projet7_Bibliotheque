@@ -45,16 +45,17 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String doLogin(@ModelAttribute("userSession")LibraryUserBean userSession, WebRequest request, SessionStatus status, Model model) {
         boolean checkPassword = false;
-        LibraryUserBean beanUserIsOnBdd = new LibraryUserBean();
+        LibraryUserBean newUserBean = new LibraryUserBean();
         List<BookBean> listBooks = bookManager.getListAllBooks();
 
-        beanUserIsOnBdd.setUseremail(userSession.getUseremail());
-        beanUserIsOnBdd = libraryUserManager.checkIfUserIsOnBDD(userSession.getUseremail());
-        checkPassword = passwordEncoder.checkPassword(userSession.getUserpassword(), beanUserIsOnBdd.getUserpassword());
+        newUserBean.setUseremail(userSession.getUseremail());
+        newUserBean = libraryUserManager.checkIfUserIsOnBDD(userSession.getUseremail());
+        checkPassword = passwordEncoder.checkPassword(userSession.getUserpassword(), newUserBean.getUserpassword());
 
         if (checkPassword) {
             model.addAttribute("log", userSession);
         } else {
+            //clean session
             status.setComplete();
             request.removeAttribute("userSession", WebRequest.SCOPE_SESSION);
             return "errorHtml/errorLogin";
@@ -62,6 +63,7 @@ public class LoginController {
 
         model.addAttribute("books", listBooks);
         logger.info(userSession.getUseremail() + " est en session");
+
         return "home";
     }
 
@@ -79,11 +81,13 @@ public class LoginController {
                            WebRequest webRequest, SessionStatus sessionStatus, Model model) {
         List<BookBean> books = bookManager.getListAllBooks();
 
+        //clean session
         sessionStatus.setComplete();
         webRequest.removeAttribute("userSession", WebRequest.SCOPE_SESSION);
 
         model.addAttribute("books", books);
         logger.info(userSession.getUseremail() + " est déconnecté");
+
         return "home";
     }
 
