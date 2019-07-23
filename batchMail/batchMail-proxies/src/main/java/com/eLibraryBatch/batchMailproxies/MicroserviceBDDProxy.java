@@ -1,13 +1,10 @@
 package com.eLibraryBatch.batchMailproxies;
 
 
-import com.eLibraryBatch.batchMailmodel.BookReservationBean;
+import com.eLibraryModel.beans.BookReservationBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -23,6 +20,6 @@ public interface MicroserviceBDDProxy {
      * Get all late book reservation
      */
     @GetMapping(value = "/BookReservationLate")
-    public List<BookReservationBean>getBookReservationLate();
+    public List<BookReservationBean> getBookReservationLate();
 
 }

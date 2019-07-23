@@ -1,7 +1,9 @@
 package com.eLibraryBatch.batchMailbusiness.Impl;
 
-import com.eLibraryBatch.batchMailmodel.BookReservationBean;
 import com.eLibraryBatch.batchMailproxies.MicroserviceBDDProxy;
+import com.eLibraryModel.beans.BookReservationBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mail.SimpleMailMessage;
@@ -20,6 +22,8 @@ public class EmailService {
     private JavaMailSender emailSender;
     @Autowired
     private MicroserviceBDDProxy microserviceBDDProxy;
+
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
      * For send email to people who didn't bring back books
@@ -51,6 +55,9 @@ public class EmailService {
             message.setSubject(subject);
             message.setText(text);
             emailSender.send(message);
+            logger.info("*******************************");
+            logger.info("Send reminder EMails ok!");
+            logger.info("*******************************");
     }
     }
 }

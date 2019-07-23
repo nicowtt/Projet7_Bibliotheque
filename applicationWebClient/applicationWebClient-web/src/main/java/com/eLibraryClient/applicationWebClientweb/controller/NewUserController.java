@@ -2,8 +2,7 @@ package com.eLibraryClient.applicationWebClientweb.controller;
 
 import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryUserManager;
 import com.eLibraryClient.applicationWebClientbusiness.contract.PasswordEncoder;
-import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUserBean;
-import com.eLibraryClient.applicationWebClientproxies.proxies.MicroserviceBDDProxy;
+import com.eLibraryModel.beans.LibraryUserBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

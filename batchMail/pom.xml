@@ -38,8 +38,7 @@
 	<modules>
 		<module>batchMail-business</module>
 		<module>batchMail-proxies</module>
-		<module>batchMail-model</module>
-		<module>../commons/libraryModels</module>
+		<module>../commons/libraries-model</module>
 	</modules>
 
 	<!-- =============================================================== -->
@@ -61,8 +60,8 @@
 			</dependency>
 
 			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>batchMail-model</artifactId>
+				<groupId>com.eLibraryModel</groupId>
+				<artifactId>libraries-model</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
@@ -141,6 +140,7 @@
 			<!--<plugin>-->
 				<!--<groupId>org.springframework.boot</groupId>-->
 				<!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+				<!--<version>2.1.5.RELEASE</version>-->
 			<!--</plugin>-->
 		</plugins>
 	</build>

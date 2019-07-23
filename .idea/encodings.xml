@@ -10,7 +10,7 @@
     <file url="file://$PROJECT_DIR$/batchMail/batchMail-business" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/batchMail/batchMail-model" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/batchMail/batchMail-proxies" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/batchMail/batchMail-proxies" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/commons/libraries-model" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microserviceBDD" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microserviceBDD/microserviceBdd-business" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microserviceBDD/microserviceBdd-dao" charset="UTF-8" />

@@ -35,8 +35,8 @@
 	<dependencies>
 		<!-- ===== Modules ===== -->
 		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>applicationWebClient-model</artifactId>
+			<groupId>com.eLibraryModel</groupId>
+			<artifactId>libraries-model</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
@@ -59,7 +59,7 @@
 			<artifactId>spring-cloud-dependencies</artifactId>
 			<version>${spring-cloud.version}</version>
 			<type>pom</type>
-			<scope>import</scope>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>

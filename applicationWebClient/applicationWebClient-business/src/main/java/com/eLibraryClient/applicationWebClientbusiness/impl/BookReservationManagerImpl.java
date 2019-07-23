@@ -3,7 +3,7 @@ package com.eLibraryClient.applicationWebClientbusiness.impl;
 import com.eLibraryClient.applicationWebClientbusiness.Enums.CompareDate;
 import com.eLibraryClient.applicationWebClientbusiness.contract.BookReservationManager;
 import com.eLibraryClient.applicationWebClientbusiness.contract.DateManager;
-import com.eLibraryClient.applicationWebClientmodel.beans.BookReservationBean;
+import com.eLibraryModel.beans.BookReservationBean;
 import com.eLibraryClient.applicationWebClientproxies.proxies.MicroserviceBDDProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

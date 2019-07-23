@@ -40,8 +40,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>batchMail-model</artifactId>
+			<groupId>com.eLibraryModel</groupId>
+			<artifactId>libraries-model</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
@@ -65,9 +65,21 @@
 	<build>
 		<plugins>
 			<!--<plugin>-->
-				<!--<groupId>org.springframework.boot</groupId>-->
-				<!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+				<!--&lt;!&ndash;<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+				<!--&lt;!&ndash;<artifactId>spring-boot-maven-plugin</artifactId>&ndash;&gt;-->
+				<!--&lt;!&ndash;<executions>&ndash;&gt;-->
+					<!--&lt;!&ndash;<execution>&ndash;&gt;-->
+						<!--&lt;!&ndash;<goals>&ndash;&gt;-->
+							<!--&lt;!&ndash;<goal>repackage</goal>&ndash;&gt;-->
+						<!--&lt;!&ndash;</goals>&ndash;&gt;-->
+					<!--&lt;!&ndash;</execution>&ndash;&gt;-->
+				<!--&lt;!&ndash;</executions>&ndash;&gt;-->
 			<!--</plugin>-->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.1.5.RELEASE</version>
+			</plugin>
 		</plugins>
 	</build>
 

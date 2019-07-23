@@ -1,8 +1,8 @@
 package com.eLibraryClient.applicationWebClientweb.controller;
 
 import com.eLibraryClient.applicationWebClientbusiness.contract.BookManager;
-import com.eLibraryClient.applicationWebClientmodel.beans.BookBean;
-import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUserBean;
+import com.eLibraryModel.beans.BookBean;
+import com.eLibraryModel.beans.LibraryUserBean;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

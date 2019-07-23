@@ -1,6 +1,6 @@
 package com.eLibraryClient.applicationWebClientbusiness.contract;
 
-import com.eLibraryClient.applicationWebClientmodel.beans.BookBean;
+import com.eLibraryModel.beans.BookBean;
 import org.springframework.stereotype.Service;
 
 

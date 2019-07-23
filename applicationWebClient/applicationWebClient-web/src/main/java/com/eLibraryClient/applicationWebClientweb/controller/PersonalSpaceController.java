@@ -2,8 +2,8 @@ package com.eLibraryClient.applicationWebClientweb.controller;
 
 import com.eLibraryClient.applicationWebClientbusiness.contract.BookReservationManager;
 import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryUserManager;
-import com.eLibraryClient.applicationWebClientmodel.beans.BookReservationBean;
-import com.eLibraryClient.applicationWebClientmodel.beans.LibraryUserBean;
+import com.eLibraryModel.beans.BookReservationBean;
+import com.eLibraryModel.beans.LibraryUserBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

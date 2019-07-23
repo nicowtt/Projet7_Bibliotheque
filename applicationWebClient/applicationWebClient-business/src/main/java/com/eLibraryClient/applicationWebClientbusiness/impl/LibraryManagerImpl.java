@@ -1,7 +1,7 @@
 package com.eLibraryClient.applicationWebClientbusiness.impl;
 
 import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryManager;
-import com.eLibraryClient.applicationWebClientmodel.beans.LibraryBean;
+import com.eLibraryModel.beans.LibraryBean;
 import com.eLibraryClient.applicationWebClientproxies.proxies.MicroserviceBDDProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

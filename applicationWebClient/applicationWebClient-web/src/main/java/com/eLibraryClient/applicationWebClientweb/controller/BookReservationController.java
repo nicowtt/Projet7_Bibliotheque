@@ -1,7 +1,10 @@
 package com.eLibraryClient.applicationWebClientweb.controller;
 
 import com.eLibraryClient.applicationWebClientbusiness.contract.*;
-import com.eLibraryClient.applicationWebClientmodel.beans.*;
+import com.eLibraryModel.beans.BookBean;
+import com.eLibraryModel.beans.BookReservationBean;
+import com.eLibraryModel.beans.LibraryCatalogBean;
+import com.eLibraryModel.beans.LibraryUserBean;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -96,7 +99,6 @@ public class BookReservationController {
                                         @SessionAttribute(value = "userSession", required = false) LibraryUserBean userSession,
                                         Model model) {
         LibraryUserBean beanUserOnSession = libraryUserManager.getOneUser(userSession.getUseremail());
-        List<BookReservationBean> bookReservationListForOneUser = bookReservationManager.bookReservationListForOneUser(beanUserOnSession.getId());
 
         BookReservationBean bookReservationBeanToUpdate = bookReservationManager.getOneBookReservation(reservationId);
         String extendDate = dateManager.addDaysOnOneDate(bookReservationBeanToUpdate.getEndOfReservationDate(), 28);
@@ -104,6 +106,7 @@ public class BookReservationController {
         bookReservationBeanToUpdate.setEndOfReservationDate(extendDate);
         bookReservationManager.updateBookReservation(bookReservationBeanToUpdate);
 
+        List<BookReservationBean> bookReservationListForOneUser = bookReservationManager.bookReservationListForOneUser(beanUserOnSession.getId());
         model.addAttribute("reservation", bookReservationListForOneUser);
         model.addAttribute("log", userSession);
 

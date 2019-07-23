@@ -2,22 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<!-- =============================================================== -->
 	<!-- Informations du projet -->
 	<!-- =============================================================== -->
 	<!-- ===== Projet Parent Maven ===== -->
-	<parent>
-		<groupId>com.eLibraryBatch</groupId>
-		<artifactId>batchMail</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
-
 	<!-- ===== Informations Maven ===== -->
-	<artifactId>batchMail-model</artifactId>
+	<groupId>com.eLibraryModel</groupId>
+	<artifactId>libraries-model</artifactId>
 
 	<!-- ===== Informations générales ===== -->
-	<name>batchMail-model</name>
-	<description>batch for sending mail automatically</description>
+	<name>libraries-model</name>
+	<description>model module</description>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<!-- =============================================================== -->
@@ -25,6 +21,7 @@
 	<!-- =============================================================== -->
 	<properties>
 		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<!-- =============================================================== -->
@@ -36,30 +33,48 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+			<version>2.1.5.RELEASE</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<version>2.1.5.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+			<version>6.0.16.Final</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.hibernate.validator</groupId>
-			<artifactId>hibernate-validator</artifactId>
-		</dependency>
-
-	</dependencies>
+    </dependencies>
 
 	<!-- =============================================================== -->
 	<!-- Build -->
 	<!-- =============================================================== -->
 	<build>
 		<plugins>
+			<!-- Package as an executable jar/war -->
 			<!--<plugin>-->
 				<!--<groupId>org.springframework.boot</groupId>-->
 				<!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+				<!--<version>2.1.5.RELEASE</version>-->
 			<!--</plugin>-->
+
+			<!--<plugin>-->
+				<!--<groupId>org.apache.maven.plugins</groupId>-->
+				<!--<artifactId>maven-surefire-plugin</artifactId>-->
+			<!--</plugin>-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>7</source>
+					<target>7</target>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

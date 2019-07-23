@@ -1,4 +1,4 @@
-package com.eLibraryBatch.batchMailmodel;
+package com.eLibraryModel.beans;
 
 public class LibraryCatalogBean {
 

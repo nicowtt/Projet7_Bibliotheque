@@ -2,7 +2,7 @@ package com.eLibraryClient.applicationWebClientbusiness.impl;
 
 import com.eLibraryClient.applicationWebClientbusiness.contract.BookReservationManager;
 import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryCatalogManager;
-import com.eLibraryClient.applicationWebClientmodel.beans.LibraryCatalogBean;
+import com.eLibraryModel.beans.LibraryCatalogBean;
 import com.eLibraryClient.applicationWebClientproxies.proxies.MicroserviceBDDProxy;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

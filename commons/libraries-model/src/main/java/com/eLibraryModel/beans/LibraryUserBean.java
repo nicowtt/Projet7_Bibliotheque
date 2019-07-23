@@ -1,4 +1,4 @@
-package com.eLibraryClient.applicationWebClientmodel.beans;
+package com.eLibraryModel.beans;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

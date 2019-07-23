@@ -1,4 +1,4 @@
-package com.eLibraryClient.applicationWebClientmodel.beans;
+package com.eLibraryModel.beans;
 
 public class LibraryCatalogIdBean {
 
