@@ -20,7 +20,7 @@
         <div th:each="b:${books}">
             <b th:if="${b.id.getBookIteration() > 0}"><span th:text="${b.id.bookIteration}"></span> Livre(s) disponible dans la bibliotheque <span th:text="${b.library.libraryname}"></span> :</b>
             <p><a th:href="@{'/bookReservation/'+ ${b.book.id} +'/'+ ${b.library.id}} " type="button" class="label label-default" id="label"
-                  th:if="${b.id.getBookIteration() > 0}">Emprunter</a></p>
+                  th:if="${b.id.getBookIteration() > 0}">Emprunter pour 4 semaines</a></p>
 
             <!--<form action="#" th:action="@{|/bookReservation/${b.book.id}|}"-->
                   <!--th:object="${book}" method='POST'>-->

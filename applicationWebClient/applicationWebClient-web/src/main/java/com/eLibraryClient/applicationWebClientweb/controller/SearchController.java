@@ -43,12 +43,11 @@ public class SearchController {
                          Model model) {
         BookBean newBook = new BookBean();
         List<LibraryBean> allLibrariesList = libraryManager.getAllLibraries();
-        List<BookBean> books = bookManager.getListAllBooks();
-        //todo ->amélioration faire une methode pour avoir une liste de bookBean sans repetition (label) à checker
+        List<BookBean> bookslabelList = bookManager.getDistinctListOfBookLabel();
 
         model.addAttribute("libraries", allLibrariesList);
         model.addAttribute("library", new LibraryBean());
-        model.addAttribute("books", books);
+        model.addAttribute("books", bookslabelList);
         model.addAttribute("book", newBook);
         if (userSession != null) {
             model.addAttribute("log", userSession);

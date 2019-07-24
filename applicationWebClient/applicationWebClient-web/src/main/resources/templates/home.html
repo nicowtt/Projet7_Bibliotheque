@@ -18,19 +18,24 @@
 
     <div class="row">
         <div th:each="b : ${books}" class="col-xs-4 col-sm-3 col-md-2">
-            <div th:text="${b.bookname}" style="font-weight: bold" id="bookName"></div>
-            <div th:text="${b.bookauthor}"style="font-style: italic" id="bookAuthor"></div>
+            <!-- title and author -->
+            <!--<div th:text="${b.bookname}" style="font-weight: bold" id="bookName"></div>-->
+            <!--<div th:text="${b.bookauthor}"style="font-style: italic" id="bookAuthor"></div>-->
             <p></p>
-
             <!-- cover and description (mouse over) -->
             <img th:src="${b.bookpictureurl}" style="width:150px;height:200px; border:0px;" class="img-rounded"
-                 th:title="${b.bookdescription}">
+                 th:title="'*Nom:' +${b.bookname} + ' *Auteur:' + ${b.bookauthor} + ' *Description:' + ${b.bookdescription}">
             <!--<span class="label label-default" th:text="${b.booklabel}"></span>-->
             <!-- tag -->
+            <div>
             <span class="label label-default" id="label" th:text="${b.booklabel}"></span>
+            </div>
             <!-- disponibility -->
-            <div><a th:href="@{'/book/'+ ${b.id}}" type="button" class="btn btn-xs btn-primary" id="onBook"
-                    th:if="${!b.allbookreserved}">Emprunter</a></div>
+            <div>
+                <a th:href="@{'/book/'+ ${b.id}}" type="button" class="btn btn-xs btn-primary" id="onBook"
+                    th:if="${!b.allbookreserved}">Disponible</a>
+                <span class="label label-danger" id="onBookNoDispo" th:if="${b.allbookreserved}">Non Disponible</span>
+            </div>
 
         </div>
     </div>

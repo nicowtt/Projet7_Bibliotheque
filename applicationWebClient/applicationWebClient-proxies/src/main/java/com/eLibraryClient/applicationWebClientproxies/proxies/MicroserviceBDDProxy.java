@@ -44,6 +44,13 @@ public interface MicroserviceBDDProxy {
     void changeBookDisponibility(@PathVariable("bookId") Integer bookId,
                                  @PathVariable("booleanStatus") boolean booleanStatus);
 
+    /**
+     * get list of distinct book labels
+     * @return
+     */
+    @GetMapping(value = "/BooksLabel")
+    List<String> getListOfDistinctBooksLabel();
+
 
     //*******************************************//
     //************ USER *************************//

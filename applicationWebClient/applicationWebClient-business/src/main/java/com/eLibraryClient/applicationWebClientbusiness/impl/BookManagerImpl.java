@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -80,6 +82,24 @@ public class BookManagerImpl implements BookManager {
             logger.info("Il y a " + countReservationForOneBookInProgress + " reservation(s) sur " +
             nbrIterationBook + " possible du livre d'ID " + bookId + " en cours.");
         }
+    }
+
+    /**
+     * get list of distinct book labels
+     * @return
+     */
+    @Override
+    public List<BookBean> getDistinctListOfBookLabel() {
+        List<BookBean> bookBeanList = new ArrayList<>();
+
+        List<String>listOfDistinctBookLabels = microserviceBDDProxy.getListOfDistinctBooksLabel();
+
+        for (int i = 0; i < listOfDistinctBookLabels.size(); i++) {
+            BookBean bookBean = new BookBean();
+            bookBean.setBooklabel(listOfDistinctBookLabels.get(i));
+            bookBeanList.add(bookBean);
+        }
+        return bookBeanList;
     }
 
 

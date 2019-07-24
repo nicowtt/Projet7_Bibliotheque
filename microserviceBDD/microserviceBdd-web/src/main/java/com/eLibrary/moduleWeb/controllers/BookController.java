@@ -57,4 +57,11 @@ public class BookController {
         return HttpStatus.OK;
     }
 
+    @GetMapping(value = "/BooksLabel")
+    public List<String> listWithoutLabelRepetition() {
+        List<String> listWithoutLabelRepetition = bookDao.findDistinctByBooklabel();
+
+        return listWithoutLabelRepetition;
+    }
+
 }
