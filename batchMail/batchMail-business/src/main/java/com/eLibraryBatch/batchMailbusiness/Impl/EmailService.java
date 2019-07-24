@@ -55,9 +55,9 @@ public class EmailService {
             message.setSubject(subject);
             message.setText(text);
             emailSender.send(message);
-            logger.info("*******************************");
-            logger.info("Send reminder EMails ok!");
-            logger.info("*******************************");
+            logger.info("****************************************************************************************");
+            logger.info("Send reminder to: " + lateBookReservation.get(i).getLibraryuser().getUseremail() + " ok!");
+            logger.info("****************************************************************************************");
     }
     }
 }
