@@ -102,7 +102,24 @@ public class BookManagerImpl implements BookManager {
         return bookBeanList;
     }
 
+    /**
+     * get one book by bookname
+     * @param name
+     * @return
+     */
+    @Override
+    public BookBean getOneBook(String name) {
+        BookBean oneBook = microserviceBDDProxy.getOneBook(name);
+        return  oneBook;
+    }
 
-
-
+    /**
+     * get list of book name
+     * @return
+     */
+    @Override
+    public List<String> getListOfBookName() {
+        List<String> listOfBookName = microserviceBDDProxy.getListOfBookName();
+        return listOfBookName;
+    }
 }

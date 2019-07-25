@@ -58,10 +58,12 @@ public class LoginController {
             //clean session
             status.setComplete();
             request.removeAttribute("userSession", WebRequest.SCOPE_SESSION);
+            model.addAttribute("bookName", new BookBean());
             return "errorHtml/errorLogin";
         }
 
         model.addAttribute("books", listBooks);
+        model.addAttribute("bookName", new BookBean());
         logger.info(userSession.getUseremail() + " est en session");
 
         return "home";
@@ -86,6 +88,7 @@ public class LoginController {
         webRequest.removeAttribute("userSession", WebRequest.SCOPE_SESSION);
 
         model.addAttribute("books", books);
+        model.addAttribute("bookName", new BookBean());
         logger.info(userSession.getUseremail() + " est déconnecté");
 
         return "home";

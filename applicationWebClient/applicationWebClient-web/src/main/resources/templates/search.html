@@ -49,16 +49,36 @@
         </form>
     </div>
 
-
-
-
+    <!--<div id="SearchByName">-->
+        <!--<form action='#' th:action="@{/SearchByBookName}" method="POST">-->
+            <!--<input type="text" id="Book_name" placeholder="Chercher un livre">-->
+            <!--<input type="submit" value="Envoyer" style="display: none">-->
+        <!--</form>-->
+    <!--</div>-->
 </div>
 
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<!-- Javascript de Bootstrap -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<!-- autocompletion -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- UI -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+<script type="text/javascript">
+    $(function() {
+        $("#Book_name").autocomplete({
+            source: "bookNameAutocomplete",
+            minLength: 3,
+        });
+    });
+
+</script>
 
 </body>
 </html>

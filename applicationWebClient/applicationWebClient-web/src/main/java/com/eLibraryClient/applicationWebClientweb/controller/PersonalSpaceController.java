@@ -2,6 +2,7 @@ package com.eLibraryClient.applicationWebClientweb.controller;
 
 import com.eLibraryClient.applicationWebClientbusiness.contract.BookReservationManager;
 import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryUserManager;
+import com.eLibraryModel.beans.BookBean;
 import com.eLibraryModel.beans.BookReservationBean;
 import com.eLibraryModel.beans.LibraryUserBean;
 import org.slf4j.Logger;
@@ -39,6 +40,7 @@ public class PersonalSpaceController {
 
         model.addAttribute("reservation", bookReservationListForOneUser);
         model.addAttribute("log", userSession);
+        model.addAttribute("bookName", new BookBean());
 
         return "PersonalSpace";
     }

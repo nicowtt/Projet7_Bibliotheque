@@ -51,6 +51,22 @@ public interface MicroserviceBDDProxy {
     @GetMapping(value = "/BooksLabel")
     List<String> getListOfDistinctBooksLabel();
 
+    /**
+     * get one book by book name
+     *
+     * @param name
+     * @return
+     */
+    @GetMapping(value = "/BookName/{name}")
+    BookBean getOneBook(@PathVariable("name") String name);
+
+    /**
+     * get list of book name
+     * @return
+     */
+    @GetMapping(value = "/BooksNameList")
+    List<String> getListOfBookName();
+
 
     //*******************************************//
     //************ USER *************************//

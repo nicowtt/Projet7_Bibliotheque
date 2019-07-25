@@ -52,7 +52,9 @@ public class BookReservationController {
             model.addAttribute("books", refineLibraryCatalogOnOneBookList);
             model.addAttribute("book", new BookBean());
             model.addAttribute("log", userSession);
+            model.addAttribute("bookName", new BookBean());
         } else {
+            model.addAttribute("bookName", new BookBean());
             return "errorHtml/errorMissAuth";
         }
 
@@ -83,6 +85,7 @@ public class BookReservationController {
         bookManager.changeDisponibilityForOneBook(bookId);
 
         model.addAttribute("log", userSession);
+        model.addAttribute("bookName", new BookBean());
 
         return "/confirmationhtml/bookReservationOk";
     }
@@ -109,6 +112,7 @@ public class BookReservationController {
         List<BookReservationBean> bookReservationListForOneUser = bookReservationManager.bookReservationListForOneUser(beanUserOnSession.getId());
         model.addAttribute("reservation", bookReservationListForOneUser);
         model.addAttribute("log", userSession);
+        model.addAttribute("bookName", new BookBean());
 
         logger.info("L'utilisateur " + beanUserOnSession.getUseremail() + " à prolongé la reservation du livre:"
         + bookReservationBeanToUpdate.getBook().getBookname() + " dans la bibliothèque:"
@@ -135,6 +139,7 @@ public class BookReservationController {
         bookManager.changeDisponibilityForOneBook(bookReservationBeanToUpdate.getBook().getId());
 
         model.addAttribute("log", userSession);
+        model.addAttribute("bookName", new BookBean());
 
         logger.info("L'utilisateur " + userSession.getUseremail() + " a rendu le livre de la reservation d'id: " + reservationId);
 

@@ -15,13 +15,21 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand page-top" href="/home">Bibliothèques OcVille</a>
+        <!--<form action='#' id="searchBookName" th:action="@{/SearchByBookName}"-->
+              <!--th:object="${bookName}" method="POST">-->
+            <!--<input type="text" id="Book_name" placeholder="Chercher un nom de livre" th:field="*{bookname}">-->
+            <!--<input type="submit" value="Envoyer" style="display: none"></form>-->
     </div>
     <!-- All elements on navbar -->
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <li><a th:href="@{/Search}">Recherche</a></li>
-            <!--<li><a href="<%=pathWebcontent%>/">Enregistrer un nouveau site d'escalade</a></li>-->
-            <!--<li><a href="<%=pathWebcontent%>/">Echange de Topo papier</a></li>-->
+            <!-- for search book with name -->
+            <li><p></p><form action='#' th:action="@{/SearchByBookName}"
+                             th:object="${bookName}" method="POST">
+                <input type="text" id="Book_name" placeholder="Chercher un nom de livre" th:field="*{bookname}">
+                <input type="submit" value="Envoyer" style="display: none"></form></li>
+
+            <li><a th:href="@{/Search}">Filtrer par bibliothéque ou genre</a></li>
         </ul>
 
         <!-- identification -->

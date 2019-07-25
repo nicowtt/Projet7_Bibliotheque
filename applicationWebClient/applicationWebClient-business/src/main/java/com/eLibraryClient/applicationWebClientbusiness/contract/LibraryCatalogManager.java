@@ -12,4 +12,5 @@ public interface LibraryCatalogManager {
     List<LibraryCatalogBean> getLibrariesCatalogForOneBook(int bookId);
     List<LibraryCatalogBean> refineDisponibilityWithBookReservationInProgress(int bookId, List<LibraryCatalogBean> libraryCatalogBeanList);
     List<LibraryCatalogBean> getListOfLibraryCatalogWithLibraryNameAndBookLabelFilter(String libraryName, String bookLabel);
+    List<LibraryCatalogBean> removingBookRepetitionOnLibrariesCatalogBeanList (List<LibraryCatalogBean> libraryCatalogListWithFilters);
 }

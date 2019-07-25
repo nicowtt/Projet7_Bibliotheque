@@ -12,10 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -49,6 +46,8 @@ public class SearchController {
         model.addAttribute("library", new LibraryBean());
         model.addAttribute("books", bookslabelList);
         model.addAttribute("book", newBook);
+        model.addAttribute("bookName", new BookBean());
+
         if (userSession != null) {
             model.addAttribute("log", userSession);
         }
@@ -71,6 +70,7 @@ public class SearchController {
         List<LibraryCatalogBean> LibraryCatalogListWithFilter = libraryCatalogManager.getListOfLibraryCatalogWithLibraryNameAndBookLabelFilter(libraryBean.getLibraryname(), bookBean.getBooklabel());
 
         model.addAttribute("libraryCatalog", LibraryCatalogListWithFilter);
+        model.addAttribute("bookName", new BookBean());
         model.addAttribute("log", userSession);
 
         return "/resultOfSearch";

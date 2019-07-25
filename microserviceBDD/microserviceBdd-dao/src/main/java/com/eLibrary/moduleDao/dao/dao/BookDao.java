@@ -21,6 +21,11 @@ public interface BookDao extends JpaRepository<Book, Integer> {
     @Query(value = "SELECT DISTINCT booklabel FROM book", nativeQuery = true)
     List<String> findDistinctByBooklabel();
 
+    Book getByBookname(String bookName);
+
+    @Query(value = "SELECT DISTINCT bookname FROM book", nativeQuery = true)
+    List<String> findDistinctByBookname();
+
 
 
 }

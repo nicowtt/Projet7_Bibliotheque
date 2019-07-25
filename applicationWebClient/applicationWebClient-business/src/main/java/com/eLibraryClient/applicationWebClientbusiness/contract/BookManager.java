@@ -13,4 +13,6 @@ public interface BookManager {
     int getNbrOfIterationForOneBook(int bookId);
     void changeDisponibilityForOneBook(int bookId);
     List<BookBean> getDistinctListOfBookLabel();
+    BookBean getOneBook(String name);
+    List<String> getListOfBookName();
 }

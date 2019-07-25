@@ -57,11 +57,38 @@ public class BookController {
         return HttpStatus.OK;
     }
 
+    /**
+     * get list without book label repetition
+     * @return
+     */
     @GetMapping(value = "/BooksLabel")
     public List<String> listWithoutLabelRepetition() {
         List<String> listWithoutLabelRepetition = bookDao.findDistinctByBooklabel();
 
         return listWithoutLabelRepetition;
+    }
+
+    /**
+     * get one book by book name
+     * @param name
+     * @return
+     */
+    @GetMapping(value = "/BookName/{name}")
+    public Book oneBook(@PathVariable String name) {
+        Book oneBook = bookDao.getByBookname(name);
+
+        return oneBook;
+    }
+
+    /**
+     * Get list of book name
+     * @return
+     */
+    @GetMapping(value = "/BooksNameList")
+    public List<String> listBooksName() {
+        List<String> listBooksName = bookDao.findDistinctByBookname();
+
+        return listBooksName;
     }
 
 }

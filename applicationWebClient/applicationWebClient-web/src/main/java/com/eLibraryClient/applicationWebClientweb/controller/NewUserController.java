@@ -2,6 +2,7 @@ package com.eLibraryClient.applicationWebClientweb.controller;
 
 import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryUserManager;
 import com.eLibraryClient.applicationWebClientbusiness.contract.PasswordEncoder;
+import com.eLibraryModel.beans.BookBean;
 import com.eLibraryModel.beans.LibraryUserBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +34,7 @@ public class NewUserController {
     public String newUser(Model model) {
 
         model.addAttribute("newUser", new LibraryUserBean());
+        model.addAttribute("bookName", new BookBean());
 
         return "/newUser";
     }
@@ -60,6 +62,7 @@ public class NewUserController {
             libraryNewUserBean.setUserpassword(hashingPassword);
             libraryUserManager.addNewUserOnBDD(libraryNewUserBean);
 
+            model.addAttribute("bookName", new BookBean());
             return "confirmationhtml/userWrittingOk";
         }
     }
