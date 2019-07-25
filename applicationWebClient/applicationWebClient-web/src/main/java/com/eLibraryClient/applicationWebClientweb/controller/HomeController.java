@@ -57,6 +57,7 @@ public class HomeController {
     public List<String> bookNameAutocomplete(@RequestParam(value="term", required = false, defaultValue="") String term) {
 
         String firstThreeCharacters;
+        term = term.toLowerCase();
         List<String> suggestionsFiltre = new ArrayList<>();
         // get all book names
         List<String> suggestionOfNameBook = bookManager.getListOfBookName();
