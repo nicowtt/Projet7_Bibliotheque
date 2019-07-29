@@ -13,6 +13,8 @@
 
 <body>
 
+<div th:with="noLibrary=${library}">
+
 
 <div class="container">
 
@@ -32,7 +34,7 @@
             </div>
             <!-- disponibility -->
             <div>
-                <a th:href="@{'/book/'+ ${b.id}}" type="button" class="btn btn-xs btn-primary" id="onBook"
+                <a th:href="@{'/book/'+ ${b.id} + '/library/' + ${library}}" type="button" class="btn btn-xs btn-primary" id="onBook"
                     th:if="${!b.allbookreserved}">Disponible</a>
                 <span class="label label-danger" id="onBookNoDispo" th:if="${b.allbookreserved}">Non Disponible</span>
             </div>

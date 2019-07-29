@@ -39,8 +39,9 @@ public class BookReservationController {
      * @param model
      * @return -> choose page
      */
-    @RequestMapping(value = "/book/{bookId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/book/{bookId}/library/{library}", method = RequestMethod.GET)
     public String bookReservationLibraryChoice(@PathVariable Integer bookId,
+                                               @PathVariable String library,
                                                @SessionAttribute(value = "userSession", required = false) LibraryUserBean userSession,
                                                Model model) {
 
@@ -48,6 +49,12 @@ public class BookReservationController {
             List<LibraryCatalogBean> libraryCatalogOnOneBookList = libraryCatalogManager.getLibrariesCatalogForOneBook(bookId);
             List<LibraryCatalogBean> refineLibraryCatalogOnOneBookList =
                     libraryCatalogManager.refineDisponibilityWithBookReservationInProgress(bookId, libraryCatalogOnOneBookList );
+
+            //filter by library if needed
+            if (library.equals("null")) {
+            } else {
+                libraryCatalogManager.keepOnlyOneLibrary(refineLibraryCatalogOnOneBookList, library);
+            }
 
             model.addAttribute("books", refineLibraryCatalogOnOneBookList);
             model.addAttribute("book", new BookBean());

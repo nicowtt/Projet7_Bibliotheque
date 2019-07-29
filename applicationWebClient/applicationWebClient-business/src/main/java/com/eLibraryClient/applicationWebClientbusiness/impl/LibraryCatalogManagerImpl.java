@@ -115,6 +115,7 @@ public class LibraryCatalogManagerImpl implements LibraryCatalogManager {
      * @param libraryCatalogListWithFilters
      * @return
      */
+    @Override
     public List<LibraryCatalogBean> removingBookRepetitionOnLibrariesCatalogBeanList (List<LibraryCatalogBean> libraryCatalogListWithFilters) {
         String bookName = "";
         int count = 0;
@@ -133,6 +134,28 @@ public class LibraryCatalogManagerImpl implements LibraryCatalogManager {
         }
         return listWithoutDouble;
     }
+
+    /**
+     * For keep only one library
+     *
+     * @param libraryCatalogBeanList
+     * @param libraryName
+     * @return
+     */
+    @Override
+    public List<LibraryCatalogBean> keepOnlyOneLibrary (List<LibraryCatalogBean> libraryCatalogBeanList, String libraryName) {
+
+        List<LibraryCatalogBean>libraryCatalogBeanListFiltered = libraryCatalogBeanList;
+
+        for (int i = 0; i <  libraryCatalogBeanList.size(); i++) {
+            if (libraryCatalogBeanList.get(i).getLibrary().getLibraryname().equals(libraryName)) {
+            } else {
+                libraryCatalogBeanListFiltered.remove(i);
+            }
+        }
+        return libraryCatalogBeanListFiltered;
+    }
+
 }
 
 

@@ -23,8 +23,6 @@ public class HomeController {
 
     @Autowired
     private BookManager bookManager;
-    @Autowired
-    private LibraryCatalogManager libraryCatalogManager;
 
     /**
      * For display home page
@@ -79,44 +77,5 @@ public class HomeController {
         }
 
         return suggestionsFiltre;
-    }
-
-    /**
-     * For display book asking by user
-     * @param bookBeanToComplete
-     * @param userSession
-     * @param model
-     * @return
-     */
-    @PostMapping(value = "/SearchByBookName")
-    public String searchByBookName(@Valid @ModelAttribute("bookName") BookBean bookBeanToComplete,
-                                   @SessionAttribute(value = "userSession", required = false)LibraryUserBean userSession,
-                                   Model model) {
-        boolean bookIsOnBdd = false;
-        if (userSession != null) {
-            model.addAttribute("log", userSession);
-        }
-        String inputBookName = bookBeanToComplete.getBookname();
-        List<String> allbookNames = bookManager.getListOfBookName();
-        //compare input with all book name
-        for (int i = 0; i < allbookNames.size(); i++) {
-            if (inputBookName.equals(allbookNames.get(i))) {
-                bookIsOnBdd = true;
-            }
-        }
-        // complete bookBean if ok
-        if (bookIsOnBdd) {
-            BookBean bookBeanCompleted = bookManager.getOneBook(bookBeanToComplete.getBookname());
-            List<LibraryCatalogBean> libraryCatalogListWithFilter = libraryCatalogManager.getLibrariesCatalogForOneBook(bookBeanCompleted.getId());
-            //remove repetition
-            List<LibraryCatalogBean> listWithoutRepetition = libraryCatalogManager.removingBookRepetitionOnLibrariesCatalogBeanList(libraryCatalogListWithFilter);
-            model.addAttribute("libraryCatalog", listWithoutRepetition);
-        } else {
-            logger.info("Book ask for user don't exist");
-            model.addAttribute("bookName", new BookBean());
-            return "errorHtml/errorBookSearch";
-        }
-        model.addAttribute("bookName", new BookBean());
-        return "/resultOfSearch";
     }
 }

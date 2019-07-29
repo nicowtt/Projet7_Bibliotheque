@@ -41,7 +41,7 @@
             <!-- tag -->
             <span class="label label-default" id="label" th:text="${l.book.booklabel}"></span>
             <!-- disponibility -->
-            <div><a th:href="@{'/book/'+ ${l.book.id}}" type="button" class="btn btn-xs btn-primary" id="onBook"
+            <div><a th:href="@{'/book/'+ ${l.book.id} + '/library/' + ${library}}" type="button" class="btn btn-xs btn-primary" id="onBook"
                     th:if="${!l.book.allbookreserved}">Emprunter</a></div>
             <span class="label label-danger" id="onBookNoDispo" th:if="${l.book.allbookreserved}">Non Disponible</span>
         </div>
