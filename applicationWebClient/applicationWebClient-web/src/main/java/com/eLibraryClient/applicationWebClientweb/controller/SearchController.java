@@ -67,13 +67,27 @@ public class SearchController {
                              @Valid @ModelAttribute("book") BookBean bookBean,
                              @SessionAttribute(value = "userSession", required = false)LibraryUserBean userSession,
                              Model model) {
+        String libraryName = "";
+        String label = "";
+
         List<LibraryCatalogBean> LibraryCatalogListWithFilter = libraryCatalogManager.getListOfLibraryCatalogWithLibraryNameAndBookLabelFilter(libraryBean.getLibraryname(), bookBean.getBooklabel());
+        //set library information for display filter
+        libraryName = libraryBean.getLibraryname();
+        if (libraryName.equals("")) {
+            libraryName = null;
+        }
+        //set label information for display filter
+        label = bookBean.getBooklabel();
+        if (label.equals("")) {
+            label = null;
+        }
 
         model.addAttribute("libraryCatalog", LibraryCatalogListWithFilter);
         model.addAttribute("bookName", new BookBean());
         model.addAttribute("log", userSession);
-
-        return "/resultOfSearch";
+        model.addAttribute("library", libraryName);
+        model.addAttribute("label", label);
+        return "/filterResult";
 
     }
 }

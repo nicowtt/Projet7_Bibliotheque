@@ -123,9 +123,9 @@ public class LibraryCatalogManagerImpl implements LibraryCatalogManager {
 
         for (int i = 0; i < libraryCatalogListWithFilters.size(); i++) {
             bookName = libraryCatalogListWithFilters.get(i).getBook().getBookname();
-//            count = 0;
+            count = 0;
             for (int j = 0; j < listWithoutDouble.size(); j++) {
-                if (listWithoutDouble.get(j).getBook().getBookname() == bookName) {
+                if (listWithoutDouble.get(j).getBook().getBookname().equals(bookName)) {
                     count++;
                     if (count > 1) {listWithoutDouble.remove(j);}
                 }

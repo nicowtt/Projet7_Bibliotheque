@@ -17,6 +17,18 @@
 <div class="container">
 
     <div class="row">
+        <!-- display filter -->
+        <td>
+            <span th:if="${library} != null or ${label} != null"><b>Filtre actif :</b></span>
+        </td>
+        <div th:if="${library} != null">
+            - Bibliothèque <span th:text="${library}"></span>
+        </div>
+        <div th:if="${label} != null">
+            - Genre: <span th:text="${label}"></span>
+        </div>
+        <p></p>
+        <!-- display book(s) -->
         <div th:each="l : ${libraryCatalog}" class="col-xs-4 col-sm-3 col-md-2">
             <!--<div th:text="${l.book.bookname}" style="font-weight: bold" id="bookName"></div>-->
             <!--<div th:text="${l.book.bookauthor}"style="font-style: italic" id="bookAuthor"></div>-->
@@ -31,7 +43,7 @@
             <!-- disponibility -->
             <div><a th:href="@{'/book/'+ ${l.book.id}}" type="button" class="btn btn-xs btn-primary" id="onBook"
                     th:if="${!l.book.allbookreserved}">Emprunter</a></div>
-
+            <span class="label label-danger" id="onBookNoDispo" th:if="${l.book.allbookreserved}">Non Disponible</span>
         </div>
     </div>
 </div>
