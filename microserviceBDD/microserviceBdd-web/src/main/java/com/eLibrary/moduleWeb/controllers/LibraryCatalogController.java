@@ -1,6 +1,6 @@
 package com.eLibrary.moduleWeb.controllers;
 
-import com.eLibrary.moduleDao.dao.dao.LibraryCatalogDao;
+import com.eLibrary.moduleDao.dao.LibraryCatalogDao;
 import com.eLibrary.moduleModel.beans.LibraryCatalog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

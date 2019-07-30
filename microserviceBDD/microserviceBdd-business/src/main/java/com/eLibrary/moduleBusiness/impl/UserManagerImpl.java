@@ -2,12 +2,14 @@ package com.eLibrary.moduleBusiness.impl;
 
 import com.eLibrary.moduleBusiness.contract.PasswordEncoder;
 import com.eLibrary.moduleBusiness.contract.UserManager;
-import com.eLibrary.moduleDao.dao.dao.LibraryUserDao;
+import com.eLibrary.moduleDao.dao.LibraryUserDao;
 import com.eLibrary.moduleModel.beans.Libraryuser;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class UserManagerImpl implements UserManager {
@@ -62,5 +64,32 @@ public class UserManagerImpl implements UserManager {
             }
         }
         return mailAndUserExist;
+    }
+
+    /**
+     * For write new user on BDD
+     * @param userBean
+     */
+    @Override
+    public boolean addNewUser(Libraryuser userBean) {
+        boolean mailAlreadyExist = false;
+
+        // check if email already exist
+        List<Libraryuser> allUserList = libraryUserDao.findAll();
+
+        for (int i = 0; i < allUserList.size(); i++) {
+            if (allUserList.get(i).getUseremail().equals(userBean.getUseremail())) {
+                mailAlreadyExist = true;
+            }
+        }
+
+        if (!mailAlreadyExist) {
+            //encrypt password
+            String hashedPassword = passwordEncoder.hashPassword(userBean.getUserpassword());
+            userBean.setUserpassword(hashedPassword);
+            //write new user on bdd
+            libraryUserDao.save(userBean);
+        }
+        return mailAlreadyExist;
     }
 }

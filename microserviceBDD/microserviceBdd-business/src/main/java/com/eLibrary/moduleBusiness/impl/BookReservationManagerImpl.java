@@ -3,7 +3,7 @@ package com.eLibrary.moduleBusiness.impl;
 import com.eLibrary.moduleBusiness.contract.BookReservationManager;
 import com.eLibrary.moduleBusiness.contract.DateManager;
 import com.eLibrary.moduleBusiness.enums.ComparisonDate;
-import com.eLibrary.moduleDao.dao.dao.BookReservationDao;
+import com.eLibrary.moduleDao.dao.BookReservationDao;
 import com.eLibrary.moduleModel.beans.BookReservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,7 +19,6 @@ public class BookReservationManagerImpl implements BookReservationManager {
 
     @Autowired
     private BookReservationDao bookReservationDao;
-
     @Autowired
     private DateManager dateManager;
 

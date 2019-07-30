@@ -2,7 +2,6 @@ package com.eLibraryClient.applicationWebClientweb.controller;
 
 import com.eLibraryClient.applicationWebClientbusiness.contract.BookManager;
 import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryUserManager;
-import com.eLibraryClient.applicationWebClientbusiness.contract.PasswordEncoder;
 import com.eLibraryModel.beans.BookBean;
 import com.eLibraryModel.beans.LibraryUserBean;
 import org.slf4j.Logger;

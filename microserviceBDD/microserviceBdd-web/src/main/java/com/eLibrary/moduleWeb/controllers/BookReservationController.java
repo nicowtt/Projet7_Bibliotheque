@@ -1,7 +1,7 @@
 package com.eLibrary.moduleWeb.controllers;
 
 import com.eLibrary.moduleBusiness.contract.BookReservationManager;
-import com.eLibrary.moduleDao.dao.dao.BookReservationDao;
+import com.eLibrary.moduleDao.dao.BookReservationDao;
 import com.eLibrary.moduleModel.beans.BookReservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

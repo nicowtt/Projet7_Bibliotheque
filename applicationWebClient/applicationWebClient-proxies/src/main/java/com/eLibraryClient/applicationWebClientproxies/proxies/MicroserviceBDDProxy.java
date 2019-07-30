@@ -93,7 +93,7 @@ public interface MicroserviceBDDProxy {
      * @return
      */
     @PostMapping(value = "/NewUser")
-    LibraryUserBean addUser(@RequestBody LibraryUserBean libraryUserBean);
+    boolean addUser(@RequestBody LibraryUserBean libraryUserBean);
 
     /**
      * For check if user mail and password exist

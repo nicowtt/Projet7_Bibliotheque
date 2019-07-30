@@ -1,4 +1,4 @@
-package com.eLibrary.moduleDao.dao.dao;
+package com.eLibrary.moduleDao.dao;
 
 import com.eLibrary.moduleModel.beans.BookReservation;
 import org.springframework.data.jpa.repository.JpaRepository;

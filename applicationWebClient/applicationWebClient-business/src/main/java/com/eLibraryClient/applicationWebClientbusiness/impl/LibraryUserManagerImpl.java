@@ -40,8 +40,11 @@ public class LibraryUserManagerImpl implements LibraryUserManager {
      * @param libraryUserBean
      */
     @Override
-    public void addNewUserOnBDD(LibraryUserBean libraryUserBean) {
-        microserviceBDDProxy.addUser(libraryUserBean);
+    public boolean addNewUserOnBDD(LibraryUserBean libraryUserBean) {
+        boolean mailAlreadyExist = false;
+        mailAlreadyExist= microserviceBDDProxy.addUser(libraryUserBean);
+
+        return mailAlreadyExist;
     }
 
     /**
