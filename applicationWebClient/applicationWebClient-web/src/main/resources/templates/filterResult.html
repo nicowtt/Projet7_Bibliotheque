@@ -18,16 +18,18 @@
 
     <div class="row">
         <!-- display filter -->
-        <td>
-            <span th:if="${library} != null or ${label} != null"><b>Filtre actif :</b></span>
-        </td>
-        <div th:if="${library} != null">
-            - Bibliothèque <span th:text="${library}"></span>
+        <div class="displayFilter">
+            <td>
+                <span th:if="${library} != null or ${label} != null"><b>Filtre actif :</b></span>
+            </td>
+            <div th:if="${library} != null">
+                - Bibliothèque <span th:text="${library}"></span>
+            </div>
+            <div th:if="${label} != null">
+                - Genre: <span th:text="${label}"></span>
+            </div>
+            <p></p>
         </div>
-        <div th:if="${label} != null">
-            - Genre: <span th:text="${label}"></span>
-        </div>
-        <p></p>
         <!-- display book(s) -->
         <div th:each="l : ${libraryCatalog}" class="col-xs-4 col-sm-3 col-md-2">
             <!--<div th:text="${l.book.bookname}" style="font-weight: bold" id="bookName"></div>-->
@@ -39,7 +41,9 @@
                  th:title="${l.book.bookdescription}">
             <!--<span class="label label-default" th:text="${b.booklabel}"></span>-->
             <!-- tag -->
+            <div>
             <span class="label label-default" id="label" th:text="${l.book.booklabel}"></span>
+            </div>
             <!-- disponibility -->
             <div><a th:href="@{'/book/'+ ${l.book.id} + '/library/' + ${library}}" type="button" class="btn btn-xs btn-primary" id="onBook"
                     th:if="${!l.book.allbookreserved}">Emprunter</a></div>
