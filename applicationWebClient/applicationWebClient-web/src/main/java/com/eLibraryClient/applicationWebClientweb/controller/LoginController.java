@@ -24,8 +24,6 @@ public class LoginController {
     @Autowired
     private LibraryUserManager libraryUserManager;
     @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
     private BookManager bookManager;
 
     @ModelAttribute("userSession")
@@ -49,8 +47,8 @@ public class LoginController {
         List<BookBean> listBooks = bookManager.getListAllBooks();
 
         newUserBean.setUseremail(userSession.getUseremail());
-        newUserBean = libraryUserManager.checkIfUserIsOnBDD(userSession.getUseremail());
-        checkPassword = passwordEncoder.checkPassword(userSession.getUserpassword(), newUserBean.getUserpassword());
+        // check if mail and pawword input is ok on microserviceBdd
+        checkPassword = libraryUserManager.checkIfMailAndPassIsOk(userSession);
 
         if (checkPassword) {
             model.addAttribute("log", userSession);

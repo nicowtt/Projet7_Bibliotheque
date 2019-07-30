@@ -54,4 +54,16 @@ public class LibraryUserManagerImpl implements LibraryUserManager {
         LibraryUserBean getOneUser = microserviceBDDProxy.getOneUser(userEmail);
         return getOneUser;
     }
+
+    /**
+     * To check is user mail and password exist on microserviceBDD
+     * @param userBean
+     * @return
+     */
+    @Override
+    public boolean checkIfMailAndPassIsOk(LibraryUserBean userBean) {
+        Boolean isValid = false;
+        isValid = microserviceBDDProxy.checkUser(userBean);
+        return  isValid;
+    }
 }
