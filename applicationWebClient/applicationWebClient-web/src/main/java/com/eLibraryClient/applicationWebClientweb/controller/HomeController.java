@@ -62,11 +62,11 @@ public class HomeController {
 
         try {
             // only update when term is three characters.
-            if (term.length() == 3) {
+            if (term.length() == 1) {
                 firstThreeCharacters = term;
 
                 for (int i = 0; i < suggestionOfNameBook.size(); i++) {
-                    if (suggestionOfNameBook.get(i).substring(0, 3).equals(term)) {
+                    if (suggestionOfNameBook.get(i).substring(0, 1).equals(term)) {
                         suggestionsFiltre.add(suggestionOfNameBook.get(i));
                     }
                 }
