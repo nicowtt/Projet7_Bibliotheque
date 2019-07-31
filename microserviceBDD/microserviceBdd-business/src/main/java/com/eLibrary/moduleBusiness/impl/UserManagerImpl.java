@@ -3,16 +3,12 @@ package com.eLibrary.moduleBusiness.impl;
 import com.eLibrary.moduleBusiness.contract.PasswordEncoder;
 import com.eLibrary.moduleBusiness.contract.UserManager;
 import com.eLibrary.moduleDao.dao.LibraryUserDao;
-import com.eLibrary.moduleModel.beans.Libraryuser;
+import com.eLibrary.moduleModel.beans.LibraryUser;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class UserManagerImpl implements UserManager {
@@ -29,7 +25,7 @@ public class UserManagerImpl implements UserManager {
     public boolean checkIfMailExist(String mail) {
         boolean mailExist = false;
 
-        Libraryuser oneUser = libraryUserDao.findByUseremail(mail);
+        LibraryUser oneUser = libraryUserDao.findByUseremail(mail);
         if (oneUser != null) {
             mailExist = true;
         } else {
@@ -45,8 +41,8 @@ public class UserManagerImpl implements UserManager {
      * @return
      */
     @Override
-    public boolean checkIfUserMailAndPassIsOk(Libraryuser userBeanInput) {
-        Libraryuser userOnBdd = new Libraryuser();
+    public boolean checkIfUserMailAndPassIsOk(LibraryUser userBeanInput) {
+        LibraryUser userOnBdd = new LibraryUser();
         boolean mailExist = false;
         boolean passwordIsValid = false;
         boolean mailAndUserExist = false;
@@ -74,8 +70,8 @@ public class UserManagerImpl implements UserManager {
      * @param userBean
      */
     @Override
-    public Libraryuser addNewUser(Libraryuser userBean) {
-        Libraryuser newUser = new Libraryuser();
+    public LibraryUser addNewUser(LibraryUser userBean) {
+        LibraryUser newUser = new LibraryUser();
 
         //encrypt password
         String hashedPassword = passwordEncoder.hashPassword(userBean.getUserpassword());

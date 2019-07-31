@@ -21,16 +21,6 @@ public class Library {
     @Column
     private String libraryname;
 
-//    @OneToMany(mappedBy = "library") //attribut Library library from BookReservation
-//    private Set<BookReservation> bookReservations = new HashSet<>();
-
-//    @OneToMany(
-//            mappedBy = "library",
-//            cascade = CascadeType.ALL,
-//            orphanRemoval = true
-//    )
-//    private Set<LibraryCatalog> libraryCatalogList = new HashSet<>();
-
     @ManyToMany
     @JsonIgnore
     @JoinTable(name = "librarycatalog",
@@ -65,14 +55,6 @@ public class Library {
     public void setLibraryname(String libraryname) {
         this.libraryname = libraryname;
     }
-
-//    public Set<LibraryCatalog> getLibraryCatalogList() {
-//        return libraryCatalogList;
-//    }
-//
-//    public void setLibraryCatalogList(Set<LibraryCatalog> libraryCatalogList) {
-//        this.libraryCatalogList = libraryCatalogList;
-//    }
 
     public Set<Book> getBooks() {
         return books;

@@ -39,9 +39,9 @@ public class EmailService {
 
         // send email for each reservation
         for (int i = 0; i < lateBookReservation.size(); i++) {
-            to = lateBookReservation.get(i).getLibraryuser().getUseremail();
+            to = lateBookReservation.get(i).getLibraryUser().getUseremail();
             subject = "Rappel, date de fin de réservation dépassé !";
-            text = "Bonjour " + lateBookReservation.get(i).getLibraryuser().getUserfirstname() + "," +
+            text = "Bonjour " + lateBookReservation.get(i).getLibraryUser().getUserfirstname() + "," +
                     "\nLa date de retour maximale pour le livre: " + lateBookReservation.get(i).getBook().getBookname() +
                     " de " + lateBookReservation.get(i).getBook().getBookauthor() +
                     " était le: " + lateBookReservation.get(i).getEndOfReservationDate() + " !" +
@@ -56,8 +56,13 @@ public class EmailService {
             message.setText(text);
             emailSender.send(message);
             logger.info("****************************************************************************************");
-            logger.info("Send reminder to: " + lateBookReservation.get(i).getLibraryuser().getUseremail() + " ok!");
+            logger.info("Rappel envoye a: " + lateBookReservation.get(i).getLibraryUser().getUseremail());
             logger.info("****************************************************************************************");
     }
+        if (lateBookReservation.isEmpty()) {
+            logger.info("****************************************************************************************");
+            logger.info("Il n'y a aucun email de rappel a envoyer.");
+            logger.info("****************************************************************************************");
+        }
     }
 }

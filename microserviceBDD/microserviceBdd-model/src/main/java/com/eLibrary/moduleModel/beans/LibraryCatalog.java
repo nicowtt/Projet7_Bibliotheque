@@ -21,7 +21,6 @@ public class LibraryCatalog {
     private int bookIteration;
 
     //contructor
-
     public LibraryCatalog() {
     }
 

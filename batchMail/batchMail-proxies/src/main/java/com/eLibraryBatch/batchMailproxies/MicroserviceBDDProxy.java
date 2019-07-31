@@ -20,6 +20,6 @@ public interface MicroserviceBDDProxy {
      * Get all late book reservation
      */
     @GetMapping(value = "/BookReservationLate")
-    public List<BookReservationBean> getBookReservationLate();
+    List<BookReservationBean> getBookReservationLate();
 
 }

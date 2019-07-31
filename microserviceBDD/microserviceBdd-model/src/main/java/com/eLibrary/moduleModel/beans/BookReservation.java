@@ -36,7 +36,7 @@ public class BookReservation {
 
     @ManyToOne //many reservation for one user
     @JoinColumn(name = "user_id", referencedColumnName = "id", insertable= false, updatable= false) //fk
-    private Libraryuser libraryuser;
+    private LibraryUser libraryUser;
 
     @ManyToOne //many reservation for one livre
     @JoinColumn(name = "book_id", referencedColumnName = "id", insertable= false, updatable= false) //fk
@@ -51,7 +51,7 @@ public class BookReservation {
     public BookReservation() {
     }
 
-    public BookReservation(String beginOfReservationDate, String endOfReservationDate, boolean extensionOfReservation, boolean bookBack, int userId, int bookId, int libraryId, Libraryuser libraryuser, Book book, Library library) {
+    public BookReservation(String beginOfReservationDate, String endOfReservationDate, boolean extensionOfReservation, boolean bookBack, int userId, int bookId, int libraryId, LibraryUser libraryUser, Book book, Library library) {
         this.beginOfReservationDate = beginOfReservationDate;
         this.endOfReservationDate = endOfReservationDate;
         this.extensionOfReservation = extensionOfReservation;
@@ -59,7 +59,7 @@ public class BookReservation {
         this.userId = userId;
         this.bookId = bookId;
         this.libraryId = libraryId;
-        this.libraryuser = libraryuser;
+        this.libraryUser = libraryUser;
         this.book = book;
         this.library = library;
     }
@@ -129,12 +129,12 @@ public class BookReservation {
         this.libraryId = libraryId;
     }
 
-    public Libraryuser getLibraryuser() {
-        return libraryuser;
+    public LibraryUser getLibraryUser() {
+        return libraryUser;
     }
 
-    public void setLibraryuser(Libraryuser libraryuser) {
-        this.libraryuser = libraryuser;
+    public void setLibraryUser(LibraryUser libraryUser) {
+        this.libraryUser = libraryUser;
     }
 
     public Book getBook() {
@@ -166,7 +166,7 @@ public class BookReservation {
                 ", userId=" + userId +
                 ", bookId=" + bookId +
                 ", libraryId=" + libraryId +
-                ", libraryuser=" + libraryuser +
+                ", libraryUser=" + libraryUser +
                 ", book=" + book +
                 ", library=" + library +
                 '}';

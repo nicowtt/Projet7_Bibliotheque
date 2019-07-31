@@ -12,7 +12,7 @@ public class BookReservationBean {
     private int libraryId;
 
     //manytoOne relation
-    private LibraryUserBean libraryuser;
+    private LibraryUserBean libraryUser;
     private BookBean book;
     private LibraryBean library;
 
@@ -20,7 +20,7 @@ public class BookReservationBean {
     public BookReservationBean() {
     }
 
-    public BookReservationBean(int id, String beginOfReservationDate, String endOfReservationDate, boolean extensionOfReservation, boolean bookBack, int userId, int bookId, int libraryId, LibraryUserBean libraryuser, BookBean book, LibraryBean library) {
+    public BookReservationBean(int id, String beginOfReservationDate, String endOfReservationDate, boolean extensionOfReservation, boolean bookBack, int userId, int bookId, int libraryId, LibraryUserBean libraryUser, BookBean book, LibraryBean library) {
         this.id = id;
         this.beginOfReservationDate = beginOfReservationDate;
         this.endOfReservationDate = endOfReservationDate;
@@ -29,7 +29,7 @@ public class BookReservationBean {
         this.userId = userId;
         this.bookId = bookId;
         this.libraryId = libraryId;
-        this.libraryuser = libraryuser;
+        this.libraryUser = libraryUser;
         this.book = book;
         this.library = library;
     }
@@ -99,12 +99,12 @@ public class BookReservationBean {
         this.libraryId = libraryId;
     }
 
-    public LibraryUserBean getLibraryuser() {
-        return libraryuser;
+    public LibraryUserBean getLibraryUser() {
+        return libraryUser;
     }
 
-    public void setLibraryuser(LibraryUserBean libraryuser) {
-        this.libraryuser = libraryuser;
+    public void setLibraryUser(LibraryUserBean libraryUser) {
+        this.libraryUser = libraryUser;
     }
 
     public BookBean getBook() {
@@ -122,8 +122,4 @@ public class BookReservationBean {
     public void setLibrary(LibraryBean library) {
         this.library = library;
     }
-
-
-    //to string
-
 }

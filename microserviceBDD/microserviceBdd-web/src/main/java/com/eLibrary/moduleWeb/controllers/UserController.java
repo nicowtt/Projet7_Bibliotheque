@@ -2,7 +2,7 @@ package com.eLibrary.moduleWeb.controllers;
 
 import com.eLibrary.moduleBusiness.contract.UserManager;
 import com.eLibrary.moduleDao.dao.LibraryUserDao;
-import com.eLibrary.moduleModel.beans.Libraryuser;
+import com.eLibrary.moduleModel.beans.LibraryUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,10 +25,9 @@ public class UserController {
      * @return
      */
     @GetMapping(value = "/Users")
-    public List<Libraryuser> getUsers() {
+    public List<LibraryUser> getUsers() {
 
-        List<Libraryuser> usersList = libraryUserDao.findAll();
-
+        List<LibraryUser> usersList = libraryUserDao.findAll();
         return usersList;
     }
 
@@ -38,10 +37,9 @@ public class UserController {
      * @return
      */
     @GetMapping(value = "/User/{email}")
-    public Libraryuser getOneUser(@PathVariable String email) {
+    public LibraryUser getOneUser(@PathVariable String email) {
 
-        Libraryuser oneUser = libraryUserDao.findByUseremail(email);
-
+        LibraryUser oneUser = libraryUserDao.findByUseremail(email);
         return oneUser;
     }
 
@@ -51,12 +49,12 @@ public class UserController {
      * @return
      */
       @RequestMapping(method = RequestMethod.POST, value = "/NewUser", consumes="application/json")
-      public ResponseEntity<Libraryuser> addUser(@RequestBody Libraryuser newUser) {
-          Libraryuser newUserWrited;
+      public ResponseEntity<LibraryUser> addUser(@RequestBody LibraryUser newUser) {
+          LibraryUser newUserWrited;
 
           newUserWrited = userManager.addNewUser(newUser);
           //send 201 and newUserWrited CREATED for confirm new user is saved
-        return new ResponseEntity<Libraryuser>(newUserWrited, HttpStatus.CREATED);
+        return new ResponseEntity<LibraryUser>(newUserWrited, HttpStatus.CREATED);
     }
 
     /**
@@ -65,7 +63,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(method = RequestMethod.POST, value = "/CheckUser", consumes = "application/json")
-    public boolean checkUser(@RequestBody Libraryuser user) {
+    public boolean checkUser(@RequestBody LibraryUser user) {
           boolean userIsValid = false;
 
         userIsValid = userManager.checkIfUserMailAndPassIsOk(user);

@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "libraryuser")
-public class Libraryuser {
+public class LibraryUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "public.libraryuser_id_seq")
@@ -25,14 +25,11 @@ public class Libraryuser {
     @Column
     private String useremail;
 
-//    @OneToMany(mappedBy = "libraryuser") //attribut Libraryuser libraryuser from BookReservation
-//    private Set<BookReservation> bookReservations = new HashSet<>();
-
     //constructor
-    public Libraryuser() {
+    public LibraryUser() {
     }
 
-    public Libraryuser(String userfirstname, String username, String userpassword, String useremail) {
+    public LibraryUser(String userfirstname, String username, String userpassword, String useremail) {
         this.userfirstname = userfirstname;
         this.username = username;
         this.userpassword = userpassword;

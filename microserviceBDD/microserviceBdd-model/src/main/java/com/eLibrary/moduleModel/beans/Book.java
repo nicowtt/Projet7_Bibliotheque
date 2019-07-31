@@ -34,9 +34,6 @@ public class Book {
     @Column
     private Boolean allbookreserved;
 
-//    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER) //attribut Book book from BookReservation
-//    private Set<BookReservation> bookReservations = new HashSet<>();
-
     @ManyToMany(mappedBy = "books", fetch = FetchType.EAGER) //attribut Book books from library
     private Set<Library> libraries = new HashSet<>();
 
