@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 public interface UserManager {
     boolean checkIfMailExist(String mail);
     boolean checkIfUserMailAndPassIsOk(Libraryuser userBean);
-    boolean addNewUser(Libraryuser userBean);
+    Libraryuser addNewUser(Libraryuser userBean);
 }

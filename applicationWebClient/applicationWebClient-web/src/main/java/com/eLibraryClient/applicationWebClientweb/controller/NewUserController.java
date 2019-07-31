@@ -46,7 +46,7 @@ public class NewUserController {
     @PostMapping(value = "/newUserPost")
     public String newUserPost(@Valid @ModelAttribute("newUser") LibraryUserBean libraryNewUserBean,
                               BindingResult bindingResult, Model model) {
-        boolean mailAlreadyExist = false;
+        LibraryUserBean newUserWrited;
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("newUser", libraryNewUserBean);
@@ -57,8 +57,8 @@ public class NewUserController {
             return "/newUser";
         } else {
             // write new user on bdd
-            mailAlreadyExist= libraryUserManager.addNewUserOnBDD(libraryNewUserBean);
-            if (mailAlreadyExist) {
+            newUserWrited = libraryUserManager.addNewUserOnBDD(libraryNewUserBean);
+            if (newUserWrited.getId() == 0) {
                 model.addAttribute("bookName", new BookBean());
                 logger.info("Nouvel utilisateur non enregistré, l'email: " + libraryNewUserBean.getUseremail() + " est déja présent en BDD.");
                 return "errorHtml/errorEmailAlreadyExist";

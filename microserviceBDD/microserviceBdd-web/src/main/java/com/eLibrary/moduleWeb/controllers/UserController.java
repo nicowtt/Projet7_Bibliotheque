@@ -51,10 +51,12 @@ public class UserController {
      * @return
      */
       @RequestMapping(method = RequestMethod.POST, value = "/NewUser", consumes="application/json")
-      public boolean addUser(@RequestBody Libraryuser newUser) {
-          boolean mailAlreadyExist = false;
-          mailAlreadyExist = userManager.addNewUser(newUser);
-          return mailAlreadyExist;
+      public ResponseEntity<Libraryuser> addUser(@RequestBody Libraryuser newUser) {
+          Libraryuser newUserWrited;
+
+          newUserWrited = userManager.addNewUser(newUser);
+          //send 201 and newUserWrited CREATED for confirm new user is saved
+        return new ResponseEntity<Libraryuser>(newUserWrited, HttpStatus.CREATED);
     }
 
     /**
@@ -68,7 +70,6 @@ public class UserController {
 
         userIsValid = userManager.checkIfUserMailAndPassIsOk(user);
           return userIsValid;
-
     }
 
 

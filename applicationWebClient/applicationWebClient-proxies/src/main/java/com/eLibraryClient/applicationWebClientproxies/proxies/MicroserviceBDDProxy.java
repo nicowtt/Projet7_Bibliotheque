@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @FeignClient(name = "microserviceBdd", url = "http://localhost:9001")
@@ -93,7 +94,7 @@ public interface MicroserviceBDDProxy {
      * @return
      */
     @PostMapping(value = "/NewUser")
-    boolean addUser(@RequestBody LibraryUserBean libraryUserBean);
+    LibraryUserBean addUser(@RequestBody LibraryUserBean libraryUserBean);
 
     /**
      * For check if user mail and password exist

@@ -7,6 +7,9 @@ import com.eLibrary.moduleModel.beans.Libraryuser;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -71,25 +74,18 @@ public class UserManagerImpl implements UserManager {
      * @param userBean
      */
     @Override
-    public boolean addNewUser(Libraryuser userBean) {
-        boolean mailAlreadyExist = false;
+    public Libraryuser addNewUser(Libraryuser userBean) {
+        Libraryuser newUser = new Libraryuser();
 
-        // check if email already exist
-        List<Libraryuser> allUserList = libraryUserDao.findAll();
-
-        for (int i = 0; i < allUserList.size(); i++) {
-            if (allUserList.get(i).getUseremail().equals(userBean.getUseremail())) {
-                mailAlreadyExist = true;
-            }
+        //encrypt password
+        String hashedPassword = passwordEncoder.hashPassword(userBean.getUserpassword());
+        userBean.setUserpassword(hashedPassword);
+        //write new user on bdd
+        try {
+            newUser = libraryUserDao.save(userBean);
+        } catch ( DataIntegrityViolationException e) {
+            logger.info("L'enregistrement du nouvel utilisateur à échoué: l'email existe déjà en BDD");
         }
-
-        if (!mailAlreadyExist) {
-            //encrypt password
-            String hashedPassword = passwordEncoder.hashPassword(userBean.getUserpassword());
-            userBean.setUserpassword(hashedPassword);
-            //write new user on bdd
-            libraryUserDao.save(userBean);
-        }
-        return mailAlreadyExist;
+        return newUser;
     }
 }

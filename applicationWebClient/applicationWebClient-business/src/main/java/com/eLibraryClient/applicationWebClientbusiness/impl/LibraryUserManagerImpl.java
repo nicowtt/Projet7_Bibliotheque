@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class LibraryUserManagerImpl implements LibraryUserManager {
@@ -16,35 +17,15 @@ public class LibraryUserManagerImpl implements LibraryUserManager {
     private MicroserviceBDDProxy microserviceBDDProxy;
 
     /**
-     * For check if user is present on BDD
-     * @param userSessionEmail
-     * @return
-     */
-    @Override
-    public LibraryUserBean checkIfUserIsOnBDD(String userSessionEmail) {
-        List<LibraryUserBean> userBddList = new ArrayList<>();
-        LibraryUserBean beanUserOnBdd = new LibraryUserBean();
-        userBddList = microserviceBDDProxy.getListOfUsers();
-
-        for (int i = 0; i < userBddList.size(); i++) {
-            if (userBddList.get(i).getUseremail().equals(userSessionEmail)) {
-                beanUserOnBdd = userBddList.get(i);
-            }
-        }
-        return beanUserOnBdd;
-    }
-
-
-    /**
      * For add new user on microservice BDD
      * @param libraryUserBean
      */
     @Override
-    public boolean addNewUserOnBDD(LibraryUserBean libraryUserBean) {
-        boolean mailAlreadyExist = false;
-        mailAlreadyExist= microserviceBDDProxy.addUser(libraryUserBean);
+    public LibraryUserBean addNewUserOnBDD(LibraryUserBean libraryUserBean) {
+        LibraryUserBean newUserWrited = new LibraryUserBean();
+        newUserWrited = microserviceBDDProxy.addUser(libraryUserBean);
 
-        return mailAlreadyExist;
+        return newUserWrited;
     }
 
     /**

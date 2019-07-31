@@ -8,6 +8,4 @@ import org.springframework.stereotype.Repository;
 public interface LibraryUserDao extends JpaRepository<Libraryuser, Integer> {
 
     Libraryuser findByUseremail(String useremail);
-
-    Libraryuser save(Libraryuser user);
 }

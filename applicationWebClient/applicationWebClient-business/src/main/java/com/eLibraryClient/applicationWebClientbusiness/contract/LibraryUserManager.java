@@ -5,8 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface LibraryUserManager {
-    LibraryUserBean checkIfUserIsOnBDD(String userEmail);
-    boolean addNewUserOnBDD(LibraryUserBean LibraryUserBean);
+    LibraryUserBean addNewUserOnBDD(LibraryUserBean LibraryUserBean);
     LibraryUserBean getOneUser(String userEmail);
     boolean checkIfMailAndPassIsOk(LibraryUserBean user);
 }
