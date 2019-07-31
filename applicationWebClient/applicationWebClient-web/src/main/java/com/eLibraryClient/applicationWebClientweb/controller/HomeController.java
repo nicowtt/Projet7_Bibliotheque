@@ -54,7 +54,7 @@ public class HomeController {
     @ResponseBody
     public List<String> bookNameAutocomplete(@RequestParam(value="term", required = false, defaultValue="") String term) {
 
-        String firstThreeCharacters;
+        String beginWriteCharacters;
         term = term.toLowerCase();
         List<String> suggestionsFiltre = new ArrayList<>();
         // get all book names
@@ -63,7 +63,7 @@ public class HomeController {
         try {
             // only update when term is three characters.
             if (term.length() == 1) {
-                firstThreeCharacters = term;
+                beginWriteCharacters = term;
 
                 for (int i = 0; i < suggestionOfNameBook.size(); i++) {
                     if (suggestionOfNameBook.get(i).substring(0, 1).equals(term)) {
@@ -75,7 +75,6 @@ public class HomeController {
             e.printStackTrace();
             logger.error("Exception in book name autocomplete");
         }
-
         return suggestionsFiltre;
     }
 }

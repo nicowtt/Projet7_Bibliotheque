@@ -38,7 +38,7 @@
 
             <!-- cover and description (mouse over) -->
             <img th:src="${l.book.bookpictureurl}" style="width:150px;height:200px; border:0px;" class="img-rounded"
-                 th:title="${l.book.bookdescription}">
+                 th:title="'*Nom:' +${l.book.bookname} + ' *Auteur:' + ${l.book.bookauthor} + ' *Description:' + ${l.book.bookdescription}">
             <!--<span class="label label-default" th:text="${b.booklabel}"></span>-->
             <!-- tag -->
             <div>
