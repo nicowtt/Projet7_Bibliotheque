@@ -60,11 +60,11 @@ public class NewUserController {
             newUserWrited = libraryUserManager.addNewUserOnBDD(libraryNewUserBean);
             if (newUserWrited.getId() == 0) {
                 model.addAttribute("bookName", new BookBean());
-                logger.info("Nouvel utilisateur non enregistré, l'email: " + libraryNewUserBean.getUseremail() + " est déja présent en BDD.");
+                logger.info("Nouvel utilisateur non enregistré, l'email: " + libraryNewUserBean.getUserEmail() + " est déja présent en BDD.");
                 return "errorHtml/errorEmailAlreadyExist";
             } else {
                 model.addAttribute("bookName", new BookBean());
-                logger.info("Nouvel utilisateur: " + libraryNewUserBean.getUseremail() + " enregistré.");
+                logger.info("Nouvel utilisateur: " + libraryNewUserBean.getUserEmail() + " enregistré.");
                 return "confirmationhtml/userWrittingOk";
             }
         }

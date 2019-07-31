@@ -35,7 +35,7 @@ public class PersonalSpaceController {
     public String personalSpace(@SessionAttribute(value = "userSession", required = false)LibraryUserBean userSession,
                                 Model model) {
 
-        LibraryUserBean userOnSession = libraryUserManager.getOneUser(userSession.getUseremail());
+        LibraryUserBean userOnSession = libraryUserManager.getOneUser(userSession.getUserEmail());
         List<BookReservationBean> bookReservationListForOneUser = bookReservationManager.bookReservationListForOneUser(userOnSession.getId());
 
         model.addAttribute("reservation", bookReservationListForOneUser);

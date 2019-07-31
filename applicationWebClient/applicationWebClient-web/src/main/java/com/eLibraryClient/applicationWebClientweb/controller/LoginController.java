@@ -45,7 +45,7 @@ public class LoginController {
         LibraryUserBean newUserBean = new LibraryUserBean();
         List<BookBean> listBooks = bookManager.getListAllBooks();
 
-        newUserBean.setUseremail(userSession.getUseremail());
+        newUserBean.setUserEmail(userSession.getUserEmail());
         // check if mail and pawword input is ok on microserviceBdd
         checkPassword = libraryUserManager.checkIfMailAndPassIsOk(userSession);
 
@@ -61,7 +61,7 @@ public class LoginController {
 
         model.addAttribute("books", listBooks);
         model.addAttribute("bookName", new BookBean());
-        logger.info(userSession.getUseremail() + " est en session");
+        logger.info(userSession.getUserEmail() + " est en session");
 
         return "home";
     }
@@ -86,7 +86,7 @@ public class LoginController {
 
         model.addAttribute("books", books);
         model.addAttribute("bookName", new BookBean());
-        logger.info(userSession.getUseremail() + " est déconnecté");
+        logger.info(userSession.getUserEmail() + " est déconnecté");
 
         return "home";
     }

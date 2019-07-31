@@ -32,22 +32,22 @@
         </div>
         <!-- display book(s) -->
         <div th:each="l : ${libraryCatalog}" class="col-xs-4 col-sm-3 col-md-2">
-            <!--<div th:text="${l.book.bookname}" style="font-weight: bold" id="bookName"></div>-->
-            <!--<div th:text="${l.book.bookauthor}"style="font-style: italic" id="bookAuthor"></div>-->
+            <!--<div th:text="${l.book.bookName}" style="font-weight: bold" id="bookName"></div>-->
+            <!--<div th:text="${l.book.bookAuthor}"style="font-style: italic" id="bookAuthor"></div>-->
             <!--<p></p>-->
 
             <!-- cover and description (mouse over) -->
-            <img th:src="${l.book.bookpictureurl}" style="width:150px;height:200px; border:0px;" class="img-rounded"
-                 th:title="'*Nom:' +${l.book.bookname} + ' *Auteur:' + ${l.book.bookauthor} + ' *Description:' + ${l.book.bookdescription}">
-            <!--<span class="label label-default" th:text="${b.booklabel}"></span>-->
+            <img th:src="${l.book.bookPictureUrl}" style="width:150px;height:200px; border:0px;" class="img-rounded"
+                 th:title="'*Nom:' +${l.book.bookName} + ' *Auteur:' + ${l.book.bookAuthor} + ' *Description:' + ${l.book.bookDescription}">
+            <!--<span class="label label-default" th:text="${b.bookLabel}"></span>-->
             <!-- tag -->
             <div>
-            <span class="label label-default" id="label" th:text="${l.book.booklabel}"></span>
+            <span class="label label-default" id="label" th:text="${l.book.bookLabel}"></span>
             </div>
             <!-- disponibility -->
             <div><a th:href="@{'/book/'+ ${l.book.id} + '/library/' + ${library}}" type="button" class="btn btn-xs btn-primary" id="onBook"
-                    th:if="${!l.book.allbookreserved}">Emprunter</a></div>
-            <span class="label label-danger" id="onBookNoDispo" th:if="${l.book.allbookreserved}">Non Disponible</span>
+                    th:if="${!l.book.allBookReserved}">Emprunter</a></div>
+            <span class="label label-danger" id="onBookNoDispo" th:if="${l.book.allBookReserved}">Non Disponible</span>
         </div>
     </div>
 </div>

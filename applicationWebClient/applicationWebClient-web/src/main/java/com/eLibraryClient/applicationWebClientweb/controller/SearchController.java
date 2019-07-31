@@ -70,14 +70,14 @@ public class SearchController {
         String libraryName = "";
         String label = "";
 
-        List<LibraryCatalogBean> LibraryCatalogListWithFilter = libraryCatalogManager.getListOfLibraryCatalogWithLibraryNameAndBookLabelFilter(libraryBean.getLibraryname(), bookBean.getBooklabel());
+        List<LibraryCatalogBean> LibraryCatalogListWithFilter = libraryCatalogManager.getListOfLibraryCatalogWithLibraryNameAndBookLabelFilter(libraryBean.getLibraryName(), bookBean.getBookLabel());
         //set library information for display filter
-        libraryName = libraryBean.getLibraryname();
+        libraryName = libraryBean.getLibraryName();
         if (libraryName.equals("")) {
             libraryName = null;
         }
         //set label information for display filter
-        label = bookBean.getBooklabel();
+        label = bookBean.getBookLabel();
         if (label.equals("")) {
             label = null;
         }
@@ -106,7 +106,7 @@ public class SearchController {
         if (userSession != null) {
             model.addAttribute("log", userSession);
         }
-        String inputBookName = bookBeanToComplete.getBookname();
+        String inputBookName = bookBeanToComplete.getBookName();
         List<String> allbookNames = bookManager.getListOfBookName();
         //compare input with all book name
         for (int i = 0; i < allbookNames.size(); i++) {
@@ -116,7 +116,7 @@ public class SearchController {
         }
         // complete bookBean if ok
         if (bookIsOnBdd) {
-            BookBean bookBeanCompleted = bookManager.getOneBook(bookBeanToComplete.getBookname());
+            BookBean bookBeanCompleted = bookManager.getOneBook(bookBeanToComplete.getBookName());
             List<LibraryCatalogBean> libraryCatalogListWithFilter = libraryCatalogManager.getLibrariesCatalogForOneBook(bookBeanCompleted.getId());
             //remove repetition
             List<LibraryCatalogBean> listWithoutRepetition = libraryCatalogManager.removingBookRepetitionOnLibrariesCatalogBeanList(libraryCatalogListWithFilter);

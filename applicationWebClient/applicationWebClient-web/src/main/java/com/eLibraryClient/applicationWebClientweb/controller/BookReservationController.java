@@ -82,7 +82,7 @@ public class BookReservationController {
                                   Model model) {
         BookReservationBean newBookReservation = new BookReservationBean();
 
-        LibraryUserBean beanUserOnSession = libraryUserManager.getOneUser(userSession.getUseremail());
+        LibraryUserBean beanUserOnSession = libraryUserManager.getOneUser(userSession.getUserEmail());
         newBookReservation.setBookId(bookId);
         newBookReservation.setUserId(beanUserOnSession.getId());
         newBookReservation.setLibraryId(libraryId);
@@ -108,7 +108,7 @@ public class BookReservationController {
     public String extendReservationTime(@PathVariable Integer reservationId,
                                         @SessionAttribute(value = "userSession", required = false) LibraryUserBean userSession,
                                         Model model) {
-        LibraryUserBean beanUserOnSession = libraryUserManager.getOneUser(userSession.getUseremail());
+        LibraryUserBean beanUserOnSession = libraryUserManager.getOneUser(userSession.getUserEmail());
 
         BookReservationBean bookReservationBeanToUpdate = bookReservationManager.getOneBookReservation(reservationId);
         String extendDate = dateManager.addDaysOnOneDate(bookReservationBeanToUpdate.getEndOfReservationDate(), 28);
@@ -121,9 +121,9 @@ public class BookReservationController {
         model.addAttribute("log", userSession);
         model.addAttribute("bookName", new BookBean());
 
-        logger.info("L'utilisateur " + beanUserOnSession.getUseremail() + " à prolongé la reservation du livre:"
-        + bookReservationBeanToUpdate.getBook().getBookname() + " dans la bibliothèque:"
-        + bookReservationBeanToUpdate.getLibrary().getLibraryname() + ".");
+        logger.info("L'utilisateur " + beanUserOnSession.getUserEmail() + " à prolongé la reservation du livre:"
+        + bookReservationBeanToUpdate.getBook().getBookName() + " dans la bibliothèque:"
+        + bookReservationBeanToUpdate.getLibrary().getLibraryName() + ".");
 
         return "/PersonalSpace";
     }
@@ -148,7 +148,7 @@ public class BookReservationController {
         model.addAttribute("log", userSession);
         model.addAttribute("bookName", new BookBean());
 
-        logger.info("L'utilisateur " + userSession.getUseremail() + " a rendu le livre de la reservation d'id: " + reservationId);
+        logger.info("L'utilisateur " + userSession.getUserEmail() + " a rendu le livre de la reservation d'id: " + reservationId);
 
         return "/Confirmationhtml/bookBackOk";
     }

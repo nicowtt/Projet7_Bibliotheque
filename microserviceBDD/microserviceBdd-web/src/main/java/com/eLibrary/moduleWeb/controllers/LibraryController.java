@@ -35,7 +35,7 @@ public class LibraryController {
     @GetMapping(value = "/Library/{name}")
     public Library getOneLibrary(@PathVariable String name) {
 
-        Library oneLibrary = libraryDao.findByLibraryname(name);
+        Library oneLibrary = libraryDao.findByLibraryName(name);
 
         return oneLibrary;
     }

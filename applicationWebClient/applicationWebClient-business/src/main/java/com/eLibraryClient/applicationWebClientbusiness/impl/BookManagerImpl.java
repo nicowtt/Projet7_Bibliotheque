@@ -96,7 +96,7 @@ public class BookManagerImpl implements BookManager {
 
         for (int i = 0; i < listOfDistinctBookLabels.size(); i++) {
             BookBean bookBean = new BookBean();
-            bookBean.setBooklabel(listOfDistinctBookLabels.get(i));
+            bookBean.setBookLabel(listOfDistinctBookLabels.get(i));
             bookBeanList.add(bookBean);
         }
         return bookBeanList;

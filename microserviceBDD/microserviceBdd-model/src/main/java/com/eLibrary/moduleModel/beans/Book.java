@@ -16,23 +16,23 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "public.book_id_seq")
     @SequenceGenerator(name = "public.book_id_seq", sequenceName = "public.book_id_seq", allocationSize = 1)
     private int id;
-    @Column
-    private String bookname;
+    @Column(name="bookname")
+    private String bookName;
 
-    @Column
-    private String bookauthor;
+    @Column(name="bookauthor")
+    private String bookAuthor;
 
-    @Column
-    private String bookpictureurl;
+    @Column(name="bookpictureurl")
+    private String bookPictureUrl;
 
-    @Column
-    private String bookdescription;
+    @Column(name="bookdescription")
+    private String bookDescription;
 
-    @Column
-    private String booklabel;
+    @Column(name="booklabel")
+    private String bookLabel;
 
-    @Column
-    private Boolean allbookreserved;
+    @Column(name="allbookreserved")
+    private Boolean allBookReserved;
 
     @ManyToMany(mappedBy = "books", fetch = FetchType.EAGER) //attribut Book books from library
     private Set<Library> libraries = new HashSet<>();
@@ -42,13 +42,13 @@ public class Book {
     public Book() {
     }
 
-    public Book(String bookname, String bookauthor, String bookpictureurl, String bookdescription, String booklabel, Boolean allbookreserved, Set<Library> libraries) {
-        this.bookname = bookname;
-        this.bookauthor = bookauthor;
-        this.bookpictureurl = bookpictureurl;
-        this.bookdescription = bookdescription;
-        this.booklabel = booklabel;
-        this.allbookreserved = allbookreserved;
+    public Book(String bookName, String bookAuthor, String bookPictureUrl, String bookDescription, String bookLabel, Boolean allBookReserved, Set<Library> libraries) {
+        this.bookName = bookName;
+        this.bookAuthor = bookAuthor;
+        this.bookPictureUrl = bookPictureUrl;
+        this.bookDescription = bookDescription;
+        this.bookLabel = bookLabel;
+        this.allBookReserved = allBookReserved;
         this.libraries = libraries;
     }
 
@@ -61,52 +61,52 @@ public class Book {
         this.id = id;
     }
 
-    public String getBookname() {
-        return bookname;
+    public String getBookName() {
+        return bookName;
     }
 
-    public void setBookname(String bookname) {
-        this.bookname = bookname;
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
     }
 
-    public String getBookauthor() {
-        return bookauthor;
+    public String getBookAuthor() {
+        return bookAuthor;
     }
 
-    public void setBookauthor(String bookauthor) {
-        this.bookauthor = bookauthor;
+    public void setBookAuthor(String bookAuthor) {
+        this.bookAuthor = bookAuthor;
     }
 
-    public String getBookpictureurl() {
-        return bookpictureurl;
+    public String getBookPictureUrl() {
+        return bookPictureUrl;
     }
 
-    public void setBookpictureurl(String bookpictureurl) {
-        this.bookpictureurl = bookpictureurl;
+    public void setBookPictureUrl(String bookPictureUrl) {
+        this.bookPictureUrl = bookPictureUrl;
     }
 
-    public String getBookdescription() {
-        return bookdescription;
+    public String getBookDescription() {
+        return bookDescription;
     }
 
-    public void setBookdescription(String bookdescription) {
-        this.bookdescription = bookdescription;
+    public void setBookDescription(String bookDescription) {
+        this.bookDescription = bookDescription;
     }
 
-    public String getBooklabel() {
-        return booklabel;
+    public String getBookLabel() {
+        return bookLabel;
     }
 
-    public void setBooklabel(String booklabel) {
-        this.booklabel = booklabel;
+    public void setBookLabel(String bookLabel) {
+        this.bookLabel = bookLabel;
     }
 
-    public Boolean getAllbookreserved() {
-        return allbookreserved;
+    public Boolean getAllBookReserved() {
+        return allBookReserved;
     }
 
-    public void setAllbookreserved(Boolean allbookreserved) {
-        this.allbookreserved = allbookreserved;
+    public void setAllBookReserved(Boolean allBookReserved) {
+        this.allBookReserved = allBookReserved;
     }
 
     public Set<Library> getLibraries() {

@@ -62,7 +62,7 @@ public class BookController {
      */
     @GetMapping(value = "/BooksLabel")
     public List<String> listWithoutLabelRepetition() {
-        List<String> listWithoutLabelRepetition = bookDao.findDistinctByBooklabel();
+        List<String> listWithoutLabelRepetition = bookDao.findDistinctByBookLabel();
 
         return listWithoutLabelRepetition;
     }
@@ -74,7 +74,7 @@ public class BookController {
      */
     @GetMapping(value = "/BookName/{name}")
     public Book oneBook(@PathVariable String name) {
-        Book oneBook = bookDao.getByBookname(name);
+        Book oneBook = bookDao.getByBookName(name);
 
         return oneBook;
     }
@@ -85,7 +85,7 @@ public class BookController {
      */
     @GetMapping(value = "/BooksNameList")
     public List<String> listBooksName() {
-        List<String> listBooksName = bookDao.findDistinctByBookname();
+        List<String> listBooksName = bookDao.findDistinctByBookName();
 
         return listBooksName;
     }

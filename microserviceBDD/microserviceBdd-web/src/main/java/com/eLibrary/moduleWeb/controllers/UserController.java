@@ -39,7 +39,7 @@ public class UserController {
     @GetMapping(value = "/User/{email}")
     public LibraryUser getOneUser(@PathVariable String email) {
 
-        LibraryUser oneUser = libraryUserDao.findByUseremail(email);
+        LibraryUser oneUser = libraryUserDao.findByUserEmail(email);
         return oneUser;
     }
 

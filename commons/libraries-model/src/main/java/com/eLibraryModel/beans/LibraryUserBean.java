@@ -11,18 +11,18 @@ public class LibraryUserBean {
 
     @NotBlank
     @Size(max=50)
-    private String userfirstname;
+    private String userFirstName;
 
     @NotBlank
     @Size(max=50)
-    private String username;
+    private String userName;
 
     @NotBlank
     @Size(min=2, max = 15, message = "La taille doit être comprise entre 2 et 15 caractères")
-    private String userpassword;
+    private String userPassword;
 
     @NotBlank
-    private String useremail;
+    private String userEmail;
 
     private Set<BookReservationBean> bookReservations = new HashSet<>();
 
@@ -30,12 +30,12 @@ public class LibraryUserBean {
     public LibraryUserBean() {
     }
 
-    public LibraryUserBean(int id, @NotBlank @Size(max = 50) String userfirstname, @NotBlank @Size(max = 50) String username, @NotBlank @Size(min = 2, max = 15) String userpassword, @NotBlank String useremail, Set<BookReservationBean> bookReservations) {
+    public LibraryUserBean(int id, @NotBlank @Size(max = 50) String userFirstName, @NotBlank @Size(max = 50) String userName, @NotBlank @Size(min = 2, max = 15) String userPassword, @NotBlank String userEmail, Set<BookReservationBean> bookReservations) {
         this.id = id;
-        this.userfirstname = userfirstname;
-        this.username = username;
-        this.userpassword = userpassword;
-        this.useremail = useremail;
+        this.userFirstName = userFirstName;
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.userEmail = userEmail;
         this.bookReservations = bookReservations;
     }
 
@@ -48,36 +48,36 @@ public class LibraryUserBean {
         this.id = id;
     }
 
-    public String getUserfirstname() {
-        return userfirstname;
+    public String getUserFirstName() {
+        return userFirstName;
     }
 
-    public void setUserfirstname(String userfirstname) {
-        this.userfirstname = userfirstname;
+    public void setUserFirstName(String userFirstName) {
+        this.userFirstName = userFirstName;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getUserpassword() {
-        return userpassword;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setUserpassword(String userpassword) {
-        this.userpassword = userpassword;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public String getUseremail() {
-        return useremail;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUseremail(String useremail) {
-        this.useremail = useremail;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public Set<BookReservationBean> getBookReservations() {
@@ -96,10 +96,10 @@ public class LibraryUserBean {
     public String toString() {
         return "LibraryUserBean{" +
                 "id=" + id +
-                ", userfirstname='" + userfirstname + '\'' +
-                ", username='" + username + '\'' +
-                ", userpassword='" + userpassword + '\'' +
-                ", useremail='" + useremail + '\'' +
+                ", userFirstName='" + userFirstName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userEmail='" + userEmail + '\'' +
                 ", bookReservations=" + bookReservations +
                 '}';
     }

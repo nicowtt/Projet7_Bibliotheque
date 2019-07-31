@@ -6,12 +6,12 @@ import java.util.Set;
 public class BookBean {
 
     private int id;
-    private String bookname;
-    private String bookauthor;
-    private String bookpictureurl;
-    private String bookdescription;
-    private String booklabel;
-    private Boolean allbookreserved;
+    private String bookName;
+    private String bookAuthor;
+    private String bookPictureUrl;
+    private String bookDescription;
+    private String bookLabel;
+    private Boolean allBookReserved;
 
     // LibraryBean
     private Set<LibraryBean> libraries = new HashSet<>();
@@ -20,16 +20,14 @@ public class BookBean {
     public BookBean() {
     }
 
-    public BookBean(int id, String bookname, String bookauthor, String bookpictureurl,
-                    String bookdescription, String booklabel, Boolean allbookreserved,
-                    Set<LibraryBean> libraries) {
+    public BookBean(int id, String bookName, String bookAuthor, String bookPictureUrl, String bookDescription, String bookLabel, Boolean allBookReserved, Set<LibraryBean> libraries) {
         this.id = id;
-        this.bookname = bookname;
-        this.bookauthor = bookauthor;
-        this.bookpictureurl = bookpictureurl;
-        this.bookdescription = bookdescription;
-        this.booklabel = booklabel;
-        this.allbookreserved = allbookreserved;
+        this.bookName = bookName;
+        this.bookAuthor = bookAuthor;
+        this.bookPictureUrl = bookPictureUrl;
+        this.bookDescription = bookDescription;
+        this.bookLabel = bookLabel;
+        this.allBookReserved = allBookReserved;
         this.libraries = libraries;
     }
 
@@ -42,52 +40,52 @@ public class BookBean {
         this.id = id;
     }
 
-    public String getBookname() {
-        return bookname;
+    public String getBookName() {
+        return bookName;
     }
 
-    public void setBookname(String bookname) {
-        this.bookname = bookname;
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
     }
 
-    public String getBookauthor() {
-        return bookauthor;
+    public String getBookAuthor() {
+        return bookAuthor;
     }
 
-    public void setBookauthor(String bookauthor) {
-        this.bookauthor = bookauthor;
+    public void setBookAuthor(String bookAuthor) {
+        this.bookAuthor = bookAuthor;
     }
 
-    public String getBookpictureurl() {
-        return bookpictureurl;
+    public String getBookPictureUrl() {
+        return bookPictureUrl;
     }
 
-    public void setBookpictureurl(String bookpictureurl) {
-        this.bookpictureurl = bookpictureurl;
+    public void setBookPictureUrl(String bookPictureUrl) {
+        this.bookPictureUrl = bookPictureUrl;
     }
 
-    public String getBookdescription() {
-        return bookdescription;
+    public String getBookDescription() {
+        return bookDescription;
     }
 
-    public void setBookdescription(String bookdescription) {
-        this.bookdescription = bookdescription;
+    public void setBookDescription(String bookDescription) {
+        this.bookDescription = bookDescription;
     }
 
-    public String getBooklabel() {
-        return booklabel;
+    public String getBookLabel() {
+        return bookLabel;
     }
 
-    public void setBooklabel(String booklabel) {
-        this.booklabel = booklabel;
+    public void setBookLabel(String bookLabel) {
+        this.bookLabel = bookLabel;
     }
 
-    public Boolean getAllbookreserved() {
-        return allbookreserved;
+    public Boolean getAllBookReserved() {
+        return allBookReserved;
     }
 
-    public void setAllbookreserved(Boolean allbookreserved) {
-        this.allbookreserved = allbookreserved;
+    public void setAllBookReserved(Boolean allBookReserved) {
+        this.allBookReserved = allBookReserved;
     }
 
     public Set<LibraryBean> getLibraries() {

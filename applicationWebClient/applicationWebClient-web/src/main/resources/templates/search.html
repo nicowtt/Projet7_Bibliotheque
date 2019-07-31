@@ -29,19 +29,19 @@
             <div class="form-group">
                 <p>Par bibliothèque:</p>
                 <p></p>
-                <select th:object="${library}" th:field="*{libraryname}" class="form-control" style="width: auto">
+                <select th:object="${library}" th:field="*{libraryName}" class="form-control" style="width: auto">
                     <option value=""> -- </option>
                     <option th:each="l : ${libraries}"
-                            th:value="${l.libraryname}"
-                            th:text="${l.libraryname.toString()}"></option>
+                            th:value="${l.libraryName}"
+                            th:text="${l.libraryName.toString()}"></option>
                 </select>
                 <p></p>
                 <p>par genre:</p>
-                <select th:object="${book}" th:field="*{booklabel}" class="form-control" style="width: auto">
+                <select th:object="${book}" th:field="*{bookLabel}" class="form-control" style="width: auto">
                 <option value=""> -- </option>
                 <option th:each="b : ${books}"
-                        th:value="${b.booklabel}"
-                        th:text="${b.booklabel.toString()}"></option>
+                        th:value="${b.bookLabel}"
+                        th:text="${b.bookLabel.toString()}"></option>
                 </select>
                 <p></p>
                 <button type="submit" class="btn btn-primary">Envoyer</button>

@@ -59,7 +59,7 @@ public class LibraryCatalogManagerImpl implements LibraryCatalogManager {
             int iterationOfBook = libraryCatalogIOneBookList.get(i).getId().getBookIteration();
             result = iterationOfBook - reservationInProgress;
             libraryCatalogIOneBookList.get(i).getId().setBookIteration(result);
-            logger.info("iteration du livre pour la bibliotheque: " + libraryCatalogIOneBookList.get(i).getLibrary().getLibraryname() + "-> " + iterationOfBook);
+            logger.info("iteration du livre pour la bibliotheque: " + libraryCatalogIOneBookList.get(i).getLibrary().getLibraryName() + "-> " + iterationOfBook);
             logger.info("Reservation en cours: " + reservationInProgress);
             logger.info("Nouvelle disponibilité :" + result);
             logger.info("************************************************");
@@ -83,7 +83,7 @@ public class LibraryCatalogManagerImpl implements LibraryCatalogManager {
             // only library filter
             if (bookLabel.equals("")) {
                 for (int i = 0; i < libraryCatalogBeans.size(); i++) {
-                    if (libraryCatalogBeans.get(i).getLibrary().getLibraryname().equals(libraryName)) {
+                    if (libraryCatalogBeans.get(i).getLibrary().getLibraryName().equals(libraryName)) {
                         libraryCatalogListWithFilters.add(libraryCatalogBeans.get(i));
                     }
                 }
@@ -91,7 +91,7 @@ public class LibraryCatalogManagerImpl implements LibraryCatalogManager {
             // only book label filter
             else if (libraryName.equals("")) {
                 for (int i = 0; i < libraryCatalogBeans.size(); i++) {
-                    if (libraryCatalogBeans.get(i).getBook().getBooklabel().equals(bookLabel)) {
+                    if (libraryCatalogBeans.get(i).getBook().getBookLabel().equals(bookLabel)) {
                         libraryCatalogListWithFilters.add(libraryCatalogBeans.get(i));
                     }
                 }
@@ -100,8 +100,8 @@ public class LibraryCatalogManagerImpl implements LibraryCatalogManager {
             // library name and book label
             else {
                 for (int i = 0; i < libraryCatalogBeans.size(); i++) {
-                    if (libraryCatalogBeans.get(i).getBook().getBooklabel().equals(bookLabel) &&
-                            libraryCatalogBeans.get(i).getLibrary().getLibraryname().equals(libraryName) ) {
+                    if (libraryCatalogBeans.get(i).getBook().getBookLabel().equals(bookLabel) &&
+                            libraryCatalogBeans.get(i).getLibrary().getLibraryName().equals(libraryName) ) {
                         libraryCatalogListWithFilters.add(libraryCatalogBeans.get(i));
                     }
                 }
@@ -123,10 +123,10 @@ public class LibraryCatalogManagerImpl implements LibraryCatalogManager {
         listWithoutDouble = libraryCatalogListWithFilters;
 
         for (int i = 0; i < libraryCatalogListWithFilters.size(); i++) {
-            bookName = libraryCatalogListWithFilters.get(i).getBook().getBookname();
+            bookName = libraryCatalogListWithFilters.get(i).getBook().getBookName();
             count = 0;
             for (int j = 0; j < listWithoutDouble.size(); j++) {
-                if (listWithoutDouble.get(j).getBook().getBookname().equals(bookName)) {
+                if (listWithoutDouble.get(j).getBook().getBookName().equals(bookName)) {
                     count++;
                     if (count > 1) {listWithoutDouble.remove(j);}
                 }
@@ -148,7 +148,7 @@ public class LibraryCatalogManagerImpl implements LibraryCatalogManager {
         List<LibraryCatalogBean>libraryCatalogBeanListFiltered = libraryCatalogBeanList;
 
         for (int i = 0; i <  libraryCatalogBeanList.size(); i++) {
-            if (libraryCatalogBeanList.get(i).getLibrary().getLibraryname().equals(libraryName)) {
+            if (libraryCatalogBeanList.get(i).getLibrary().getLibraryName().equals(libraryName)) {
             } else {
                 libraryCatalogBeanListFiltered.remove(i);
             }

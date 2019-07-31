@@ -25,7 +25,7 @@ public class UserManagerImpl implements UserManager {
     public boolean checkIfMailExist(String mail) {
         boolean mailExist = false;
 
-        LibraryUser oneUser = libraryUserDao.findByUseremail(mail);
+        LibraryUser oneUser = libraryUserDao.findByUserEmail(mail);
         if (oneUser != null) {
             mailExist = true;
         } else {
@@ -48,18 +48,18 @@ public class UserManagerImpl implements UserManager {
         boolean mailAndUserExist = false;
 
         // check if email exist on bdd
-        mailExist = this.checkIfMailExist(userBeanInput.getUseremail());
+        mailExist = this.checkIfMailExist(userBeanInput.getUserEmail());
 
         if (mailExist) {
             // va chercher le bean user correspondant en BDD
-            userOnBdd = libraryUserDao.findByUseremail(userBeanInput.getUseremail());
+            userOnBdd = libraryUserDao.findByUserEmail(userBeanInput.getUserEmail());
             //compare password
-            passwordIsValid = passwordEncoder.checkPassword(userBeanInput.getUserpassword(), userOnBdd.getUserpassword());
+            passwordIsValid = passwordEncoder.checkPassword(userBeanInput.getUserPassword(), userOnBdd.getUserPassword());
             if (passwordIsValid) {
                 mailAndUserExist = true;
-                logger.info("L'utilisateur " + userBeanInput.getUseremail() + " est validé.");
+                logger.info("L'utilisateur " + userBeanInput.getUserEmail() + " est validé.");
             } else {
-                logger.info("L'utilisateur " + userBeanInput.getUseremail() + " n'a pas rentré le bon mot de passe.");
+                logger.info("L'utilisateur " + userBeanInput.getUserEmail() + " n'a pas rentré le bon mot de passe.");
             }
         }
         return mailAndUserExist;
@@ -74,8 +74,8 @@ public class UserManagerImpl implements UserManager {
         LibraryUser newUser = new LibraryUser();
 
         //encrypt password
-        String hashedPassword = passwordEncoder.hashPassword(userBean.getUserpassword());
-        userBean.setUserpassword(hashedPassword);
+        String hashedPassword = passwordEncoder.hashPassword(userBean.getUserPassword());
+        userBean.setUserPassword(hashedPassword);
         //write new user on bdd
         try {
             newUser = libraryUserDao.save(userBean);

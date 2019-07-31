@@ -30,25 +30,25 @@
             <table class="lignesEspacees">
                 <tr>
                      <!--display for "nom"-->
-                    <td>Votre prénom:*: <input type="text" th:field="*{userfirstname}"></td>
-                    <td class="errors" th:if="${#fields.hasErrors('*')}" th:errors="*{userfirstname}"></td>
+                    <td>Votre prénom:*: <input type="text" th:field="*{userFirstName}"></td>
+                    <td class="errors" th:if="${#fields.hasErrors('*')}" th:errors="*{userFirstName}"></td>
                     <td></td>
                 </tr>
                 <tr>
                     <!-- display for "prenom" -->
-                    <td>Votre Nom:*: <input type="text" th:field="*{username}"></td>
-                    <td class="errors" th:if="${#fields.hasErrors('*')}" th:errors="*{username}"></td>
+                    <td>Votre Nom:*: <input type="text" th:field="*{userName}"></td>
+                    <td class="errors" th:if="${#fields.hasErrors('*')}" th:errors="*{userName}"></td>
                 </tr>
                 <tr>
                     <!-- display for "mot de passe" -->
-                    <td>Choisissez un mot de passe:*: <input type="password" th:field="*{userpassword}"></td>
-                    <td class="errors" th:if="${#fields.hasErrors('*')}" th:errors="*{userpassword}"></td>
+                    <td>Choisissez un mot de passe:*: <input type="password" th:field="*{userPassword}"></td>
+                    <td class="errors" th:if="${#fields.hasErrors('*')}" th:errors="*{userPassword}"></td>
 
                 </tr>
                 <tr>
                     <!-- display for "email" -->
-                    <td>Votre E-mail:*: <input type="email" th:field="*{useremail}"></td>
-                    <td class="errors" th:if="${#fields.hasErrors('*')}" th:errors="*{useremail}"></td>
+                    <td>Votre E-mail:*: <input type="email" th:field="*{userEmail}"></td>
+                    <td class="errors" th:if="${#fields.hasErrors('*')}" th:errors="*{userEmail}"></td>
                 </tr>
             </table>
             <p></p>

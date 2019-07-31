@@ -3,7 +3,7 @@ package com.eLibraryModel.beans;
 public class LibraryBean {
 
     private int id;
-    private String libraryname;
+    private String libraryName;
 
 
     private BookReservationBean bookReservations;
@@ -14,9 +14,9 @@ public class LibraryBean {
     public LibraryBean() {
     }
 
-    public LibraryBean(int id, String libraryname, BookReservationBean bookReservations, BookBean books) {
+    public LibraryBean(int id, String libraryName, BookReservationBean bookReservations, BookBean books) {
         this.id = id;
-        this.libraryname = libraryname;
+        this.libraryName = libraryName;
         this.bookReservations = bookReservations;
         this.books = books;
     }
@@ -30,12 +30,12 @@ public class LibraryBean {
         this.id = id;
     }
 
-    public String getLibraryname() {
-        return libraryname;
+    public String getLibraryName() {
+        return libraryName;
     }
 
-    public void setLibraryname(String libraryname) {
-        this.libraryname = libraryname;
+    public void setLibraryName(String libraryName) {
+        this.libraryName = libraryName;
     }
 
     public BookReservationBean getBookReservations() {

@@ -17,7 +17,7 @@
         <a class="navbar-brand page-top" href="/home">Bibliothèques OcVille</a>
         <!--<form action='#' id="searchBookName" th:action="@{/SearchByBookName}"-->
               <!--th:object="${bookName}" method="POST">-->
-            <!--<input type="text" id="Book_name" placeholder="Chercher un nom de livre" th:field="*{bookname}">-->
+            <!--<input type="text" id="Book_name" placeholder="Chercher un nom de livre" th:field="*{bookName}">-->
             <!--<input type="submit" value="Envoyer" style="display: none"></form>-->
     </div>
     <!-- All elements on navbar -->
@@ -26,7 +26,7 @@
             <!-- for search book with name -->
             <li><p></p><form action='#' th:action="@{/SearchByBookName}"
                              th:object="${bookName}" method="POST">
-                <input type="text" id="Book_name" placeholder="Chercher un nom de livre" th:field="*{bookname}">
+                <input type="text" id="searchBookName" placeholder="Chercher un nom de livre" th:field="*{bookName}">
                 <input type="submit" value="Envoyer" style="display: none"></form></li>
 
             <li><a th:href="@{/Search}">Filtrer par bibliothéque / label</a></li>
@@ -36,7 +36,7 @@
         <ul class="nav navbar-nav navbar-right" > <li class="dropdown">
 
             <!-- if user is login -->
-            <div th:if="${log}!=null"> <div style="color:white" th:text="${log.useremail}"></div>
+            <div th:if="${log}!=null"> <div style="color:white" th:text="${log.userEmail}"></div>
                 <a th:href="@{/PersonalSpace}">Mon espace personnel</a><br>
                 <!--<a th:href="@{'/book/'+ ${b.id}}" type="button" class="btn btn-xs btn-primary" id="onBook"-->
                    <!--th:if="${!b.allbookreserved}">Emprunter</a>-->
@@ -50,8 +50,8 @@
                 <ul class="dropdown-menu">
                     <li class="dropdown-header">Vous n'êtes pas identifié.</li>
                     <li><form class="navbar-form" method="post" action="/login" modelAttribute="userSession">
-                        <input type="text" class="form-control" name="useremail" placeholder="email" /><br />
-                        <input type="password" class="form-control" name="userpassword" placeholder="Mot de passe"/>
+                        <input type="text" class="form-control" name="userEmail" placeholder="email" /><br />
+                        <input type="password" class="form-control" name="userPassword" placeholder="Mot de passe"/>
                         <input type="submit" class="btn btn-primary btn-xs btn-block" /></form></li>
                     <li class="disabled"><a href="#">Mot de passe oublié ?</a></li>
                     <li class="enable"><a href="/newUser">Créer un compte...</a></li>

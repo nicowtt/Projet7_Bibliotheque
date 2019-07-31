@@ -39,14 +39,14 @@ public class EmailService {
 
         // send email for each reservation
         for (int i = 0; i < lateBookReservation.size(); i++) {
-            to = lateBookReservation.get(i).getLibraryUser().getUseremail();
+            to = lateBookReservation.get(i).getLibraryUser().getUserEmail();
             subject = "Rappel, date de fin de réservation dépassé !";
-            text = "Bonjour " + lateBookReservation.get(i).getLibraryUser().getUserfirstname() + "," +
-                    "\nLa date de retour maximale pour le livre: " + lateBookReservation.get(i).getBook().getBookname() +
-                    " de " + lateBookReservation.get(i).getBook().getBookauthor() +
+            text = "Bonjour " + lateBookReservation.get(i).getLibraryUser().getUserFirstName() + "," +
+                    "\nLa date de retour maximale pour le livre: " + lateBookReservation.get(i).getBook().getBookName() +
+                    " de " + lateBookReservation.get(i).getBook().getBookAuthor() +
                     " était le: " + lateBookReservation.get(i).getEndOfReservationDate() + " !" +
                     "\nMerci de ramener le livre au plus tôt dans la bibliothèque: " +
-                    lateBookReservation.get(i).getLibrary().getLibraryname() + " !";
+                    lateBookReservation.get(i).getLibrary().getLibraryName() + " !";
 
             //send mail
             SimpleMailMessage message = new SimpleMailMessage();
@@ -56,7 +56,7 @@ public class EmailService {
             message.setText(text);
             emailSender.send(message);
             logger.info("****************************************************************************************");
-            logger.info("Rappel envoye a: " + lateBookReservation.get(i).getLibraryUser().getUseremail());
+            logger.info("Rappel envoye a: " + lateBookReservation.get(i).getLibraryUser().getUserEmail());
             logger.info("****************************************************************************************");
     }
         if (lateBookReservation.isEmpty()) {

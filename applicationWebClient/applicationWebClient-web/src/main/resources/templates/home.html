@@ -21,22 +21,22 @@
     <div class="row">
         <div th:each="b : ${books}" class="col-xs-4 col-sm-3 col-md-2">
             <!-- title and author -->
-            <!--<div th:text="${b.bookname}" style="font-weight: bold" id="bookName"></div>-->
-            <!--<div th:text="${b.bookauthor}"style="font-style: italic" id="bookAuthor"></div>-->
+            <!--<div th:text="${b.bookName}" style="font-weight: bold" id="bookName"></div>-->
+            <!--<div th:text="${b.bookAuthor}"style="font-style: italic" id="bookAuthor"></div>-->
             <p></p>
             <!-- cover and description (mouse over) -->
-            <img th:src="${b.bookpictureurl}" style="width:150px;height:200px; border:0px;" class="img-rounded"
-                 th:title="'*Nom:' +${b.bookname} + ' *Auteur:' + ${b.bookauthor} + ' *Description:' + ${b.bookdescription}">
-            <!--<span class="label label-default" th:text="${b.booklabel}"></span>-->
+            <img th:src="${b.bookPictureUrl}" style="width:150px;height:200px; border:0px;" class="img-rounded"
+                 th:title="'*Nom:' +${b.bookName} + ' *Auteur:' + ${b.bookAuthor} + ' *Description:' + ${b.bookDescription}">
+            <!--<span class="label label-default" th:text="${b.bookLabel}"></span>-->
             <!-- tag -->
             <div>
-            <span class="label label-default" id="label" th:text="${b.booklabel}"></span>
+            <span class="label label-default" id="label" th:text="${b.bookLabel}"></span>
             </div>
             <!-- disponibility -->
             <div>
                 <a th:href="@{'/book/'+ ${b.id} + '/library/' + ${library}}" type="button" class="btn btn-xs btn-primary" id="onBook"
-                    th:if="${!b.allbookreserved}">Disponible</a>
-                <span class="label label-danger" id="onBookNoDispo" th:if="${b.allbookreserved}">Non Disponible</span>
+                    th:if="${!b.allBookReserved}">Disponible</a>
+                <span class="label label-danger" id="onBookNoDispo" th:if="${b.allBookReserved}">Non Disponible</span>
             </div>
 
         </div>
@@ -68,7 +68,7 @@
 
 <script type="text/javascript">
     $(function() {
-        $("#Book_name").autocomplete({
+        $("#searchBookName").autocomplete({
             source: "bookNameAutocomplete",
             minLength: 1,
         });
