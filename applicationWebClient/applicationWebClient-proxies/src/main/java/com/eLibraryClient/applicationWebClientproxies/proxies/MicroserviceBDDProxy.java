@@ -3,6 +3,7 @@ package com.eLibraryClient.applicationWebClientproxies.proxies;
 
 import com.eLibraryModel.beans.*;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -94,7 +95,7 @@ public interface MicroserviceBDDProxy {
      * @return
      */
     @PostMapping(value = "/NewUser")
-    LibraryUserBean addUser(@RequestBody LibraryUserBean libraryUserBean);
+    ResponseEntity<LibraryUserBean> addUser(@RequestBody LibraryUserBean libraryUserBean);
 
     /**
      * For check if user mail and password exist

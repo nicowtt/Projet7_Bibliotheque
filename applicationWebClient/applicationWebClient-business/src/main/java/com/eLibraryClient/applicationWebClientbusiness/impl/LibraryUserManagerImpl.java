@@ -4,6 +4,7 @@ import com.eLibraryClient.applicationWebClientbusiness.contract.LibraryUserManag
 import com.eLibraryModel.beans.LibraryUserBean;
 import com.eLibraryClient.applicationWebClientproxies.proxies.MicroserviceBDDProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -21,9 +22,9 @@ public class LibraryUserManagerImpl implements LibraryUserManager {
      * @param libraryUserBean
      */
     @Override
-    public LibraryUserBean addNewUserOnBDD(LibraryUserBean libraryUserBean) {
-        LibraryUserBean newUserWrited = new LibraryUserBean();
-        newUserWrited = microserviceBDDProxy.addUser(libraryUserBean);
+    public ResponseEntity<LibraryUserBean> addNewUserOnBDD(LibraryUserBean libraryUserBean) {
+//        LibraryUserBean newUserWrited = new LibraryUserBean();
+        ResponseEntity<LibraryUserBean> newUserWrited= microserviceBDDProxy.addUser(libraryUserBean);
 
         return newUserWrited;
     }

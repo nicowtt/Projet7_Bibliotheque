@@ -6,6 +6,8 @@ import com.eLibraryModel.beans.LibraryUserBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -46,7 +48,7 @@ public class NewUserController {
     @PostMapping(value = "/newUserPost")
     public String newUserPost(@Valid @ModelAttribute("newUser") LibraryUserBean libraryNewUserBean,
                               BindingResult bindingResult, Model model) {
-        LibraryUserBean newUserWrited;
+//        LibraryUserBean newUserWrited;
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("newUser", libraryNewUserBean);
@@ -57,8 +59,8 @@ public class NewUserController {
             return "/newUser";
         } else {
             // write new user on bdd
-            newUserWrited = libraryUserManager.addNewUserOnBDD(libraryNewUserBean);
-            if (newUserWrited.getId() == 0) {
+            ResponseEntity<LibraryUserBean> newUserWrited = libraryUserManager.addNewUserOnBDD(libraryNewUserBean);
+            if (newUserWrited.getStatusCode() != HttpStatus.CREATED) {
                 model.addAttribute("bookName", new BookBean());
                 logger.info("Nouvel utilisateur non enregistré, l'email: " + libraryNewUserBean.getUserEmail() + " est déja présent en BDD.");
                 return "errorHtml/errorEmailAlreadyExist";
