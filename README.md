@@ -3,7 +3,7 @@ Voici un système de gestion de bibliothèques d'une ville.
 
 Il se compose de trois logiciels:
 
-#Le site web
+##Le site web
 Le but est de permettre aux usagers de suivre les prêts de leur ouvrages à travers une 
 interface web:
  * Rechercher des ouvrages et voir le nombre d'exemplaire disponible.
@@ -13,12 +13,12 @@ interface web:
  * Création et retour d'un prêt (fonctions qui seront tranférrées dans un futur logiciel 
  pour le personnels).
  
-#Un batch
+##Un batch
 Ce logiciel pour le traitement automatisé permettra d'envoyer des mails de relance
 aux usagers n'ayant pas rendu les livres en fin de période de prêt. L'envoi sera automatique
 à la fréquence d'un par jour.
 
-#L'API web
+##L'API web
 Le site web ainsi que le batch communiqueront avec ce logiciel en REST afin de connaitre
 les informations liées à la Base de donnée.
 
@@ -28,8 +28,8 @@ les informations liées à la Base de donnée.
 de la logique métier.
 - Packaging avec Maven.
 
-##Les fonctions en plus
-#Le site web (architecture multi-modules)
+##Les fonctions en plus <br/>
+##Le site web (architecture multi-modules)
 - site responsive.
 - Recherche par nom de livre et autocompletion(au 1er caractère).
 - Recherche multicritères (bibliothèque et ou genre de livre (ex: fantastique)).
@@ -37,14 +37,14 @@ de la logique métier.
 - Possibilité d'avoir plusieurs exemplaires d'un livre dans une bibliothèque.
 - Visibilité du nombre d'exemplaire disponible par bibliothèque.
 
-#Le batch (architecture multi-modules)
+##Le batch (architecture multi-modules)
 - Accessibilité du réglage du serveur d'Email par un fichier de configuration externe.
 
 POUR INFORMATION:
 Factorisation du module "libraries-model", au niveau code il est utilisé par le site web et
 le batch. (pas de répetition de code)
 
-#L'API web -> microserviceBDD (architecture multi-modules)
+##L'API web -> microserviceBDD (architecture multi-modules)
 Niveau sécurité:
 * Ce microservice hash (Bcrypt) les mots de passes des utilisateurs avant de stocker en base
 de donnée. 
