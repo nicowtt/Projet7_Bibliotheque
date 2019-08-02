@@ -3,7 +3,7 @@ Voici un système de gestion de bibliothèques d'une ville.
 
 Il se compose de trois logiciels:
 
-**Le site web**
+**Le site web**<br/>
 Le but est de permettre aux usagers de suivre les prêts de leur ouvrages à travers une 
 interface web:
  * Rechercher des ouvrages et voir le nombre d'exemplaire disponible.
@@ -13,12 +13,12 @@ interface web:
  * Création et retour d'un prêt (fonctions qui seront tranférrées dans un futur logiciel 
  pour le personnels).
  
-**Un batch**
+**Un batch**<br/>
 Ce logiciel pour le traitement automatisé permettra d'envoyer des mails de relance
 aux usagers n'ayant pas rendu les livres en fin de période de prêt. L'envoi sera automatique
 à la fréquence d'un par jour.
 
-**L'API web**
+**L'API web**<br/>
 Le site web ainsi que le batch communiqueront avec ce logiciel en REST afin de connaitre
 les informations liées à la Base de donnée.
 
@@ -28,7 +28,7 @@ les informations liées à la Base de donnée.
 de la logique métier.
 - Packaging avec Maven.
 
-##Les fonctions en plus <br/>
+## Les fonctions en plus <br/>
 **Le site web (architecture multi-modules)**
 - site responsive.
 - Recherche par nom de livre et autocompletion(au 1er caractère).
@@ -40,7 +40,7 @@ de la logique métier.
 **Le batch (architecture multi-modules)**
 - Accessibilité du réglage du serveur d'Email par un fichier de configuration externe.
 
-POUR INFORMATION:
+**POUR INFORMATION:**<br/>
 Factorisation du module "libraries-model", au niveau code il est utilisé par le site web et
 le batch. (pas de répetition de code)
 
@@ -116,12 +116,12 @@ Réglez cette data source dans le fichier context.xml (repertoire conf de tomcat
 - Veuillez mettre le fichier de configuration "application-gmail.properties" au même endroit.
 - Ecrivez le bon mot de passe dans ce fichier de configuration.
 - Fabriquer une variable d'environnement système:
-* pour windows(exemple avec une variable d'environnement temporaire):
-Dans la console rentrer la commande:
+* pour windows(exemple avec une variable d'environnement temporaire):<br/>
+Dans la console rentrez la commande:
 ```
 set CONF_DIR=C:\Users\nicob\Documents\GitHub\Projet7_bibliotheque\batchMail\batchMail-business\target
 ```
-- Fabriquer une tâche planifié (tous les 24h )qui lance la commande:
+- Fabriquez une tâche planifié (tous les 24h )qui lance la commande:
 ```
 Java -jar batchMail-business-0.0.1-SNAPSHOT.jar
 ```
