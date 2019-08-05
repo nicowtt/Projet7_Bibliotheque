@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface LibraryCatalogDao extends JpaRepository<LibraryCatalog, Integer> {
-    List<LibraryCatalog> findByBook_Id(int bookId);
+    List<LibraryCatalog> findByBookId(int bookId);
 
 }

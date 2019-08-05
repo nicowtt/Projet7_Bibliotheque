@@ -33,7 +33,7 @@ public class LibraryCatalogController {
      */
     @GetMapping(value = "/Librariescatalog/{bookId}")
     public List<LibraryCatalog> libraryCatalogForOneBook(@PathVariable Integer bookId) {
-        List<LibraryCatalog> libraryCatalogForOneBookList = libraryCatalogDao.findByBook_Id(bookId);
+        List<LibraryCatalog> libraryCatalogForOneBookList = libraryCatalogDao.findByBookId(bookId);
 
         return libraryCatalogForOneBookList;
     }

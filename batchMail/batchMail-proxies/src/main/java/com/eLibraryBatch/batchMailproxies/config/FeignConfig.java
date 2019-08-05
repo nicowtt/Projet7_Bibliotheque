@@ -1,4 +1,4 @@
-package com.eLibraryBatch.batchMailbusiness.config;
+package com.eLibraryBatch.batchMailproxies.config;
 
 import feign.auth.BasicAuthRequestInterceptor;
 import org.springframework.context.annotation.Bean;
@@ -11,5 +11,4 @@ public class FeignConfig {
     public BasicAuthRequestInterceptor mBasicAuthentificationInterceptor() {
         return new BasicAuthRequestInterceptor("utilisateur", "mdp");
     }
-
 }

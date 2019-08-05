@@ -1,8 +1,8 @@
-package com.eLibraryClient.applicationWebClientweb.configuration;
+package com.eLibraryClient.applicationWebClientproxies.proxies.config;
 
+import feign.auth.BasicAuthRequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import feign.auth.BasicAuthRequestInterceptor;
 
 @Configuration
 public class FeignConfig {
