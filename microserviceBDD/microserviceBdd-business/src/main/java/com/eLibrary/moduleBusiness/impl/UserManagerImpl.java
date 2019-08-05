@@ -15,7 +15,6 @@ public class UserManagerImpl implements UserManager {
 
     @Autowired
     private LibraryUserDao libraryUserDao;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -51,7 +50,7 @@ public class UserManagerImpl implements UserManager {
         mailExist = this.checkIfMailExist(userBeanInput.getUserEmail());
 
         if (mailExist) {
-            // va chercher le bean user correspondant en BDD
+            // get user bean on BDD
             userOnBdd = libraryUserDao.findByUserEmail(userBeanInput.getUserEmail());
             //compare password
             passwordIsValid = passwordEncoder.checkPassword(userBeanInput.getUserPassword(), userOnBdd.getUserPassword());

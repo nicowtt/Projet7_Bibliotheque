@@ -11,7 +11,6 @@ import java.util.Properties;
 
 @Configuration
 @PropertySource(name = "myProperties", value = "file:${CONF_DIR}/application-gmail.properties")
-//@PropertySource(name = "myProperties", value = "/application-gmail.properties")
 public class MailConfig {
 
     @Value("${host}")

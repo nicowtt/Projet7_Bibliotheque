@@ -1,6 +1,5 @@
 package com.eLibrary.moduleModel.beans;
 
-
 import javax.persistence.*;
 
 @Entity

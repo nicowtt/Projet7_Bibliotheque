@@ -15,11 +15,8 @@ public class BookReservationController {
 
     @Autowired
     private BookReservationDao bookReservationDao;
-
     @Autowired
     private BookReservationManager bookReservationManager;
-
-
 
     /**
      * get list all reservation

@@ -37,7 +37,6 @@ public class Book {
     @ManyToMany(mappedBy = "books", fetch = FetchType.EAGER) //attribut Book books from library
     private Set<Library> libraries = new HashSet<>();
 
-
     //Constructor
     public Book() {
     }

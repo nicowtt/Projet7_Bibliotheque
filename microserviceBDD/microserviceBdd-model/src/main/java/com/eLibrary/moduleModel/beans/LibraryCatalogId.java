@@ -5,9 +5,7 @@ import java.io.Serializable;
 
 
 @Embeddable
-//@Table(name = "librarycatalog")
 public class LibraryCatalogId implements Serializable {
-
 
     @Column(name = "library_id")
     private int libraryId;

@@ -22,9 +22,8 @@ public class LibraryUserManagerImpl implements LibraryUserManager {
      * @param libraryUserBean
      */
     @Override
-    public ResponseEntity<LibraryUserBean> addNewUserOnBDD(LibraryUserBean libraryUserBean) {
-//        LibraryUserBean newUserWrited = new LibraryUserBean();
-        ResponseEntity<LibraryUserBean> newUserWrited= microserviceBDDProxy.addUser(libraryUserBean);
+    public LibraryUserBean addNewUserOnBDD(LibraryUserBean libraryUserBean) {
+        LibraryUserBean newUserWrited= microserviceBDDProxy.addUser(libraryUserBean);
 
         return newUserWrited;
     }

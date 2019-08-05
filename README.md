@@ -1,7 +1,7 @@
 # Open Classrooms_Projet7 bibliotheque
 Voici un système de gestion de bibliothèques d'une ville.
 
-Il se compose de trois logiciels:
+Il se compose de trois modules:
 
 **Le site web**<br/>
 Le but est de permettre aux usagers de suivre les prêts de leur ouvrages à travers une 

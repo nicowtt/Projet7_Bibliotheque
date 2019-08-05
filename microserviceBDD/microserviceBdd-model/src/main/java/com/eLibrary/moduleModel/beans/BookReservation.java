@@ -46,7 +46,6 @@ public class BookReservation {
     @JoinColumn(name = "library_id", referencedColumnName = "id", insertable= false, updatable= false) //fk
     private Library library;
 
-
     //constructor
     public BookReservation() {
     }

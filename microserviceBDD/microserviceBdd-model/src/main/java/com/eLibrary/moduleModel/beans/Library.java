@@ -32,7 +32,6 @@ public class Library {
 
     public Library(String libraryName, Set<LibraryCatalog> libraryCatalogList, Set<Book> books) {
         this.libraryName = libraryName;
-//        this.libraryCatalogList = libraryCatalogList;
         this.books = books;
     }
 

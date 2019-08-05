@@ -3,15 +3,8 @@ package com.eLibrary.moduleWeb.controllers;
 import com.eLibrary.moduleBusiness.contract.UserManager;
 import com.eLibrary.moduleDao.dao.LibraryUserDao;
 import com.eLibrary.moduleModel.beans.LibraryUser;
-import com.eLibrary.moduleWeb.exceptions.UserException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.error.ErrorAttributes;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -53,20 +46,11 @@ public class UserController {
      * @return
      */
       @RequestMapping(method = RequestMethod.POST, value = "/NewUser", consumes="application/json")
-      public ResponseEntity<LibraryUser> addUser(@RequestBody LibraryUser newUser) {
+      public LibraryUser addUser(@RequestBody LibraryUser newUser) {
           LibraryUser newUserWrited;
 
           newUserWrited = userManager.addNewUser(newUser);
-          if (newUserWrited.getId() == 0 ) {
-//              throw new UserException("L'email existe deja.");
-//              return new ResponseEntity<LibraryUser>(newUserWrited, HttpStatus.ACCEPTED);
-              return new ResponseEntity<LibraryUser>(newUserWrited, HttpStatus.OK);
-              //todo faut-il renvoyer un status OK qui est géré dans l'application web ou envoyer une exception sans texte explicatif
-          } else {
-              return new ResponseEntity<LibraryUser>(newUserWrited, HttpStatus.CREATED);
-          }
-          //send 201 and newUserWrited CREATED for confirm new user is saved
-//        return new ResponseEntity<LibraryUser>(newUserWrited, HttpStatus.CREATED);
+          return newUserWrited;
     }
 
     /**
@@ -81,6 +65,4 @@ public class UserController {
         userIsValid = userManager.checkIfUserMailAndPassIsOk(user);
           return userIsValid;
     }
-
-
 }
