@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <div th:insert="_include/head.html"></div>
 </head>
@@ -12,65 +11,30 @@
 
 <body>
 
-<div th:with="noLibrary=${library}">
-
-
 <div class="container">
-
     <div class="row">
         <div th:each="b : ${books}" class="col-xs-4 col-sm-3 col-md-2">
             <p></p>
             <!-- cover and description (mouse over) -->
             <img th:src="${b.bookPictureUrl}" style="width:150px;height:200px; border:0px;" class="img-rounded"
-                 th:title="'*Nom:' +${b.bookName} + ' *Auteur:' + ${b.bookAuthor} + ' *Description:' + ${b.bookDescription}">
+                 th:title="'*Nom:'+${b.bookName}+' *Auteur:'+${b.bookAuthor}+' *Description:'+${b.bookDescription}">
             <!-- tag -->
             <div>
             <span class="label label-default" id="label" th:text="${b.bookLabel}"></span>
             </div>
             <!-- disponibility -->
             <div>
-                <a th:href="@{'/book/'+ ${b.id} + '/library/' + ${library}}" type="button" class="btn btn-xs btn-primary" id="onBook"
+                <a th:href="@{'/book/'+${b.id}+'/library/'+${library}}" type="button" class="btn btn-xs btn-primary" id="onBook"
                     th:if="${!b.allBookReserved}">Disponible</a>
                 <span class="label label-danger" id="onBookNoDispo" th:if="${b.allBookReserved}">Non Disponible</span>
             </div>
-
         </div>
     </div>
 </div>
 
-
-<!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<!-- Javascript de Bootstrap -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-<!-- tooltip -->
-<script>
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-        $('[data-toggle="popover"]').popover()
-    })
-</script>
-
-
-<!-- autocompletion -->
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<!-- UI -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-
-<script type="text/javascript">
-    $(function() {
-        $("#searchBookName").autocomplete({
-            source: "bookNameAutocomplete",
-            minLength: 1,
-        });
-    });
-
-</script>
-
+<footer>
+    <div th:insert="_include/footer.html"></div>
+</footer>
 
 </body>
 </html>

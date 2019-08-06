@@ -13,7 +13,6 @@
 <body>
 
 <div class="container">
-
     <div class="row">
         <div th:each="b:${books}">
             <b th:if="${b.id.getBookIteration() > 0}"><span>Il y a </span><span th:text="${b.id.bookIteration}"></span> livre(s) disponible dans la bibliotheque <span th:text="${b.library.libraryName}"></span> :</b>
@@ -23,20 +22,9 @@
     </div>
 </div>
 
-
-<!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<!-- Javascript de Bootstrap -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-<!-- tooltip -->
-<script>
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-        $('[data-toggle="popover"]').popover()
-    })
-</script>
-
+<footer>
+    <div th:insert="_include/footer.html"></div>
+</footer>
 
 </body>
 </html>
