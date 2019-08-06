@@ -15,10 +15,6 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand page-top" href="/home">Bibliothèques OcVille</a>
-        <!--<form action='#' id="searchBookName" th:action="@{/SearchByBookName}"-->
-              <!--th:object="${bookName}" method="POST">-->
-            <!--<input type="text" id="Book_name" placeholder="Chercher un nom de livre" th:field="*{bookName}">-->
-            <!--<input type="submit" value="Envoyer" style="display: none"></form>-->
     </div>
     <!-- All elements on navbar -->
     <div class="collapse navbar-collapse">
@@ -38,8 +34,6 @@
             <!-- if user is login -->
             <div th:if="${log}!=null"> <div style="color:white" th:text="${log.userEmail}"></div>
                 <a th:href="@{/PersonalSpace}">Mon espace personnel</a><br>
-                <!--<a th:href="@{'/book/'+ ${b.id}}" type="button" class="btn btn-xs btn-primary" id="onBook"-->
-                   <!--th:if="${!b.allbookreserved}">Emprunter</a>-->
                 <p></p>
                 <a href="/logout">Se deconnecter </a>
             </div>

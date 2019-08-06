@@ -1,5 +1,4 @@
 <!DOCTYPE HTML>
-
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
@@ -20,14 +19,10 @@
 
     <div class="row">
         <div th:each="b : ${books}" class="col-xs-4 col-sm-3 col-md-2">
-            <!-- title and author -->
-            <!--<div th:text="${b.bookName}" style="font-weight: bold" id="bookName"></div>-->
-            <!--<div th:text="${b.bookAuthor}"style="font-style: italic" id="bookAuthor"></div>-->
             <p></p>
             <!-- cover and description (mouse over) -->
             <img th:src="${b.bookPictureUrl}" style="width:150px;height:200px; border:0px;" class="img-rounded"
                  th:title="'*Nom:' +${b.bookName} + ' *Auteur:' + ${b.bookAuthor} + ' *Description:' + ${b.bookDescription}">
-            <!--<span class="label label-default" th:text="${b.bookLabel}"></span>-->
             <!-- tag -->
             <div>
             <span class="label label-default" id="label" th:text="${b.bookLabel}"></span>
