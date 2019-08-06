@@ -88,7 +88,6 @@ public class SearchController {
         model.addAttribute("library", libraryName);
         model.addAttribute("label", label);
         return "/filterResult";
-
     }
 
     /**
@@ -122,7 +121,7 @@ public class SearchController {
             List<LibraryCatalogBean> listWithoutRepetition = libraryCatalogManager.removingBookRepetitionOnLibrariesCatalogBeanList(libraryCatalogListWithFilter);
             model.addAttribute("libraryCatalog", listWithoutRepetition);
         } else {
-            logger.info("Book ask for user don't exist");
+            logger.info("L'utilisateur à demandé un livre inexistant.");
             model.addAttribute("bookName", new BookBean());
             return "errorHtml/errorBookSearch";
         }
