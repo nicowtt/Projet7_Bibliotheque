@@ -20,7 +20,6 @@ public class DateManagerImpl implements DateManager {
      */
     @Override
     public String todayDate() {
-
         Calendar calendar = Calendar.getInstance();
 
         //template
@@ -36,7 +35,6 @@ public class DateManagerImpl implements DateManager {
      */
     @Override
     public ComparisonDate compareDateWithToday(String pDate) {
-
         Date newDate = null;
         ComparisonDate CompareDateEnum = ComparisonDate.ISBEFORE;
 

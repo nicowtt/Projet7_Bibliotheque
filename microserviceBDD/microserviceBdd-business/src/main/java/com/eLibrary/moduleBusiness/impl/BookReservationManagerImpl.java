@@ -33,9 +33,6 @@ public class BookReservationManagerImpl implements BookReservationManager {
         List<BookReservation> bookReservationListLate = new ArrayList<>();
         Enum<ComparisonDate> comparisonDateEnum = ISBEFORE;
 
-        //today date
-        String dateToday = dateManager.todayDate();
-
         // get book reservation list (only in progress)
         List<BookReservation> allBookReservation = bookReservationDao.getBookReservationByBookBackEquals(false);
         // filter (keep only if end reservation date is after today)
