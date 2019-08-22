@@ -31,7 +31,6 @@ public class NewUserController {
      */
     @GetMapping(value = "/newUser")
     public String newUser(Model model) {
-
         model.addAttribute("newUser", new LibraryUserBean());
         model.addAttribute("bookName", new BookBean());
 
@@ -51,6 +50,7 @@ public class NewUserController {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("newUser", libraryNewUserBean);
+            model.addAttribute("bookName", new BookBean());
             logger.info("*********");
             logger.info("erreur lors du remplissage formulaire enregistrement nouvel utilisateur");
             logger.debug("debug");
